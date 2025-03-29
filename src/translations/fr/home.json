@@ -2,6 +2,39 @@
   "home": {
     "title": "Bienvenue sur notre site",
     "description": "Ceci est une description de notre site",
-    "ourEngagement": "Nos Engagements"
+    "ourEngagement": "Nos Engagements",
+    "engagement": {
+        "title1": "100 % Naturel & Authentique",
+        "description1": "Sans additifs ni conservateurs, pour une qualité pure et irréprochable.",
+        "title2": "Commerce Équitable & Circuits Courts",
+        "description2": "Sans additifs ni conservateurs, pour une qualité pure et irréprochable.",
+        "title3": "Qualité & Traçabilité",
+        "description3": "Contrôle rigoureux et transparence sur l’origine des produits.",
+        "title4": "Saveurs & Bien-être",
+        "description4": "Sélection d’arômes authentiques aux multiples bienfaits."
+    },
+    "essentialOil": "Huilles Essentielles",
+    "authenticSavior": "Saveurs authentiques",
+    "spices": "Epices",
+    "startProduct": "produits phares",
+    "startProductDescription": "Les incontournables de ReLeaf",
+    "vanille": "Vanille de Madagascar", 
+    "vanilleDescription": "Produit d’exception, prisé pour son arôme intense et naturel.", 
+    "oilEssential": "Huile essentielle de Ravintsara", 
+    "oilDescription": "Connue pour ses propriétés purifiantes et immunostimulantes.",
+    "poivre": "Poivre sauvage Voatsiperifery", 
+    "poivreDescription": "Une épice rare et recherchée pour son goût unique.", 
+    "cacao": "Cacao pur", 
+    "cacaoDescription": "Idéal pour les amateurs de chocolat et les recettes authentiques.",
+    "new": "Nouveautés",
+    "newDescription": "Découvrez nos produits exclusifs",
+    "flower1": "Hydrolat de Géranium",
+    "flowerOneDescription": "Parfait pour une routine bien-être naturelle.",
+    "flower2": "Mélange d’épices spécial cuisine malgache",
+    "flowerTwoDescription": "Pour découvrir ou redécouvrir les saveurs locales.",
+    "flower3": "Huiles essentielles en coffret découverte",
+    "flowerThreeDescription": "Une sélection pour l’aromathérapie maison.",
+    "flower4": "Miel épicé infusé",
+    "flowerForDescription": "Une fusion originale entre miel et épices locales."
   }
 }

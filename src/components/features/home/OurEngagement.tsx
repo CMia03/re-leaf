@@ -9,36 +9,37 @@ import { Card, CardContent } from "@/components/ui/card";
 
 const OurEngagement = () => {
   const t = useTranslations("home")
+  const translate = useTranslations("home.engagement")
 
   const data = [
     {
       image: image1,
-      title: "100 % Naturel & Authentique",
-      description: "Sans additifs ni conservateurs, pour une qualité pure et irréprochable."
+      title: translate('title1'),
+      description: translate('description1')
     },
     {
       image: image2,
-      title: "Commerce Équitable & Circuits Courts",
-      description: "Soutien aux producteurs locaux et rémunération juste."
+      title: translate('title2'),
+      description: translate('description2')
     },
     {
       image: image3,
-      title: "Qualité & Traçabilité",
-      description: "Contrôle rigoureux et transparence sur l’origine des produits."
+      title: translate('title3'),
+      description: translate('description3')
     },
     {
       image: image4,
-      title: "Saveurs & Bien-être",
-      description: "Sélection d’arômes authentiques aux multiples bienfaits."
+      title: translate('title4'),
+      description: translate('description4')
     },
   ]
   return (
     <div className="p-[100px]">
-      <Typography variant="h2" className="justify-center border-none text-center">{t('ourEngagement').toUpperCase()}</Typography>
-      <div className="flex gap-[59px] text-center">
+      <Typography variant="h2" className="justify-center border-none rounded-none text-center">{t('ourEngagement').toUpperCase()}</Typography>
+      <div className="flex gap-[59px] text-center justify-center">
         {data.map((item, index) => (
           <div key={index}>
-           <Card className="w-[281px] mx-auto border-none">
+           <Card className="w-[281px] mx-auto border-none shadow-none">
             <CardContent className="flex flex-col items-center text-center gap-4 p-6">
               <Image 
                 src={item.image} 
