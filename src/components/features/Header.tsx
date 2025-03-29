@@ -1,5 +1,5 @@
 import FirstMenu from "./header/FirstMenu";
-import FollowComponents from "./header/follow";
+import FollowComponents from "./header/Follow";
 import SecondMenuComponents from "./header/SecondMenu";
 
 const Header = () => {
