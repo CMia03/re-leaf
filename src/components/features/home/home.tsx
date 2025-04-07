@@ -1,5 +1,6 @@
 import AboutBannerHome from "./AboutBanner";
 import HomeBanner from "./HomeBanner";
+import HomeNewslatter from "./HomeNewslatter";
 import New from "./New";
 import OurEngagement from "./OurEngagement";
 import Savior from "./Savior";
@@ -14,6 +15,7 @@ const HomeComponent = () => {
       <StarProduct />
       <AboutBannerHome />
       <New />
+ <HomeNewslatter />
     </div>
   );
 };

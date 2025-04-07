@@ -140,3 +140,14 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* COLOR */
+:root{
+  --color-primary-releaf:#778b4385;
+  --bg-primary-releaf-overlay:#80a327b6;
+}
+
+input:focus{
+  outline:none;
+  /* color: #778b43; */
+}

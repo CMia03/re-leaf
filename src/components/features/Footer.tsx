@@ -1,8 +1,10 @@
+import FirstFooterSection from './footer/FirstFooterSection';
+
 const Footer = () => {
   return (
-    <header>
-      <h1>Footer Component</h1>
-    </header>
+    <div>
+      <FirstFooterSection />
+    </div>
   );
 };
 export default Footer;
