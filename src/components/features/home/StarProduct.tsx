@@ -8,7 +8,7 @@ import { Card, CardContent } from "@/components/ui/card"
 import Image from "next/image"
 
 const StarProduct = () =>{
-    const t = useTranslations("home")
+    const t = useTranslations("home");
     const items = [
         { id: 1, image: vanille, label: t("vanille"), description: t("vanilleDescription")},
         { id: 2, image: sirop, label: t("oilEssential"), description:  t("oilDescription")},

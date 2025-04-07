@@ -1,14 +1,18 @@
 import { Typography } from "@/components/re-leaf/Typography";
 import Image from "next/image";
 import logo from "../../../../public/images/logo.svg";
+import { useTranslations } from "next-intl";
+
 
 const FirstFooterSection = () => {
+      const t = useTranslations("footer")
+
   return (
     <div>
         <div className="flex flex-row gap-5 justify-between bg-[#Ffffff]">
               <picture className="flex flex-col gap-3 flex-2">
                 <Image src={logo} alt="logo" width={167} height={90} />
-                <p>Découvrez l’alchimie parfaite de nos épices, huiles essentielles et saveurs authentiques, qui transforment vos aliments en une expérience gustative inoubliable.</p>
+                <p>{t("descFooter")}</p>
               </picture>
 
               <div className="flex flex-col gap-3 flex-1">

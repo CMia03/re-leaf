@@ -2,9 +2,34 @@ import React from 'react'
 const bgNwsletter = '/images/newsletter/BackgroundNwsLttrImage.png';
 import { Typography } from "@/components/re-leaf/Typography";
 
+// import { useTranslations } from "next-intl";
+
+
 const HomeNewslatter = () => {
+    // const t = useTranslations("home")
+    
 return (
     <div>
+        <section>
+             <div className='flex flex-row justify-between items-center'>
+                <picture className='flex flex-row'>
+                    <i>icon</i>
+                    <p>lorem</p>
+                </picture>
+                <picture className='flex flex-row'>
+                    <i>icon</i>
+                    <p>lorem</p>
+                </picture>
+                <picture className='flex flex-row'>
+                    <i>icon</i>
+                    <p>lorem</p>
+                </picture>
+                <picture className='flex flex-row'>
+                    <i>icon</i>
+                    <p>lorem</p>
+                </picture>
+             </div>
+        </section>
         <section
             className="w-full h-80"
             style={{ backgroundImage: `url(${bgNwsletter})`, backgroundSize: 'cover' }}
