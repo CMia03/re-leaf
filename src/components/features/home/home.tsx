@@ -23,7 +23,6 @@ const   HomeComponent = () => {
       <HomeVideo />
       <BlogAndConseil />
       <HomeTestimonial />
-      <HomeNewslatter />
     </div>
   );
 };
