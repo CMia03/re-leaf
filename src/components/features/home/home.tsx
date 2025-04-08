@@ -12,7 +12,7 @@ import StarProduct from "./StarProduct";
 
 const   HomeComponent = () => {
   return (
-    <div>
+    <div className="flex flex-col gap-10">
       <HomeBanner />
       <OurEngagement />
       <Savior />

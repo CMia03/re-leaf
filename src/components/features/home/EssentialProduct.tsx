@@ -73,12 +73,12 @@ function EssentialProduct() {
   return (
     <div>
           
-            <main>
-              <div className="flex flex-row gap-1 h-[max-content] justify-between bg-red-700">
+            <main className='w-[98%] mx-auto my-0'>
+              <div className="flex flex-row gap-4 h-[max-content] justify-between">
                  {/* SECTION CAROUSEL */}
-                  <section className="w-[40%]">
+                  <section className="w-[50%]">
                          <Carousel className="w-[full] lg:h-full" setApi={setApi}>
-        <CarouselContent className="border h-[full]">
+        <CarouselContent className="border h-[100%] bg-amber-200">
           {data.map((item, index) => (
             <CarouselItem
               key={index}
@@ -89,18 +89,18 @@ function EssentialProduct() {
      
 
                           <Card className="border-none bg-green-light w-[100%] h-[100%] rounded-none">
-          <CardContent className="flex flex-col items-center text-center gap-4 p-6">
+          <CardContent className="flex flex-col items-center text-center gap-10 p-6">
             <Typography variant="p" className="text-white text-[30px]">
               {'Huiles essentielles'}
             </Typography>
             <Image src={essentialOil} alt='gg' width={307} height={373} />
-                              <Button variant="outline">
-            <Typography variant="p" className="text-white">
+                              <Button variant="outline" className='p-5 px-10 rounded-full'>
+                      <Typography variant="p" className="text-green-light font-semibold">
 
                                   Voir tout les poivres & baies
             </Typography>
 
-      <ChevronRight />
+      <ChevronRight className="text-green-light "/>
     </Button>
           </CardContent>
           </Card>
@@ -131,10 +131,10 @@ function EssentialProduct() {
 
                   {/* SECTION GRID PRODUCT */}
                   <section className='w-[100%] h-[max]'>
-                      <div className='flex flex-row h-max gap-1 flex-wrap'>
+            <div className='flex flex-row h-full gap-4  flex-wrap'>
                           {items.map(({ id }) => (
-                              <div key={id} className="h-max w-1/1">
-                                <figure className="figureProduct bg-[#F8F8F8] h-max relative m-2">
+                              <div key={id} className="h-max w-1/3">
+                                <figure className="figureProduct h-full w-full bg-[#F8F8F8] relative">
                                   <div className="flex flex-col">
                                     {/* favoris */}
                                     <i className="absolute top-0 right-0">
@@ -159,15 +159,20 @@ function EssentialProduct() {
                                       <Image
                                         src={imageEssentiel1}
                                         alt={"ted"}
-                                        width={250}
-                                        height={250}
-                                        className=""
+                                      className='w-full h-full '
+                                        
                                       />
                                     </picture>
                                     <figcaption className="flex flex-row justify-between items-center p-4">
                                       <div className="flex flex-col">
-                                        <h2>Produit 3</h2>
-                                        <p>20€</p>
+                                      <Typography variant="p">
+
+                                        Produit 3
+                                      </Typography>
+                                      <Typography variant="D1" className="text-[#6B4727] font-semibold">
+
+                                        20$
+                                      </Typography>
                                       </div>
                                       <div>
                                         <i>

@@ -148,6 +148,7 @@
   --color-secondary-releaf:rgba(107, 71, 39, 1);
   --bg-primary-releaf:rgba(182, 195, 53, 1);
   --bg-primary-releaf-overlay:#80a327b6;
+  --color: #778B43;
   /* secondo */
 
 }
@@ -161,7 +162,7 @@
 
 html{
 font-size:0.9em;
-  line-height:1.5rem;
+  /* line-height:1.5rem; */
   overflow-x:hidden;
 
 }
@@ -170,3 +171,8 @@ input:focus{
   outline:none;
   /* color: #778b43; */
 }
+
+
+/* Newsletter */
+
+
