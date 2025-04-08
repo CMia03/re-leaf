@@ -11,6 +11,15 @@
     "spicy": "Épices",
     "herbs": "Aromates",
     "essentialOiles": "Huiles essentielles",
-    "authenticFlavors": "Saveurs authentiques"
+    "authenticFlavors": "Saveurs authentiques",
+    "contactUs": "Contactez-nous"
+  },
+  "shop": {
+    "filterByPrice": "Filtrer par prix",
+    "categories": "Catégories",
+    "bestProducts": "Meilleurs produits",
+    "show": "Afficher",
+    "sortBy": "Trier par",
+    "resetFilter": "Réinitialiser le filtre"
   }
 }
