@@ -1,9 +1,9 @@
-import { Typography } from "@/components/re-leaf/Typography";
+import ContactComponent from "@/components/features/contact/contact";
 
 const ContactPage = () => {
   return (
     <div>
-      <Typography variant="p">Hello contact</Typography>
+      <ContactComponent />
     </div>
   );
 };
