@@ -66,6 +66,8 @@
     --primary-foreground: oklch(0.985 0 0);
     --secondary: oklch(0.97 0 0);
     --secondary-foreground: oklch(0.205 0 0);
+    --tertiary: #778b43;
+    --tertiary-foreground: #b6c335;
     --muted: oklch(0.97 0 0);
     --muted-foreground: oklch(0.556 0 0);
     --accent: oklch(0.97 0 0);
@@ -139,4 +141,19 @@
   body {
     @apply bg-background text-foreground;
   }
+}
+
+.range-slider-primary .range-slider__range {
+  background-color: var(--primary) !important;
+  height: 4px !important;
+}
+
+.range-slider-primary .range-slider__thumb {
+  background-color: var(--primary) !important;
+  border: none;
+  height: 4px !important;
+}
+.range-slider-primary .range-slider__thumb {
+  width: 16px !important; /* Réduit la taille du rond */
+  height: 16px !important;
 }
