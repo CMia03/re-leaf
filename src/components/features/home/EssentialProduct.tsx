@@ -1,11 +1,11 @@
 "use client";
 
 import React from 'react'
-import imageEssentiel1 from "../../../../public/images/essentialProduct/essentiel1.png";
+// import imageEssentiel1 from "../../../../public/images/essentialProduct/essentiel1.png";
 import Image from "next/image"
-import vanille from '../../../../public/images/spice/Vanille.jpg' 
-import sirop from '../../../../public/images/spice/sirop.png'
-import epices from '../../../../public/images/spice/epices.jpg'
+// import vanille from '../../../../public/images/spice/Vanille.jpg' 
+// import sirop from '../../../../public/images/spice/sirop.png'
+// import epices from '../../../../public/images/spice/epices.jpg'
 import coco from '../../../../public/images/spice/cacao.png'
 
 // CAROUSEL
