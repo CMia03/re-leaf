@@ -24,7 +24,11 @@ import pdc from "../../../../public/images/pdc.jpg";
 
 // CARD
 import essentialOil from "../../../../public/images/spice/essentialOil.png";
+import essential1 from "../../../../public/images/essentialProduct/image copy 2.png";
+import essential2 from "../../../../public/images/essentialProduct/image copy.png";
+import essential3 from "../../../../public/images/essentialProduct/image.png";
 import { ChevronRight } from "lucide-react"
+
 
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card";
@@ -32,10 +36,10 @@ import { Typography } from "@/components/re-leaf/Typography";
 
 function EssentialProduct() {
      const items = [
-        { id: 1, image: vanille, label: 'nhfjdfh', description: 'nhfjdfh'},
-        { id: 2, image: sirop, label: 'nhfjdfh', description:  'nhfjdfh'},
-        { id: 3, image: epices, label: 'nhfjdfh', description:  'nhfjdfh' },
-        { id: 4, image: coco, label: 'nhfjdfh', description:  'nhfjdfh'},
+       { id: 1, image: essentialOil, label: 'Produit 1', description: '20€'},
+       { id: 2, image: essential1, label: 'Produit 2', description:  '20€'},
+       { id: 3, image: essential2, label: 'Produit 3', description:  '20€' },
+       { id: 4, image: coco, label: 'Produit 4', description:  '20€'},
     ];
     // CAROUSEL
 
@@ -73,8 +77,8 @@ function EssentialProduct() {
   return (
     <div>
           
-            <main className='w-[98%] mx-auto my-0'>
-              <div className="flex flex-row gap-4 h-[max-content] justify-between">
+            <main className='w-[98%] ps-25 mx-auto my-0'>
+        <div className="flex flex-row  mx-auto my-0 gap-4 h-[max-content] justify-between">
                  {/* SECTION CAROUSEL */}
                   <section className="w-[50%]">
                          <Carousel className="w-[full] lg:h-full" setApi={setApi}>
@@ -93,8 +97,8 @@ function EssentialProduct() {
             <Typography variant="p" className="text-white text-[30px]">
               {'Huiles essentielles'}
             </Typography>
-            <Image src={essentialOil} alt='gg' width={307} height={373} />
-                              <Button variant="outline" className='p-5 px-10 rounded-full'>
+            <Image src={essential3} alt='gg' width={307} />
+                              <Button variant="outline" className='p-5 px-10 rounded-full mb-7'>
                       <Typography variant="p" className="text-green-light font-semibold">
 
                                   Voir tout les poivres & baies
@@ -132,8 +136,8 @@ function EssentialProduct() {
                   {/* SECTION GRID PRODUCT */}
                   <section className='w-[100%] h-[max]'>
             <div className='flex flex-row h-full gap-4  flex-wrap'>
-                          {items.map(({ id }) => (
-                              <div key={id} className="h-max w-1/3">
+                          {items.map(({ id, image, label, description }) => (
+                              <div key={id} className=" w-1/3">
                                 <figure className="figureProduct h-full w-full bg-[#F8F8F8] relative">
                                   <div className="flex flex-col">
                                     {/* favoris */}
@@ -155,9 +159,9 @@ function EssentialProduct() {
                                         />
                                       </svg>
                                     </i>
-                                    <picture>
+                                    <picture className='bg-red-700'>
                                       <Image
-                                        src={imageEssentiel1}
+                                        src={image}
                                         alt={"ted"}
                                       className='w-full h-full '
                                         
@@ -167,11 +171,12 @@ function EssentialProduct() {
                                       <div className="flex flex-col">
                                       <Typography variant="p">
 
-                                        Produit 3
+                                        {label}
                                       </Typography>
                                       <Typography variant="D1" className="text-[#6B4727] font-semibold">
 
-                                        20$
+                                        {description}
+
                                       </Typography>
                                       </div>
                                       <div>

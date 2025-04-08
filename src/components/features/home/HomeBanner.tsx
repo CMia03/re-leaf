@@ -13,7 +13,7 @@ import banner1 from "../../../../public/images/Banniere.png";
 import banner2 from "../../../../public/images/Banniere2.png";
 import imgAbsolute from "../../../../public/images/spice/imgAbsolute.png";
 import pdc from "../../../../public/images/pdc.jpg";
-// import { Typography } from "@/components/re-leaf/Typography";
+import { Typography } from "@/components/re-leaf/Typography";
 
 
 const HomeBanner = () => {
@@ -51,13 +51,16 @@ const HomeBanner = () => {
           {data.map((item, index) => (
             <CarouselItem
               key={index}
-              className="h-full flex items-center justify-center"
+              className="h-full flex items-center justify-center relative"
             >
-                     {/* <Typography variant="h3" className="text-white w-50 absolute top-50 left-50 translate-y-[-50%] translate-x-[-50%]">Découvrez l’alchimie parfaite de nos épices,
+         
+              <div className="w-full h-full flex items-center justify-center relative">
+                <div className="text-white absolute top-0 left-0 h-full w-full flex items-center justify-center">
+                       <Typography variant="h3" className="text-white  h-full w-1/2 text-center mx-auto my-0 flex items-center justify-center">Découvrez l’alchimie parfaite de nos épices,
 huiles essentielles et saveurs authentiques,
 qui transforment vos aliments en
-une expérience gustative inoubliable.</Typography> */}
-              <div className="w-full h-full flex items-center justify-center relative">
+une expérience gustative inoubliable.</Typography>
+                </div>
              
 
                 <Image
