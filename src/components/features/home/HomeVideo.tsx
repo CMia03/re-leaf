@@ -1,12 +1,12 @@
 import React from 'react'
 import Image from "next/image"
-import essentialOil from "../../../../public/images/spice/essentialOil.png";
+import imgVideo from "../../../../public/images/video/image.png";
 
 function HomeVideo() {
   return (
       <div>
           <section className='w-full h-[40em] relative'>
-               <Image src={essentialOil} alt={'gg'}  className='w-full h-full object-cover '/>
+               <Image src={imgVideo} alt={'gg'}  className='w-full h-full object-cover '/>
                                  <i className='absolute cursor-pointer translate-x-[-50%] translate-y-[-50%] top-[50%] left-[50%]'>
                                     <svg width="100" height="100" viewBox="0 0 150 150" fill="none" xmlns="http://www.w3.org/2000/svg">
 <circle cx="75" cy="75" r="75" fill="white"/>

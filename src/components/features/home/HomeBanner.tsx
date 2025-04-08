@@ -11,7 +11,10 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import banner1 from "../../../../public/images/Banniere.png";
 import banner2 from "../../../../public/images/Banniere2.png";
+import imgAbsolute from "../../../../public/images/spice/imgAbsolute.png";
 import pdc from "../../../../public/images/pdc.jpg";
+// import { Typography } from "@/components/re-leaf/Typography";
+
 
 const HomeBanner = () => {
   const [api, setApi] = useState<CarouselApi>();
@@ -43,14 +46,20 @@ const HomeBanner = () => {
 
   return (
     <div>
-      <Carousel className="w-full lg:h-full" setApi={setApi}>
+      <Carousel className="w-full lg:h-full relative" setApi={setApi}>
         <CarouselContent className="border h-[300px] lg:h-[calc(80vh-200px)]">
           {data.map((item, index) => (
             <CarouselItem
               key={index}
               className="h-full flex items-center justify-center"
             >
-              <div className="w-full h-full flex items-center justify-center">
+                     {/* <Typography variant="h3" className="text-white w-50 absolute top-50 left-50 translate-y-[-50%] translate-x-[-50%]">Découvrez l’alchimie parfaite de nos épices,
+huiles essentielles et saveurs authentiques,
+qui transforment vos aliments en
+une expérience gustative inoubliable.</Typography> */}
+              <div className="w-full h-full flex items-center justify-center relative">
+             
+
                 <Image
                   src={Object.values(item)[0]}
                   width={1141}
@@ -59,6 +68,7 @@ const HomeBanner = () => {
                   className="w-full h-full object-cover"
                   priority
                 />
+               
               </div>
             </CarouselItem>
           ))}
@@ -78,6 +88,14 @@ const HomeBanner = () => {
             />
           ))}
         </div>
+         <Image
+                  src={imgAbsolute}
+                  width={200}
+                  height={200}
+                  alt=""
+                  className="absolute bottom-0 left-0 mb-[-3em]"
+                  priority
+                />
       </Carousel>{" "}
     </div>
   );

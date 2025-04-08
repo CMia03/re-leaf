@@ -18,7 +18,7 @@ const StarProduct = () =>{
     return(
      <div className="p-[100px]">
         <Typography variant="h2" className="justify-center border-none text-center">{t('startProduct').toUpperCase()}</Typography>
-        <Typography variant="p" className="justify-center border-none text-center">{t('startProductDescription')}</Typography>
+        <Typography variant="p" className="justify-center border-none text-center mt-3">{t('startProductDescription')}</Typography>
         <div className="flex gap-[20px] justify-center">
             {items.map(({ id, image, label, description }) => (
                 <Card key={id} className="shadow-none border border-none  w-[400px] rounded-none">
