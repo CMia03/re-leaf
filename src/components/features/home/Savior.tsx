@@ -19,7 +19,7 @@ const Savior = () => {
   return (
     <div className="px-[100px] flex gap-[50px] justify-center">
       {items.map(({ id, image, label }) => (
-        <Card key={id} className="border-none bg-green-light w-[400px] h-[539px] rounded-none">
+        <Card key={id} className="border-none  nth-[1]:bg-green-light nth-[2]:bg-[var(--color-primary-releaf-savior)]  nth-[3]:bg-[var(--color-secondary-releaf)] w-[400px] h-[539px] rounded-none">
           <CardContent className="flex flex-col items-center text-center gap-4 p-6">
             <Typography variant="p" className="text-white text-[30px]">
               {t(label)}

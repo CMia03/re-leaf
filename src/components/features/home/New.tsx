@@ -20,7 +20,7 @@ const New = () =>{
         <Typography variant="p" className="justify-center border-none text-center">{t('newDescription')}</Typography>
         <div className="flex gap-[20px] justify-center">
             {items.map(({ id, image, label, description }) => (
-                <Card key={id} className="shadow-none border border-none  w-[400px] rounded-none">
+                <Card key={id} className="shadow-none border border-none  w-[25em] rounded-none">
                     <CardContent className="relative flex flex-col items-center text-center gap-4 p-6">
                     <div className="relative">
                         <Image
@@ -28,7 +28,7 @@ const New = () =>{
                         alt={label}
                         width={310}
                         height={570}
-                        className="rounded-tl-[230px] rounded-tr-[230px] h-[510px]"
+                        className="rounded-tl-[230px] rounded-tr-[230px] h-[510px] "
                         />
 
                         <div className=" absolute inset-0 flex flex-col justify-end  p-4">

@@ -1,8 +1,12 @@
+import FirstFooterSection from './footer/FirstFooterSection';
+// import { useTranslations } from "next-intl";
+
 const Footer = () => {
+  
   return (
-    <header>
-      <h1>Footer Component</h1>
-    </header>
+    <div>
+      <FirstFooterSection />
+    </div>
   );
 };
 export default Footer;
