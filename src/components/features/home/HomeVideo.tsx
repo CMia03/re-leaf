@@ -4,7 +4,7 @@ import imgVideo from "../../../../public/images/video/image copy.png";
 
 function HomeVideo() {
   return (
-      <div>
+    <div className='pt-[50px]'>
           <section className='w-full h-[40em] relative'>
                <Image src={imgVideo} alt={'gg'}  className='w-full h-full object-cover '/>
                                  <i className='absolute cursor-pointer translate-x-[-50%] translate-y-[-50%] top-[50%] left-[50%]'>

@@ -9,11 +9,14 @@ import logo5 from "../../../../public/images/logo/image copy 4.png";
 import logo4 from "../../../../public/images/logo/image copy 6.png";
 import user from "../../../../public/images/testimonial/userprofile.png";
 import { Typography } from "@/components/re-leaf/Typography";
+import { useTranslations } from "next-intl";
 
 
 function HomeTestimonial() {
+        const t = useTranslations("home");
+    
     return (
-        <div>
+        <div className='pt-[50px]'>
             <section>
                 <div className='flex flex-row justify-between w-[97%] my-0 mx-auto'>
                     <picture className='flex-1'>
@@ -23,11 +26,11 @@ function HomeTestimonial() {
                     <picture className='flex-1 bg-[#6B4727] relative'>
                         <div className='flex flex-col items-center justify-center gap-8 text-white h-full'>
                             <Image src={user} alt={'gg'} width={80} height={80} />
-                            <Typography variant="h3" className='text-[1.7em] w-100 font-semibold text-center'>                  &quot;Lorem ipsum dolor sit amet este, consecte adipiscing elit, sed do eiusmod tempor incid&quot;
+                            <Typography variant="h3" className='text-[1.7em] w-100 font-semibold text-center'>                  &quot;{t('descriptionTestimonialQuote').toUpperCase()} &quot;
                             </Typography>
 
-                            <Typography variant="p">             Anna Maria Loren
-                            </Typography>
+                            
+                            <Typography variant="p">  {t('nameTestimonialQuote')}  </Typography>
                         </div>
                         <Image src={image} className='absolute top-0 right-0' alt={'gg'} width={500} height={500} />
 
@@ -37,7 +40,7 @@ function HomeTestimonial() {
 
             {/* SECTION LOGO */}
             <section>
-                <div className='flex flex-row justify-between py-12'>
+                <div className='flex flex-row justify-between py-[50px]'>
                     <Image src={logo} alt={'gg'} width={150} height={150} />
                     <Image src={logo2} alt={'gg'} width={150} height={150} />
                     <Image src={logo3} alt={'gg'} width={150} height={150} />

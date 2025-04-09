@@ -17,14 +17,22 @@ const Savior = () => {
   ];
 
   return (
-    <div className="px-[100px] flex gap-[50px] justify-center">
+    <div className="flex gap-[50px] justify-center">
       {items.map(({ id, image, label }) => (
-        <Card key={id} className="border-none  nth-[1]:bg-green-light nth-[2]:bg-[var(--color-primary-releaf-savior)]  nth-[3]:bg-[var(--color-secondary-releaf)] w-[400px] h-[539px] rounded-none">
-          <CardContent className="flex flex-col items-center text-center gap-4 p-6">
+        <Card key={id} className="border-none  nth-[1]:bg-green-light nth-[2]:bg-[var(--tertiary)]  nth-[3]:bg-[var(--quatro)] w-[400px] h-[539px] rounded-none">
+          <CardContent className="flex flex-col items-center text-center gap-7 pt-2 pb-2 relative">
             <Typography variant="p" className="text-white text-[30px]">
               {t(label)}
             </Typography>
             <Image src={image} alt={t(label)} width={307} height={373} />
+
+            <i className="absolute bottom-0 left-50 translate-x-[-50%] mb-[-1.7em] cursor-pointer hover:scale-[1.05] transition">
+              <svg width="55" height="55" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="30" cy="30" r="30" fill="white" />
+                <path d="M25 20C25 20 35 27.365 35 30C35 32.635 25 40 25 40" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+
+            </i>
           </CardContent>
         </Card>
       ))}

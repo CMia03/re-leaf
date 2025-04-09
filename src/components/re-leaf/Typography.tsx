@@ -25,7 +25,7 @@ const typographyVariants = cva("", {
       title: `scroll-m-20 text-[40px] font-extrabold leading-[60px] lg:text-[40px] stretch-extra-condensed font-caption ${marcellus.className}`,
       h1: `scroll-m-20 text-[44px] font-extrabold leading-[60px] lg:text-[40px] stretch-extra-condensed font-caption ${marcellus.className}`,
       h1_mobile: `scroll-m-20 text-[24px] leading-[44px] font-extrabold md:leading-[60px] lg:text-[40px] stretch-extra-condensed font-caption ${marcellus.className}`,
-      h2: `scroll-m-20 border-b pb-2 text-[36px] font-semibold  transition-colors first:mt-0 font-caption ${marcellus.className}`,
+      h2: `scroll-m-20 text-[36px] font-semibold  transition-colors first:mt-0 font-caption ${marcellus.className}`,
       h3: `scroll-m-20 text-[30px] font-semibold  font-caption ${marcellus.className}`,
       h4: `text-[24px] font-semibold  font-caption ${marcellus.className}`,
       h5: `text-[20px] font-semibold  font-caption ${marcellus.className}`,

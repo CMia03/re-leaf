@@ -2,12 +2,13 @@
   "home": {
     "title": "Bienvenue sur notre site",
     "description": "Ceci est une description de notre site",
+    "homeBannerDescription": "Découvrez l’alchimie parfaite de nos épices, huiles essentielles et saveurs authentiques, qui transforment vos aliments en une expérience gustative inoubliable.",
     "ourEngagement": "Nos Engagements",
     "engagement": {
         "title1": "100 % Naturel & Authentique",
         "description1": "Sans additifs ni conservateurs, pour une qualité pure et irréprochable.",
         "title2": "Commerce Équitable & Circuits Courts",
-        "description2": "Sans additifs ni conservateurs, pour une qualité pure et irréprochable.",
+        "description2": "Soutien aux producteurs locaux et rémunération juste.",
         "title3": "Qualité & Traçabilité",
         "description3": "Contrôle rigoureux et transparence sur l’origine des produits.",
         "title4": "Saveurs & Bien-être",
@@ -26,6 +27,9 @@
     "poivreDescription": "Une épice rare et recherchée pour son goût unique.", 
     "cacao": "Cacao pur", 
     "cacaoDescription": "Idéal pour les amateurs de chocolat et les recettes authentiques.",
+    "about": "A propos", 
+    "aboutDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua", 
+    "seeMore": "Voir plus", 
     "new": "Nouveautés",
     "newDescription": "Découvrez nos produits exclusifs",
     "flower1": "Hydrolat de Géranium",
@@ -35,6 +39,26 @@
     "flower3": "Huiles essentielles en coffret découverte",
     "flowerThreeDescription": "Une sélection pour l’aromathérapie maison.",
     "flower4": "Miel épicé infusé",
-    "flowerForDescription": "Une fusion originale entre miel et épices locales."
+    "flowerForDescription": "Une fusion originale entre miel et épices locales.",
+    "blog&advice": "Blog & conseil",
+    "seeAllArticle": "Voir tout les articles",
+    "seeAllButtonPepper&Berries": "Voir tout les poivres & baies",
+     "blog&adviceCard": {
+        "title1": "Huile essentielle de Menthe poivrée",
+        "month": "Mars",
+        "description1": "Bienfaits des huiles essentielles",
+        "title2": "Bain apaisant à l’huile essentielle de Lavande",
+        "month2": "Avril",
+        "description2": "Idées d'utilisation des Huiles Essentielles"
+    },
+    "descriptionTestimonialQuote":"Lorem ipsum dolor sit amet este, consecte adipiscing elit, sed do eiusmod tempor incid",
+    "nameTestimonialQuote":"Anna Maria Loren",
+    "fastDelivery":"Livraison rapide",
+    "secureDelivery":"Livraison sécurisé",
+    "customerSupport":"Support Client",
+    "satisfactionGuaranteed":"Satisfaction garantie",
+    "newsletter":"Newsletter",
+    "newsletterDescription":" Tenez-vous informé(e) de l'actualité et des événements des Jardins de ReLeaf en vous abonnant à notre newsletter.",
+    "subscribe":"S'abonner"
   }
 }

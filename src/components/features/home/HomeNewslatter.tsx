@@ -1,12 +1,11 @@
 import React from 'react'
 const bgNwsletter = '/images/newsletter/BackgroundNwsLttrImage.png';
 import { Typography } from "@/components/re-leaf/Typography";
-
-// import { useTranslations } from "next-intl";
+import { useTranslations } from "next-intl";
 
 
 const HomeNewslatter = () => {
-    // const t = useTranslations("home")
+    const t = useTranslations("home");
 
     return (
         <div>
@@ -25,11 +24,11 @@ const HomeNewslatter = () => {
                             </svg>
 
                         </i>
-                        <p>Livraison rapide</p>
+                        <p>{t('fastDelivery')}</p>
                     </picture>
                     <picture className='flex flex-row items-center gap-2'>
                         <i className='flex flex-row items-center'>
-                            <svg width="38" height="32" viewBox="0 0 38 32" fill="none" xmlns="http://www.w3.org/2000/svg"xmlnsXlink="http://www.w3.org/1999/xlink">
+                            <svg width="38" height="32" viewBox="0 0 38 32" fill="none" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
                                 <rect x="0.333374" width="37" height="32" fill="url(#pattern0_32_126)" />
                                 <defs>
                                     <pattern id="pattern0_32_126" patternContentUnits="objectBoundingBox" width="1" height="1">
@@ -40,11 +39,11 @@ const HomeNewslatter = () => {
                             </svg>
 
                         </i>
-                        <p>Livraison sécurisé</p>
+                        <p>{t('secureDelivery')}</p>
                     </picture>
                     <picture className='flex flex-row items-center gap-2'>
                         <i className='flex flex-row items-center'>
-                            <svg width="38" height="32" viewBox="0 0 38 32" fill="none" xmlns="http://www.w3.org/2000/svg"xmlnsXlink="http://www.w3.org/1999/xlink">
+                            <svg width="38" height="32" viewBox="0 0 38 32" fill="none" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
                                 <rect x="0.666687" width="37" height="32" fill="url(#pattern0_32_129)" />
                                 <defs>
                                     <pattern id="pattern0_32_129" patternContentUnits="objectBoundingBox" width="1" height="1">
@@ -55,11 +54,11 @@ const HomeNewslatter = () => {
                             </svg>
 
                         </i>
-                        <p>Support client</p>
+                        <p>{t('customerSupport')}</p>
                     </picture>
                     <picture className='flex flex-row items-center gap-2'>
                         <i className='flex flex-row items-center'>
-                            <svg width="37" height="32" viewBox="0 0 37 32" fill="none" xmlns="http://www.w3.org/2000/svg"xmlnsXlink="http://www.w3.org/1999/xlink">
+                            <svg width="37" height="32" viewBox="0 0 37 32" fill="none" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
                                 <rect width="37" height="32" fill="url(#pattern0_32_136)" />
                                 <defs>
                                     <pattern id="pattern0_32_136" patternContentUnits="objectBoundingBox" width="1" height="1">
@@ -70,7 +69,7 @@ const HomeNewslatter = () => {
                             </svg>
 
                         </i>
-                        <p>Satisfaction garantie</p>
+                        <p>{t('satisfactionGuaranteed')}</p>
                     </picture>
                 </div>
             </section>
@@ -85,11 +84,11 @@ const HomeNewslatter = () => {
                     <div className="flex flex-col gap-8 items-center justify-center h-full">
                         <div className="flex flex-col gap-3 items-center">
                             <Typography variant="h1" className="text-white font-medium">
-                                NEWSLETTER
+                                {t('newsletter').toUpperCase()}
                             </Typography>
                             <Typography variant="p" className="text-white w-[55%] text-center">
-                                Tenez-vous informé(e) de l&apos;actualité et des événements des Jardins
-                                de ReLeaf en vous abonnant à notre newsletter.
+                                {t('newsletterDescription')}
+
                             </Typography>
                         </div>
 
@@ -103,9 +102,10 @@ const HomeNewslatter = () => {
                                     />
                                     <button
                                         type="submit"
-                                        className="bg-white cursor-pointer font-semibold rounded-r-full text-[var(--color-primary-releaf)] px-7 pe-8 py-2"
+                                        className="bg-white cursor-pointer font-semibold rounded-r-full text-[var(--tertiary)] px-7 pe-8 py-2"
                                     >
-                                        S’abonner
+                                        {t('subscribe')}
+
                                     </button>
                                 </div>
                             </form>

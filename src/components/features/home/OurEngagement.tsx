@@ -34,12 +34,12 @@ const OurEngagement = () => {
     },
   ]
   return (
-    <div className="p-[100px] flex flex-col gap-10">
+    <div className="w-full flex flex-col gap-3 pt-[50px]">
       <Typography variant="h2" className="justify-center border-none rounded-none text-center">{t('ourEngagement').toUpperCase()}</Typography>
-      <div className="flex gap-[59px] text-center justify-center">
+      <div className="flex flex-row text-center justify-center">
         {data.map((item, index) => (
           <div key={index}>
-           <Card className="w-[281px] mx-auto border-none shadow-none">
+           <Card className="w-[100%] mx-auto border-none shadow-none">
             <CardContent className="flex flex-col items-center text-center gap-4 p-6">
               <Image 
                 src={item.image} 
