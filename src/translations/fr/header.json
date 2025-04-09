@@ -21,5 +21,28 @@
     "show": "Afficher",
     "sortBy": "Trier par",
     "resetFilter": "Réinitialiser le filtre"
+  },
+  "footer": {
+    "fastDelivery": "Livraison rapide",
+    "secureDelivery": "Livraison sécurisée",
+    "customerSupport": "Support Client",
+    "satisfactionGuaranteed": "Satisfaction garantie",
+    "newsletter": "newsletter",
+    "newsletterMessage": "Tenez-vous informé(e) de l'actulalité et des événements des jardins de ReLeaf en vous abonnant à notre newsletter.",
+    "placeholderInput": "Votre adresse Email",
+    "navigation": "Navigation",
+    "information": "Information",
+    "legalNotices": "Mentions légales",
+    "personalInformations": "Données personnelles",
+    "generalSalesConditions": "Conditions générales de vente (CGV)",
+    "informationText": "Découvrez l'alchimie parfaite de nos épices, huiles essentielles et saveurs authentiques, qui transforment vos aliments en une experience gustative inoubliable.",
+    "customerService": "Services clients",
+    "openingTime": "Du lundi au vendredi de 9h00 à 12h00 et de 13h30 à 16h00",
+    "socialMedia": "Réseaux sociaux"
+  },
+  "button": {
+    "subscribe": "S'abonner",
+    "confirm": "Valider",
+    "cancel": "Annuler"
   }
 }

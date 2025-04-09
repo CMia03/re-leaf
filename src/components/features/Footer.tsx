@@ -1,8 +1,14 @@
+import AdvantagesList from "./footer/advantages";
+import Informations from "./footer/informations";
+import Newsletter from "./footer/newsletter";
+
 const Footer = () => {
   return (
-    <header>
-      <h1>Footer Component</h1>
-    </header>
+    <footer>
+      <AdvantagesList />
+      <Newsletter />
+      <Informations />
+    </footer>
   );
 };
 export default Footer;
