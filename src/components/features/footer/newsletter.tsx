@@ -14,7 +14,6 @@ const Newsletter = () => {
         src={FooterImage}
         className="absolute right-0"
         alt="footer-image"
-        width={"50%"} // ou ce que tu veux
       />
       <div
         className="absolute inset-0 w-full flex flex-col justify-center align-center gap-4 px-4"

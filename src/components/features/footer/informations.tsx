@@ -31,6 +31,8 @@ const Informations = () => {
       value: "authenticFlavors",
     },
   ];
+
+  const year = new Date().getFullYear();
   return (
     <div className="relative lg:min-h-110">
       <Image
@@ -109,7 +111,7 @@ const Informations = () => {
             </Typography>
             <MdCopyright size={20} color="var(--primary)" />
             <Typography variant="p" className="text-primary">
-              2025
+              {year}
             </Typography>
             <span className="font-bold">.</span>
             <Typography variant="p" className="text-primary">
