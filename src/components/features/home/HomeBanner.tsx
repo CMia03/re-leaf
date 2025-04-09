@@ -4,8 +4,8 @@ import {
   CarouselApi,
   CarouselContent,
   CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
+  // CarouselNext,
+  // CarouselPrevious,
 } from "@/components/ui/carousel";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
@@ -52,7 +52,7 @@ const HomeBanner = () => {
   return (
     <div>
       <Carousel className="w-full lg:h-full relative" setApi={setApi}>
-        <CarouselContent className="border h-[18.75em] lg:h-[calc(80vh-8.5em)]">
+        <CarouselContent className="border h-[18.75em] lg:h-[calc(80vh-8em)]">
           {data.map((item, index) => (
             <CarouselItem
               key={index}
@@ -88,38 +88,23 @@ const HomeBanner = () => {
 
         </i>
         {/* <CarouselPrevious className="bg-white absolute left-[20px] top-1/2 translate-y-[-50%] w-[48px] h-[48px] p-[8px] hover:text-oceanBlue transition-all duration-300  hover:bg-white border border-grey lg:left-[50px] lg:hover:bg-cardServiceBgLight " /> */}
-        <CarouselNext className="bg-white absolute right-[20px] top-1/2 translate-y-[-50%] w-[48px] h-[48px] p-[8px] hover:text-oceanBlue transition-all duration-300 hover:bg-white lg:right-[50px] lg:hover:bg-cardServiceBgLight" />
-        {/* <CarouselNext className="absolute right-[20px] lg:right-[50px] top-1/2 translate-y-[-50%] p-0 bg-transparent border-0 hover:bg-transparent w-[49px] h-[49px]">
-          <svg
-            width="49"
-            height="49"
-            viewBox="0 0 60 60"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            className="block w-full h-full transition-opacity duration-300 group-disabled:opacity-50 group-disabled:pointer-events-none"
-          >
-            <circle
-              cx="30"
-              cy="30"
-              r="29.5"
-              transform="matrix(-1 0 0 1 60 0)"
-              stroke="white"
-            />
-            <path
-              d="M35 20C35 20 25 27.365 25 30C25 32.635 35 40 35 40"
-              stroke="white"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
+        {/* <CarouselNext className="bg-white absolute right-[20px] top-1/2 translate-y-[-50%] w-[48px] h-[48px] p-[8px] hover:text-oceanBlue transition-all duration-300 hover:bg-white lg:right-[50px] lg:hover:bg-cardServiceBgLight" /> */}
+    
+
+        {/* btn next */}
+        <i onClick={() => api?.scrollNext()} className="absolute cursor-pointer right-[20px] top-1/2 translate-y-[-50%] lg:right-[50px]">
+          <svg width="49" height="49" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="30" cy="30" r="29.5" stroke="white" />
+            <path d="M25 20C25 20 35 27.365 35 30C35 32.635 25 40 25 40" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
           </svg>
-        </CarouselNext> */}
+
+        </i>
 
         <div className="absolute bottom-[30px] left-1/2 transform -translate-x-1/2 flex space-x-2">
           {data.map((_: unknown, index: number) => (
             <div
               key={index}
-              className={`w-3 h-3 rounded-full cursor-pointer transition-all duration-300 hover:bg-white ${current === index ? "bg-white" : "bg-white/30"
+              className={`w-4 h-4 rounded-full cursor-pointer transition-all duration-300 ${current === index ? "bg-white hover:bg-white" : "border-1 border-white  hover:bg-white/30"
                 }`}
               onClick={() => api?.scrollTo(index)}
             />

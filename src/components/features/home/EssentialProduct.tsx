@@ -120,7 +120,7 @@ function EssentialProduct() {
                 {data.map((_: unknown, index: number) => (
                   <div
                     key={index}
-                    className={`w-3 h-3 rounded-full cursor-pointer transition-all duration-300 hover:bg-white ${current === index ? "bg-white" : "bg-white/30"
+                    className={`w-3 h-3 rounded-full cursor-pointer transition-all duration-300  ${current === index ? "bg-white hover:bg-white" : "border-1 border-white  hover:bg-white/30"
                       }`}
                     onClick={() => api?.scrollTo(index)}
                   />
