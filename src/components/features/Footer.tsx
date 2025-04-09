@@ -6,8 +6,7 @@ const Footer = () => {
   
   return (
     <div>
-      <HomeNewslatter />
-      <FirstFooterSection />
+    
     </div>
   );
 };
