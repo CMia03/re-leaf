@@ -1,7 +1,10 @@
 import BreadcrumbHeader from "../BreadcrumbHeader";
 import ArticleBlog from "./articleBlog";
 import CategorieBlog from "./categorieBlog";
+import GalerieBlog from "./galerieBlog";
+import LatestArticles from "./latestArticles";
 import SearchBlog from "./searchBlog";
+import TagsBlog from "./tagsBlog";
 
 const BlogComponent = () => {
   return (
@@ -19,6 +22,9 @@ const BlogComponent = () => {
           {/* BLOG SECTION 2 */}
           <SearchBlog />
           <CategorieBlog />
+          <LatestArticles />
+          <GalerieBlog />
+          <TagsBlog />
         </div>
       </div>
     </div>
