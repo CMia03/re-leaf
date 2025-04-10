@@ -68,7 +68,7 @@ const BreadcrumbHeader = () => {
         )}
 
         <div
-          className={`absolute inset-0  flex flex-col justify-center pl-12`}
+          className="absolute inset-0  flex flex-col justify-center pl-12"
           style={{
             backgroundImage: `linear-gradient(to right, ${current?.background}, transparent)`,
           }}
