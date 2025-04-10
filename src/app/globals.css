@@ -146,6 +146,11 @@
 html{
   scroll-behavior: smooth;
 }
+input:focus{
+  outline: none !important;
+  box-shadow: none !important;
+  border-color: none!important;
+}
 .range-slider {
   height: 4px !important;
 }

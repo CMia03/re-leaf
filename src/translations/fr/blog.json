@@ -1,7 +1,14 @@
 {
   "label": {
     "search": "Recherche",
-    "Categories": "Catégories",
+    "categories": "Catégories",
+     "listCategorie": {
+        "paragraphe1": "Bienfaits des épices ",
+        "paragraphe2": "Bienfaits des épices ",
+        "paragraphe3": "Recettes & idées d’utilisation ",
+        "paragraphe4": "Idées d'utilisation des Huiles Essentielles",
+        "paragraphe5": "Idées supplémentaires"
+    },
     "latestArticles": "Derniers articles",
     "Gallery": "Galerie"
   }

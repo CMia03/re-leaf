@@ -1,5 +1,6 @@
 import BreadcrumbHeader from "../BreadcrumbHeader";
 import ArticleBlog from "./articleBlog";
+import CategorieBlog from "./categorieBlog";
 import SearchBlog from "./searchBlog";
 
 const BlogComponent = () => {
@@ -17,6 +18,7 @@ const BlogComponent = () => {
         <div className="flex flex-col w-[40%] gap-10">
           {/* BLOG SECTION 2 */}
           <SearchBlog />
+          <CategorieBlog />
         </div>
       </div>
     </div>
