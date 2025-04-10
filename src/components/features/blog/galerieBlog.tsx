@@ -1,7 +1,15 @@
 import React from 'react';
 import { Typography } from "@/components/re-leaf/Typography";
 import { useTranslations } from "next-intl";
-import blog1 from '../../../../public/images/blog/blog1.png'
+import gallery1 from '../../../../public/images/blog/gallery1.png';
+import gallery2 from '../../../../public/images/blog/gallery2.png';
+import gallery3 from '../../../../public/images/blog/gallery3.png';
+import gallery4 from '../../../../public/images/blog/gallery4.png';
+import gallery5 from '../../../../public/images/blog/gallery5.png';
+import gallery6 from '../../../../public/images/blog/gallery6.png';
+import gallery7 from '../../../../public/images/blog/gallery7.png';
+import gallery9 from '../../../../public/images/blog/gallery9.png';
+
 
 import Image from "next/image";
 
@@ -11,31 +19,31 @@ const GalerieBlog = () => {
 
     const listGallerieImage = [
         {
-            image:blog1,
+            image: gallery1,
         },
         {
-            image:blog1,
+            image: gallery2,
         },
         {
-            image:blog1,
+            image: gallery3,
         },
         {
-            image:blog1,
+            image: gallery4,
         },
         {
-            image:blog1,
+            image: gallery5,
         },
         {
-            image:blog1,
+            image: gallery6,
         },
         {
-            image:blog1,
+            image: gallery7,
         },
         {
-            image:blog1,
+            image: gallery6,
         },
         {
-            image:blog1,
+            image: gallery9,
         }
     ]
     return (
@@ -50,7 +58,7 @@ const GalerieBlog = () => {
                         <Image key={index}
                             src={item.image}
                             alt={'image'}
-                            className="w-full h-[9em] object-cover rounded-none"
+                            className="w-full h-[7em] object-cover rounded-none"
                         />
 
                     ))}

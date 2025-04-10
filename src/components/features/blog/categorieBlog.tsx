@@ -25,11 +25,11 @@ const CategorieBlog = () => {
     ]
     return (
         <div>
-            <div className="flex flex-col gap-7">
+            <div className="flex flex-col gap-8">
                 <Typography variant="h4" className="font-semibold">
                     {t('categories')}
                 </Typography>
-                <div className="flex flex-col gap-5">
+                <div className="flex flex-col gap-6">
                     {listCategorie.map((item, index) => (
                         <Typography key={index} variant="D1" className="font-normal cursor-pointer">
                             {item.paragraphe}

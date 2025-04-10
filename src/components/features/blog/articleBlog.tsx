@@ -108,7 +108,7 @@ const ArticleBlog = () => {
 
     return (
         <div className="container mx-auto" ref={articleBlogRef}>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-10 w-full">
                 {currentArticles.map((item, index) => (
                     <div key={index}>
                         <Card className="w-full border-none rounded-none shadow-none p-0">

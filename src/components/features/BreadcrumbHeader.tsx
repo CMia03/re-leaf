@@ -56,7 +56,7 @@ const BreadcrumbHeader = () => {
 
   return (
     <div className="mb-8">
-      <div className="w-full h-60 relative flex items-center justify-center">
+      <div className="w-full h-70 relative flex items-center justify-center">
         {current?.image && (
           <Image
             src={current.image}
@@ -68,12 +68,12 @@ const BreadcrumbHeader = () => {
         )}
 
         <div
-          className="absolute inset-0  flex flex-col justify-center pl-12"
+          className="absolute inset-0  flex flex-col gap-5 justify-center pl-12"
           style={{
             backgroundImage: `linear-gradient(to right, ${current?.background}, transparent)`,
           }}
         >
-          <Typography variant="h1" className="text-secondary">
+          <Typography variant="h1" className="text-lg text-secondary">
             {current?.label}
           </Typography>
 

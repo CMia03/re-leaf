@@ -9,17 +9,20 @@
         "paragraphe4": "Idées d'utilisation des Huiles Essentielles",
         "paragraphe5": "Idées supplémentaires"
     },
-     "listTags": {
-        "paragraphe1": "Curcuma",
-        "paragraphe2": "Cannelle ",
-        "paragraphe3": "Gingembre",
-        "paragraphe4": "Poivre noir",
-        "paragraphe5": "Piment",
-        "paragraphe6": "Citron",
-        "paragraphe7": "Camomille"
-    },
     "latestArticles": "Derniers articles",
+    "latestArticleLists": {
+       "description1": "Les bienfaits de l’huile essentielles"
+   },
     "Gallery": "Galerie",
-    "tags":"Tags"
+    "tags":"Tags",
+    "listTags": {
+       "paragraphe1": "Curcuma",
+       "paragraphe2": "Cannelle ",
+       "paragraphe3": "Gingembre",
+       "paragraphe4": "Poivre noir",
+       "paragraphe5": "Piment",
+       "paragraphe6": "Citron",
+       "paragraphe7": "Camomille"
+   }
   }
 }
