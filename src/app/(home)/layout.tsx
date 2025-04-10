@@ -9,7 +9,7 @@ export default async function HomeLayout({
   return (
     <div className="relative flex min-h-screen overflow-hidden">
       <div className="flex-1 flex flex-col overflow-hidden">
-        <main className="z-0 overflow-y-auto overflow-x-hidden h-full">
+        <main className="z-0 overflow-x-hidden h-full">
           <Header />
           {/* <div className="lg:h-[165px] h-[169px]"></div> */}
           {children}
