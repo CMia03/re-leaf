@@ -1,14 +1,15 @@
-import FirstFooterSection from './footer/FirstFooterSection';
-import HomeNewslatter from './home/HomeNewslatter';
-// import { useTranslations } from "next-intl";
+import AdvantagesList from "./footer/advantages";
+import Informations from "./footer/informations";
+import Newsletter from "./footer/newsletter";
 
 const Footer = () => {
   
   return (
-    <div>
-      <HomeNewslatter />
-      <FirstFooterSection />
-    </div>
+    <footer>
+      <AdvantagesList />
+      <Newsletter />
+      <Informations />
+    </footer>
   );
 };
 export default Footer;
