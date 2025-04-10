@@ -90,7 +90,7 @@ function EssentialProduct() {
                   <CarouselItem
                     key={index}
                     className="h-full flex items-center justify-center"
-                  >
+                  > 
                 
                     <Card className="border-none h-full  nth-[1]:bg-green-light nth-[2]:bg-[var(--tertiary)]  nth-[3]:bg-[var(--quatro)] w-full rounded-none">
                       <CardContent className="flex flex-col justify-center items-center h-full text-center gap-7 pt-2 pb-2 relative">
