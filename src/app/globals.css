@@ -143,6 +143,9 @@
     @apply bg-background text-foreground;
   }
 }
+html{
+  scroll-behavior: smooth;
+}
 .range-slider {
   height: 4px !important;
 }

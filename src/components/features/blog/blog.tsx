@@ -1,5 +1,6 @@
 import BreadcrumbHeader from "../BreadcrumbHeader";
 import ArticleBlog from "./articleBlog";
+import SearchBlog from "./searchBlog";
 
 const BlogComponent = () => {
   return (
@@ -7,15 +8,15 @@ const BlogComponent = () => {
       <div className="flex flex-col gap-10">
         <BreadcrumbHeader />
       </div>
-      <div className="flex flex-row justify-between">
+      <div className="flex flex-row gap-5 justify-between">
         <div className="flex flex-col w-[60%] gap-10">
           {/* BLOG SECTION 1 */}
           <ArticleBlog />
         </div>
 
-        <div className="flex flex-col w-[40%] bg-red-700 gap-10">
+        <div className="flex flex-col w-[40%] gap-10">
           {/* BLOG SECTION 2 */}
-SECTION
+          <SearchBlog />
         </div>
       </div>
     </div>
