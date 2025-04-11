@@ -14,12 +14,10 @@ const BlogComponent = () => {
       </div>
       <div className="flex flex-row gap-5 justify-between">
         <div className="flex flex-col w-[60%] gap-10">
-          {/* BLOG SECTION 1 */}
           <ArticleBlog />
         </div>
 
         <div className="flex flex-col w-[30%] gap-12">
-          {/* BLOG SECTION 2 */}
           <SearchBlog />
           <CategorieBlog />
           <LatestArticles />
