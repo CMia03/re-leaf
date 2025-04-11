@@ -12,7 +12,7 @@ const BlogComponent = () => {
       <div className="flex flex-col gap-10 mt-8.5">
         <BreadcrumbHeader />
       </div>
-      <div className="flex flex-row gap-5 justify-between">
+      <div className="flex flex-row gap-5 mt-9 justify-between">
         <div className="flex flex-col w-[60%] gap-10">
           <ArticleBlog />
         </div>

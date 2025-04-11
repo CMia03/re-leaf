@@ -18,8 +18,8 @@ const Newsletter = () => {
       <div
         className="absolute inset-0 w-full flex flex-col justify-center align-center gap-4 px-4"
         style={{
-          backgroundImage:
-            "linear-gradient(to right, rgba(119, 139, 67, 1), rgba(119, 139, 67, 0.3)",
+          background: "linear-gradient(to right, rgba(119, 139, 67, 0.95), rgba(119, 139, 67, 0.75))",
+          backdropFilter: "brightness(1.1) saturate(1.2)",
         }}
       >
         <Typography
@@ -36,16 +36,16 @@ const Newsletter = () => {
             {t("newsletterMessage")}
           </Typography>
         </div>
-        <div className="relative lg:w-[40%] w-[80%] mx-auto mt-3">
+        <div className="relative flex flex-row items-center lg:w-[40%] w-[80%] mx-auto mt-3">
           <Input
-            className="rounded-full h-10 text-secondary placeholder:text-white"
+            className="border p-5 ps-8 px-7 w-full rounded-l-full placeholder:text-white"
             placeholder={t("placeholderInput")}
           />
           <Button
             data-slot="carousel-previous"
             variant={"default"}
             size={"lg"}
-            className="rounded-r-full absolute right-0 top-0 bg-secondary text-[var(--tertiary)]"
+            className="bg-white cursor-pointer font-semibold rounded-r-full text-[var(--tertiary)] px-7 pe-8 py-2"
           >
             <span>{translationButton("subscribe")}</span>
           </Button>
