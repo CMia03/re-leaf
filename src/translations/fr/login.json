@@ -19,5 +19,12 @@
         "yourName": "Votre nom",
         "yourFirstName": "Votre prénom"
     }
+  },
+
+  "lostPassword":{
+       "lostPasswordTitle":"Mot de passe perdu ?",
+       "lostPasswordDescription":"Veuillez saisir votre nom d'utilisateur ou votre adresse e-mail. Vous recevrez un lien pour créer un nouveau mot de passe par e-mail.",
+       "lostPasswordPlaceholder":"Identifiant ou adresse Email",
+       "lostPasswordButtonParagraphe":"Réinitialiser le mot de passe"
   }
 }
