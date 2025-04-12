@@ -1,0 +1,23 @@
+{
+  "login": {
+    "connection": "Connexion",
+    "registration": "Inscription",
+    "emailSignIn": "Identifiant ou adresse email",
+    "password": "Mot de passe",
+    "rememberMe": "Se souvenir de moi",
+    "lostPassword": "Mot de passe perdu ?",
+    "logIn": "Se Connecter",
+    "name": "Nom",
+    "firstName": "Prénom",
+    "emailSignUp": "Votre adresse email",
+    "createPasword": "Créez votre mot de passe",
+    "acceptCondition": "J'accepte les conditions générales et la politique de confidentialité",
+    "createAccount": "Créer un compte",
+    "placeholder": {
+        "yourEmail": "Votre email ",
+        "yourPassword": "Votre mot de passe",
+        "yourName": "Votre nom",
+        "yourFirstName": "Votre prénom"
+    }
+  }
+}
