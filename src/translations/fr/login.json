@@ -3,6 +3,7 @@
     "connection": "Connexion",
     "registration": "Inscription",
     "emailSignIn": "Identifiant ou adresse email",
+    "addressEmail": "Adresse email",
     "password": "Mot de passe",
     "rememberMe": "Se souvenir de moi",
     "lostPassword": "Mot de passe perdu ?",

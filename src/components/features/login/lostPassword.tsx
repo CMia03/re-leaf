@@ -4,13 +4,13 @@ import LostPasswordBody from "./lostPasswordBody";
 
 const LostPasswordComponent = () => {
     return (
-        <div className="container mx-auto">
+        <div className="container mx-auto mb-20">
             <div className="flex flex-col gap-5">
                 <div>
 
                 </div>
-                <div className="grid grid-cols-1 md:grid-cols-2 w-full">
-                    <LostPasswordBody />
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                    <LostPasswordBody/>
                     <ImageLostPasswordBody />
                 </div>
 

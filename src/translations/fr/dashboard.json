@@ -1,0 +1,34 @@
+{
+  "myAccount": {
+    "myAccountTitle": "Mon compte",
+    "myAccountDescription": "Bienvenue dans votre espace client, John Doe",
+    "accountCard": {
+        "title1": "Histoire de commande",
+        "title2": "Adresses",
+        "title3": "Informations personnelles",
+        "title4": "Paramètres de cookie",
+        "title5": "Code Promo",
+        "title6": "Se déconnecter"
+    }
+  },
+  "commande":{
+    "commandeTitle": "Commandes",
+    "commandeDescription": "Retrouvez toutes vos commandes ici",
+    "noCommandeDescription": "Oupss... Vous n’avez pas encore passé de commandes",
+    "btnReadytoCommande": "Commencer à commander"
+  },
+  "personnalInfo":{
+    "personnalInfoTitle": "Informations personnelles",
+    "basicInformation": "Informations de base",
+    "identifier": "Identifiant",
+    "identifierPlaceholder": "Votre identifiant",
+    "indicationForIdentifier": "Indique comment votre nom apparaîtra dans la section relative au compte et dans les avis",
+    "personnalInfoDescription": "Vos données et informations peuvent être trouvés et édités ici",
+    "changePassword": "Changement de mot de passe",
+    "currentPassword": "Mot de passe actuel (laisser vide pour le conserver)",
+    "newPassword": "Nouveau mot de passe (laisser vide pour conserver l’actuel)",
+    "confirmPassword": "Confirmer le nouveau mot de passe",
+    "saveChanges": "Sauvegarder les changements"
+    
+  }
+}
