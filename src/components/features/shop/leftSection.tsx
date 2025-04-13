@@ -4,6 +4,8 @@ import { Typography } from "@/components/re-leaf/Typography";
 import { useTranslations } from "next-intl";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
+import Image, { StaticImageData } from "next/image";
+import BgImage2 from "../../../../public/images/Bg-image2.png";
 const LeftSection = () => {
   const t = useTranslations("shop");
   const translationHeader = useTranslations("header");
@@ -31,6 +33,33 @@ const LeftSection = () => {
     {
       label: translationHeader("authenticFlavors"),
       value: "authenticFlavors",
+    },
+  ];
+  const products: { label: string; price: number; image: StaticImageData }[] = [
+    {
+      label: translationHeader("peaperBerries"),
+      price: 20,
+      image: BgImage2,
+    },
+    {
+      label: translationHeader("spicy"),
+      price: 300,
+      image: BgImage2,
+    },
+    {
+      label: translationHeader("herbs"),
+      price: 600,
+      image: BgImage2,
+    },
+    {
+      label: translationHeader("essentialOiles"),
+      price: 5000,
+      image: BgImage2,
+    },
+    {
+      label: translationHeader("authenticFlavors"),
+      price: 20,
+      image: BgImage2,
     },
   ];
 
@@ -75,6 +104,29 @@ const LeftSection = () => {
             <Typography variant="p" className="text-primary font-normal mt-2">
               {item.label}
             </Typography>
+          </div>
+        ))}
+      </div>
+      <div className="mt-8">
+        <Typography variant="h4" className="text-primary font-normal">
+          {t("bestProducts")}
+        </Typography>
+        {products.map((product, index) => (
+          <div key={index} className="flex items-center mt-3 gap-4">
+            <Image
+              src={product.image}
+              className="object-cover"
+              alt={product.label}
+              width={70}
+            />
+            <div className="flex flex-col">
+              <Typography variant="p" className="text-primary">
+                {product.label}
+              </Typography>
+              <Typography variant="p" className="text-brown">
+                {formatArPrice(product.price)}
+              </Typography>
+            </div>
           </div>
         ))}
       </div>

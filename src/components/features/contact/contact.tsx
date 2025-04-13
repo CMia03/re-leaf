@@ -4,7 +4,7 @@ import Maping from "./maping";
 
 const ContactComponent = () => {
   return (
-    <div className="container mx-auto">
+    <div className="container mx-auto mt-8.5 ">
       <BreadcrumbHeader />
       <div className="container mx-auto px-4 md:px-8 relative -mt-20">
         <ContactForm />
