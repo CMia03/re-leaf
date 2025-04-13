@@ -104,7 +104,7 @@ const Informations = () => {
           </div>
         </div>
         <div>
-          <hr />
+          <hr className="container mx-auto" />
           <div className="py-6 flex justify-center items-center gap-2">
             <Typography variant="p" className="text-primary">
               Copyright
