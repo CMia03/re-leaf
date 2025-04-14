@@ -28,8 +28,9 @@ const CommandeBody = () => {
             </div>
 
             {/* LSIT COMMANDE */}
-            <div className="flex flex-col items-center gap-10">
+            <div className="flex flex-col items-center gap-10 w-full">
                 {/* TABLE */}
+
                 {/* NO COMMANDE */}
                 <div className="flex flex-col items-center gap-8">
                     <i className=" mt-15">
@@ -47,11 +48,135 @@ const CommandeBody = () => {
                     </Typography>
 
                     <Button variant="outline" className="border-1  mt-15 border-black border-solid p-6 w-[90%] cursor-pointer  rounded-full">
-                                <Typography variant="p" className="text-black font-semibold">
-                                  {t('btnReadytoCommande')}
-                                </Typography>
-                    
+                        <Typography variant="p" className="text-black font-semibold">
+                            {t('btnReadytoCommande')}
+                        </Typography>
+
                     </Button>
+                </div>
+
+
+                {/* WITH LIST COMMANDE */}
+                <div className="tableList w-full">
+                    <div className="flex flex-col items-center w-full">
+                        {/* LIST TABLE */}
+                        <div className="thead border-b-[#00000033] border-b-1 border-b-solid p-4 grid grid-cols-1 md:grid-cols-5 w-[90%]">
+                            {/* thead */}
+                            <div className="flex">
+                                <Typography
+                                    variant="h6"
+                                    className="font-medium"
+                                >
+                                    Commande
+                                </Typography>
+                            </div>
+                            <div className="flex">
+                                <Typography
+                                    variant="h6"
+                                    className="font-medium"
+                                >
+                                    Date
+                                </Typography>
+                            </div>
+                            <div className="flex">
+                                <Typography
+                                    variant="h6"
+                                    className="font-medium"
+                                >
+                                    État
+                                </Typography>
+                            </div>
+                            <div className="flex">
+                                <Typography
+                                    variant="h6"
+                                    className="font-medium"
+                                >
+                                    Total
+                                </Typography>
+                            </div>
+                            <div className="flex">
+                                <Typography
+                                    variant="h6"
+                                    className="font-medium"
+                                >
+                                    Action
+                                </Typography>
+                            </div>
+                        </div>
+
+                        {/* tbody */}
+
+                        <div className="tbody border-b-[#00000033] border-b-1 border-b-solid p-4 items-center grid grid-cols-1 md:grid-cols-5 w-[90%]">
+                            <div className="tr">
+                                <Typography
+                                    variant="D1"
+                                    className="font-bold"
+                                >
+                                    N° 4512
+                                </Typography>
+                            </div>
+                            <div className="tr">
+                                <Typography
+                                    variant="D1"
+                                    className="font-medium"
+                                >
+                                    15 Mars 2025
+                                </Typography>
+                            </div>
+                            <div className="tr">
+                                <Button variant="outline" className="border-0 border-solid flex flex-row items-center text-sm p-4 w-[max-content] bg-[#6B472785] cursor-pointer  rounded-full">
+                                    <i>
+                                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M9.99935 18.3334C14.6018 18.3334 18.3327 14.6026 18.3327 10.0001C18.3327 5.39758 14.6018 1.66675 9.99935 1.66675C5.39685 1.66675 1.66602 5.39758 1.66602 10.0001C1.66602 14.6026 5.39685 18.3334 9.99935 18.3334Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                            <path d="M10.0059 8.75683C9.67434 8.75683 9.3564 8.88853 9.12198 9.12295C8.88756 9.35737 8.75586 9.67531 8.75586 10.0068C8.75586 10.3384 8.88756 10.6563 9.12198 10.8907C9.3564 11.1251 9.67434 11.2568 10.0059 11.2568C10.3374 11.2568 10.6553 11.1251 10.8897 10.8907C11.1242 10.6563 11.2559 10.3384 11.2559 10.0068C11.2559 9.67531 11.1242 9.35737 10.8897 9.12295C10.6553 8.88853 10.3374 8.75683 10.0059 8.75683ZM10.0059 8.75683V5.8335M12.5117 12.5168L10.8875 10.8935" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                        </svg>
+
+                                    </i>
+                                    <Typography variant="p" className="text-white text-sm font-semibold">
+                                        En attente
+                                    </Typography>
+                                </Button>
+                                <Button variant="outline" className="none border-0 border-solid flex flex-row items-center text-sm p-4 w-[max-content] bg-[#B6C335] cursor-pointer  rounded-full">
+                                    <i>
+                                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M18.3327 10.0001C18.3327 5.39758 14.6018 1.66675 9.99935 1.66675C5.39685 1.66675 1.66602 5.39758 1.66602 10.0001C1.66602 14.6026 5.39685 18.3334 9.99935 18.3334C14.6018 18.3334 18.3327 14.6026 18.3327 10.0001Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                            <path d="M6.66602 10.4167L8.74935 12.5L13.3327 7.5" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                        </svg>
+
+
+                                    </i>
+                                    <Typography variant="p" className="text-white text-sm font-semibold">
+                                        Terminé
+                                    </Typography>
+                                </Button>
+                            </div>
+                            <div className="tr">
+                                <Typography
+                                    variant="D1"
+                                    className="font-bold"
+                                >
+                                    220€ <span className="font-normal">pour 2 articles</span>
+                                </Typography>
+                            </div>
+                            <div className="tr">
+                                <Button variant="outline" className="none border-0 border-solid flex flex-row items-center text-sm p-4 w-[max-content] bg-[#000000] cursor-pointer  rounded-full">
+                                   
+                                    <Typography variant="p" className="text-white text-sm font-semibold">
+                                        Voir plus
+                                    </Typography>
+                                </Button>
+                            </div>
+
+                        </div>
+
+                        <Button variant="outline" className="border-1  mt-15 border-black border-solid p-6 w-[30%] cursor-pointer  rounded-full">
+                            <Typography variant="p" className="text-black font-semibold">
+                                Commander d’autres produits
+                            </Typography>
+
+                        </Button>
+        
+                    </div>
                 </div>
             </div>
 

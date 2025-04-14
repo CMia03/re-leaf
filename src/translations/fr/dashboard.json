@@ -30,5 +30,12 @@
     "confirmPassword": "Confirmer le nouveau mot de passe",
     "saveChanges": "Sauvegarder les changements"
     
+  },
+    "codePromo":{
+    "codePromoTitle": "Code promo",
+    "codePromoDescription": "Utilisez ces codes promo pour bénéficier de réduction sur nos produits.",
+    "noCodePromoDescription": "Désolé... Pas de code promo utilisable pour le moment",
+    "btnSeeBoutiqueCodePromo": "Voir la boutique",
+    "btnCommandeProductCodePromo": "Commander un produit"
   }
 }
