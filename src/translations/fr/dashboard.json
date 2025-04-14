@@ -17,6 +17,14 @@
     "noCommandeDescription": "Oupss... Vous n’avez pas encore passé de commandes",
     "btnReadytoCommande": "Commencer à commander"
   },
+  "detailCommande":{
+    "detailCommandeTitle": "Commande N°",
+    "detailCommandeDescription1": "La commande n°  ",
+    "detailCommandeDescription2": "a été passée le",
+    "detailCommandeDescription3": "et est actuellement",
+    "onHold": "En attente."
+   
+  },
   "personnalInfo":{
     "personnalInfoTitle": "Informations personnelles",
     "basicInformation": "Informations de base",
@@ -36,6 +44,16 @@
     "codePromoDescription": "Utilisez ces codes promo pour bénéficier de réduction sur nos produits.",
     "noCodePromoDescription": "Désolé... Pas de code promo utilisable pour le moment",
     "btnSeeBoutiqueCodePromo": "Voir la boutique",
-    "btnCommandeProductCodePromo": "Commander un produit"
+    "btnCommandeProductCodePromo": "Commander un produit",
+    "dateExpiration": "Date d’expiration"
+  },
+    "addresse":{
+    "addresseTitle": "Adresses",
+    "addresseDescription": "Les adresses suivantes seront utilisées par défaut sur la page de commande.",
+    "country/region":"Pays / Région",
+    "city":"Ville",
+    "postalCode":"Code postal",
+    "streetAddress":"Adresse de rue",
+    "phoneNumber":"Numéro de téléphone"
   }
 }

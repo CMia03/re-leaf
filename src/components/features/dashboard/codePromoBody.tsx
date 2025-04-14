@@ -1,6 +1,9 @@
+"use client";
+
 import { Typography } from "@/components/re-leaf/Typography";
 import { useTranslations } from "next-intl";
 import { Button } from "@/components/ui/button"
+import React, { useState } from 'react'
 
 // import blog1 from '../../../../public/images/blog/blog1.png'
 import { Card, CardContent } from "@/components/ui/card";
@@ -13,25 +16,39 @@ const CodePromoBody = () => {
 
     const latestArticleList = [
         {
-            title: 'Coupon #154',
+            title: 'Coupon',
+            numberCoupon: '#154',
             description: 'CP1564RED',
-            dateExpiration: 'Date d’expiration',
+            dateExpiration: t("dateExpiration"),
             date: '15 aout 2024',
         },
         {
-            title: 'Coupon #154',
+            title: 'Coupon',
+            numberCoupon: '#154',
             description: 'CP1564RED',
-            dateExpiration: 'Date d’expiration',
+            dateExpiration: t("dateExpiration"),
             date: '15 aout 2024',
         },
         {
-            title: 'Coupon #154',
+            title: 'Coupon',
+            numberCoupon: '#154',
             description: 'CP1564RED',
-            dateExpiration: 'Date d’expiration',
+            dateExpiration: t("dateExpiration"),
             date: '15 aout 2024',
         }
     ]
 
+
+    const [copiedIndex, setCopiedIndex] = useState<number | null>(null);
+
+    const handleCopy = (text: string, index: number) => {
+        navigator.clipboard.writeText(text);
+        setCopiedIndex(index);
+
+        setTimeout(() => {
+            setCopiedIndex(null);
+        }, 2000);
+    };
     return (
         <div className="flex flex-col items-center gap-10">
             <div className="flex flex-col items-center gap-3">
@@ -51,11 +68,11 @@ const CodePromoBody = () => {
 
             </div>
 
-            {/* LSIT COMMANDE */}
+            {/* LSIT code promo */}
             <div className="flex flex-col items-center gap-10 w-full">
-                {/* TABLE */}
 
-                {/* NO COMMANDE */}
+
+                {/* NO code promo */}
                 <div className="flex flex-col items-center gap-8">
                     <i className=" mt-15">
                         <svg width="120" height="120" viewBox="0 0 132 133" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -80,21 +97,21 @@ const CodePromoBody = () => {
                 </div>
 
 
-                {/* WITH LIST COMMANDE */}
-                <div className="tableList w-full">
+                {/* WITH LIST code promo */}
+                <div className="tableList w-full flex-col items-center hidden">
                     <div className="grid grid-cols-1 md:grid-cols-3 mx-auto gap-5  w-[100%]">
                         {/* Body CODE PROMO */}
                             {latestArticleList.map((item, index) => (
                                 <div key={index}>
-                                    <Card className="w-full p-8 border-2 border-dashed rounded-2 shadow-none">
+                                    <Card className="w-full p-8 border-2 border-dashed rounded-3 shadow-none">
                                         <CardContent className="relative flex px-0 flex-col gap-8 w-full">
                                           
                                             <div className="flex flex-row justify-start w-full text-left gap-2">
                                                 <Typography variant="D1" className="text-[#000] font-medium">
                                                     {item.title}
                                                 </Typography>
-                                                <Typography variant="D1" className="font-light">
-                                                    {item.date}
+                                                <Typography variant="D1" className="font-semibold">
+                                                    {item.numberCoupon}
                                                 </Typography>
 
                                             </div>
@@ -102,7 +119,8 @@ const CodePromoBody = () => {
                                                 <Typography variant="D1" className="text-[#000] text-3xl font-medium">
                                                     {item.description}
                                                 </Typography>
-                                                <i className="cursor-pointer">
+                                                <i className="cursor-pointer copyicon" onClick={() => handleCopy(item.description, index)}
+                                                    title="Copier la description">
                                                     <svg width="24" height="28" viewBox="0 0 24 28" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                         <path d="M4.5 12.75C4.5 9.215 4.5 7.44625 5.59875 6.34875C6.69625 5.25 8.465 5.25 12 5.25H15.75C19.285 5.25 21.0538 5.25 22.1513 6.34875C23.25 7.44625 23.25 9.215 23.25 12.75V19C23.25 22.535 23.25 24.3038 22.1513 25.4013C21.0538 26.5 19.285 26.5 15.75 26.5H12C8.465 26.5 6.69625 26.5 5.59875 25.4013C4.5 24.3038 4.5 22.535 4.5 19V12.75Z" stroke="black" stroke-opacity="0.5" stroke-width="1.25" />
                                                         <path d="M4.5 22.75C3.50544 22.75 2.55161 22.3549 1.84835 21.6517C1.14509 20.9484 0.75 19.9946 0.75 19V11.5C0.75 6.78625 0.75 4.42875 2.215 2.965C3.68 1.50125 6.03625 1.5 10.75 1.5H15.75C16.7446 1.5 17.6984 1.89509 18.4017 2.59835C19.1049 3.30161 19.5 4.25544 19.5 5.25" stroke="black" stroke-opacity="0.5" stroke-width="1.25" />
@@ -110,12 +128,20 @@ const CodePromoBody = () => {
 
                                                 </i>
 
+                                                {/* Feedback copié */}
+                                                {copiedIndex === index && (
+                                                    <span className="absolute -top-0 right-0 text-green-600 text-sm transition-all duration-300 ease-in-out opacity-100 translate-y-0">
+                                                        Copié !
+                                                    </span>
+                                                )}
+
+
                                             </div>
                                             <div className="flex flex-row w-full items-center justify-between text-left gap-2">
-                                                <Typography variant="D1" className="text-[#000] font-medium w-max">
+                                                <Typography variant="D1" className="text-[#000] font-normal w-max">
                                                     {item.dateExpiration}
                                                 </Typography>
-                                                <Typography variant="D1" className="font-light w-max">
+                                                <Typography variant="D1" className="font-semibold w-max">
                                                     {item.date}
                                                 </Typography>
 
@@ -128,16 +154,17 @@ const CodePromoBody = () => {
                             ))}
 
 
-                        </div>
                     </div>
-    
-
-                            <Button variant="outline" className=" mt-15 border-0 border-solid bg-[var(--tertiary)] p-6 w-[30%] cursor-pointer  rounded-full">
+                    <Button variant="outline" className=" mt-10 mx-auto border-0 border-solid bg-[var(--tertiary)] p-6 w-[30%] cursor-pointer  rounded-full">
                                 <Typography variant="p" className="text-white font-semibold">
                                     {t('btnCommandeProductCodePromo')}
                                 </Typography>
 
                             </Button>
+                    </div>
+    
+
+                           
 
             </div>
         </div>

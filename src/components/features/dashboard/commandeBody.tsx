@@ -57,7 +57,7 @@ const CommandeBody = () => {
 
 
                 {/* WITH LIST COMMANDE */}
-                <div className="tableList w-full">
+                <div className="tableList w-full hidden">
                     <div className="flex flex-col items-center w-full">
                         {/* LIST TABLE */}
                         <div className="thead border-b-[#00000033] border-b-1 border-b-solid p-4 grid grid-cols-1 md:grid-cols-5 w-[90%]">
