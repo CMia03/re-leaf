@@ -38,7 +38,7 @@ const SignUp = () => {
                             <Input
                                 type="text"
                                 placeholder={translatePlaceholder("yourName")}
-                                className="w-full p-6 px-5 border-1 border-solid border-[rgba(0, 0, 0, 0.3)] rounded-full focus:outline-none placeholder:font-normal"
+                                className="w-full p-6 px-5 border-1 border-[#0000004D] rounded-full focus:outline-none placeholder:font-normal"
                             />
                         </Label>
                         <Label className="flex flex-col items-start gap-5 w-full">
@@ -52,7 +52,7 @@ const SignUp = () => {
                             <Input
                                 type="text"
                                 placeholder={translatePlaceholder("yourFirstName")}
-                                className="w-full p-6 px-5 border-1 border-solid border-[rgba(0, 0, 0, 0.3)] rounded-full focus:outline-none placeholder:font-normal"
+                                className="w-full p-6 px-5 border-1 border-[#0000004D] rounded-full focus:outline-none placeholder:font-normal"
                             />
                         </Label>
                     </div>
@@ -67,7 +67,7 @@ const SignUp = () => {
                         <Input
                             type="email"
                             placeholder={translatePlaceholder("yourEmail")}
-                            className="w-full p-6 px-5 border border-gray-200 rounded-full focus:outline-none placeholder:font-normal"
+                            className="w-full p-6 px-5  border-1 border-[#0000004D] rounded-full focus:outline-none placeholder:font-normal"
                         />
                     </Label>
                     <div className="flex flex-col items-start gap-5 w-full">
@@ -85,7 +85,7 @@ const SignUp = () => {
                                 id="passwordSignUp"
                                 type={showPasswordSignUp ? "text" : "password"}
                                 placeholder={translatePlaceholder("yourPassword")}
-                                className="w-full p-6 px-5 border border-gray-200 rounded-full focus:outline-none placeholder:font-normal"
+                                className="w-full p-6 px-5  border-1 border-[#0000004D] rounded-full focus:outline-none placeholder:font-normal"
                             />
                             <i onClick={togglePasswordSignUpVisibility} className="absolute top-1/2 right-0 translate-y-[-50%] mr-4">
                                 {showPasswordSignUp ? (
@@ -123,15 +123,15 @@ const SignUp = () => {
                         </div>
 
                     </div>
-                    <div className="flex items-center space-x-2">
-                        <Checkbox id="rememberMe" className="rounded-full w-5 h-5 scale-[0.85]" />
+                    <div className="flex items-center gap-1 space-x-2">
+                        <Checkbox id="rememberMe" className="rounded-full border-1 border-[#0000004D] w-5 h-5 scale-[0.85]" />
                         <Label
                             htmlFor="rememberMe"
                             className="font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
                         >
                             <Typography
                                 variant="p"
-                                className="font-medium w-max text-sm"
+                                className="font-medium w-[70%] text-wrap text-sm"
                             >
                                 {t("acceptCondition")}
 

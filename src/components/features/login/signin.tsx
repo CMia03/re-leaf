@@ -39,7 +39,7 @@ const SignIn = () => {
                             type="email"
                             placeholder={translatePlaceholder("yourEmail")}
 
-                            className="w-full p-6 px-5 border-1 border-solid border-[rgba(0, 0, 0, 0.3)] rounded-full focus:outline-none placeholder:font-normal"
+                            className="w-full p-6 px-5 border-1 border-[#0000004D] rounded-full focus:outline-none placeholder:font-normal"
                         />
                     </Label>
                     <div className="flex flex-col items-start gap-5 w-full">
@@ -56,7 +56,7 @@ const SignIn = () => {
                                 id="passwordSign"
                                 type={showPassword ? "text" : "password"}
                                 placeholder={translatePlaceholder("yourPassword")}
-                                className="w-full p-6 pe-11 px-5 border border-gray-200 rounded-full focus:outline-none placeholder:font-normal"
+                                className="w-full p-6 pe-11 px-5 border-1 border-[#0000004D] rounded-full focus:outline-none placeholder:font-normal"
                             />
                             <i onClick={togglePasswordVisibility} className="absolute top-1/2 right-0 translate-y-[-50%] mr-4">
                                 {showPassword ? (
@@ -95,7 +95,7 @@ const SignIn = () => {
                     </div>
                     <div className="flex flex-row justify-between w-full">
                         <div className="flex items-center space-x-2">
-                            <Checkbox id="terms" className="rounded-full w-5 h-5 scale-[0.85]" />
+                            <Checkbox id="terms" className="rounded-full border-1 border-[#0000004D] w-5 h-5 scale-[0.85]" />
                             <Label
                                 htmlFor="terms"
                                 className="font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"

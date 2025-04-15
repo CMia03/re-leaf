@@ -22,7 +22,14 @@
     "detailCommandeDescription1": "La commande n°  ",
     "detailCommandeDescription2": "a été passée le",
     "detailCommandeDescription3": "et est actuellement",
-    "onHold": "En attente."
+    "onHold": "En attente.",
+      "orderDetails": {
+        "titleOrderDetails": "Détails de la commande",
+        "product": "Produit",
+        "price": "Prix",
+        "quantity": "Quantité",
+        "subtotal": "Sous-total"
+    }
    
   },
   "personnalInfo":{
@@ -50,10 +57,13 @@
     "addresse":{
     "addresseTitle": "Adresses",
     "addresseDescription": "Les adresses suivantes seront utilisées par défaut sur la page de commande.",
+    "addresseBilling":"Adresse de facturation",
+    "addresseDelivery":"Adresse de livraison",
     "country/region":"Pays / Région",
     "city":"Ville",
     "postalCode":"Code postal",
     "streetAddress":"Adresse de rue",
-    "phoneNumber":"Numéro de téléphone"
+    "phoneNumber":"Numéro de téléphone",
+    "saveChanges":"Sauvegarder les changements"
   }
 }

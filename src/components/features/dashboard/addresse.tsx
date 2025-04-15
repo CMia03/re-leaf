@@ -5,7 +5,9 @@ import AddresseBody from "./addresseBody";
 const AddresseComponent = () => {
     return (
         <div>
-            <AddresseBody />
+            <div className="my-10">
+                <AddresseBody />
+            </div>
         </div>
     );
 };
