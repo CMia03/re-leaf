@@ -4,7 +4,8 @@ import { Typography } from "@/components/re-leaf/Typography";
 import { useTranslations } from "next-intl";
 
 const Summary = () => {
-    const t = useTranslations("detailCommande");
+    // const t = useTranslations("detailCommande");
+    const translate = useTranslations("detailCommande.summary");
 
     return (
         <div className="flex flex-col gap-8">
@@ -13,7 +14,8 @@ const Summary = () => {
                     variant="D1"
                     className="font-medium text-2xl"
                 >
-                    {t("detailCommandeTitle")}
+                    {translate("summary")}
+
                 </Typography>
             </div>
 
@@ -24,16 +26,17 @@ const Summary = () => {
                             variant="h6"
                             className="font-medium"
                         >
-                            Commande
+                            {translate("subtotal")}
+
                         </Typography>
                     </div>
-                   
+
                     <div className="flex">
                         <Typography
-                            variant="h6"
+                            variant="D1"
                             className="font-medium"
                         >
-                            Total
+                            40£
                         </Typography>
                     </div>
 
@@ -44,16 +47,17 @@ const Summary = () => {
                             variant="h6"
                             className="font-medium"
                         >
-                            Commande
+                            {translate("delivery")}
+
                         </Typography>
                     </div>
-                   
+
                     <div className="flex">
                         <Typography
-                            variant="h6"
+                            variant="D1"
                             className="font-medium"
                         >
-                            Total
+                           2£
                         </Typography>
                     </div>
 
@@ -64,16 +68,17 @@ const Summary = () => {
                             variant="h6"
                             className="font-medium"
                         >
-                            Commande
+                          Total
+
                         </Typography>
                     </div>
-                   
+
                     <div className="flex">
                         <Typography
-                            variant="h5"
-                            className="font-semibold"
+                            variant="D1"
+                            className="text-[1.3em] font-semibold"
                         >
-                            Total
+                            42£
                         </Typography>
                     </div>
 

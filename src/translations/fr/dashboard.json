@@ -29,9 +29,21 @@
         "price": "Prix",
         "quantity": "Quantité",
         "subtotal": "Sous-total"
+        },
+      "payementMethod": {
+        "payementMethod": "Moyen de paiement",
+        "titlePayementMethod": "Paypal / VISA",
+        "accountNumber": "Numéro de compte",
+        "accountHolder": "Titulaire du compte",
+        "dateExpiration": "Date d’expiration"
+    },
+     "summary": {
+        "summary": "Récapitulatif",
+        "subtotal": "Sous-total",
+        "delivery": "Livraison"
     }
-   
-  },
+   }
+  ,
   "personnalInfo":{
     "personnalInfoTitle": "Informations personnelles",
     "basicInformation": "Informations de base",
@@ -64,6 +76,12 @@
     "postalCode":"Code postal",
     "streetAddress":"Adresse de rue",
     "phoneNumber":"Numéro de téléphone",
-    "saveChanges":"Sauvegarder les changements"
+    "saveChanges":"Sauvegarder les changements",
+    "fullName":"Nom complet",
+    "fullAddress":"Adresse complet",
+    "Phone":"Téléphone",
+    "country,city":"Pays, Ville",
+    "Email":"E-mail"
+    
   }
 }

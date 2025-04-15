@@ -8,7 +8,7 @@ import blog1 from '../../../../public/images/blog/blog1.png'
 
 
 const DetailCommandeBodyList = () => {
-    const t = useTranslations("detailCommande");
+    // const t = useTranslations("detailCommande");
     const translate = useTranslations("detailCommande.orderDetails");
 
     return (
@@ -18,7 +18,7 @@ const DetailCommandeBodyList = () => {
                     variant="D1"
                     className="font-medium text-2xl"
                 >
-                    {translate("titleOrderDetails")}
+                    {translate("detailCommande")}
 
                 </Typography>
             </div>

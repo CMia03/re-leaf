@@ -4,7 +4,8 @@ import { Typography } from "@/components/re-leaf/Typography";
 import { useTranslations } from "next-intl";
 
 const MoyenPayement = () => {
-    const t = useTranslations("detailCommande");
+    // const t = useTranslations("detailCommande");
+    const translate = useTranslations("detailCommande.payementMethod");
 
     return (
         <div className="flex flex-col gap-8">
@@ -13,7 +14,7 @@ const MoyenPayement = () => {
                     variant="D1"
                     className="font-medium text-2xl"
                 >
-                    {t("detailCommandeTitle")}
+                    {translate("payementMethod")}
                 </Typography>
             </div>
 
@@ -23,7 +24,8 @@ const MoyenPayement = () => {
                         variant="h5"
                         className="font-medium"
                     >
-                        Paypal / VISA
+                        {translate("titlePayementMethod")}
+                      
                     </Typography>
                 </div>
                 <div className="flex flex-col gap-5 p-5 border-1 border-t-0 border-[#00000033]">
@@ -31,29 +33,31 @@ const MoyenPayement = () => {
                         <div className="flex flex-col gap-3">
                             <Typography
                                 variant="D1"
-                                className="font-medium"
+                                className="font-medium text-sm"
                             >
-                                Paypal / VISA
+                                {translate("accountNumber")}
+
                             </Typography>
                             <Typography
                                 variant="D1"
-                                className="font-medium"
+                                className="font-semibold"
                             >
-                                Paypal / VISA
+                                3445  6464  7885  3321 
                             </Typography>
                         </div>
                         <div className="flex flex-col gap-3">
                             <Typography
                                 variant="D1"
-                                className="font-medium"
+                                className="font-medium text-sm"
                             >
-                                Paypal / VISA
+                                {translate("accountHolder")}
+
                             </Typography>
                             <Typography
                                 variant="D1"
-                                className="font-medium"
+                                className="font-semibold"
                             >
-                                Paypal / VISA
+                               John Doe
                             </Typography>
                         </div>
                     </div>
@@ -61,29 +65,30 @@ const MoyenPayement = () => {
                         <div className="flex flex-col gap-3">
                             <Typography
                                 variant="D1"
-                                className="font-medium"
+                                className="font-medium text-sm"
                             >
-                                Paypal / VISA
+                                {translate("dateExpiration")}
+
                             </Typography>
                             <Typography
                                 variant="D1"
-                                className="font-medium"
+                                className="font-semibold"
                             >
-                                Paypal / VISA
+                                17/08/2025
                             </Typography>
                         </div>
                         <div className="flex flex-col gap-3">
                             <Typography
                                 variant="D1"
-                                className="font-medium"
+                                className="font-medium text-sm"
                             >
-                                Paypal / VISA
+                                CVV
                             </Typography>
                             <Typography
                                 variant="D1"
-                                className="font-medium"
+                                className="font-semibold"
                             >
-                                Paypal / VISA
+                                201
                             </Typography>
                         </div>
                     </div>
