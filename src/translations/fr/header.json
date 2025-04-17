@@ -20,7 +20,9 @@
     "bestProducts": "Meilleurs produits",
     "show": "Afficher",
     "sortBy": "Trier par",
-    "resetFilter": "Réinitialiser le filtre"
+    "resetFilter": "Réinitialiser le filtre",
+    "name": "Nom",
+    "price": "Prix"
   },
   "footer": {
     "fastDelivery": "Livraison rapide",

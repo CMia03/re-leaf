@@ -9,7 +9,7 @@ import TagsBlog from "./tagsBlog";
 const BlogComponent = () => {
   return (
     <div className="container mx-auto">
-      <div className="flex flex-col gap-10 mt-8.5 mb-6">
+      <div className="flex flex-col gap-10 mb-6">
         <BreadcrumbHeader />
       </div>
       <div className="flex flex-row gap-5 justify-between">

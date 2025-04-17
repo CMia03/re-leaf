@@ -1,7 +1,8 @@
 import { Typography } from "@/components/re-leaf/Typography";
 import { formatArPrice } from "@/lib/utils";
 import Image, { StaticImageData } from "next/image";
-import { useState } from "react";
+import { useRouter } from "next/navigation";
+import { FC, MouseEvent, useState } from "react";
 
 interface ProductType {
   id: number;
@@ -9,10 +10,21 @@ interface ProductType {
   price: number;
   image: StaticImageData;
 }
-const ProductCard: React.FC<{ product: ProductType }> = ({ product }) => {
+const ProductCard: FC<{ product: ProductType }> = ({ product }) => {
+  const router = useRouter();
+
   const [liked, setLiked] = useState(false);
+  const showDetails = (id: number) => {
+    router.push(`/products/${id}`);
+  };
+
+  const addOrRemoveFavorite = (e: MouseEvent<HTMLDivElement>) => {
+    e.stopPropagation();
+    setLiked(!liked);
+  };
+
   return (
-    <div>
+    <div onClick={() => showDetails(product.id)} className="cursor-pointer">
       <div className="min-h-[350px] relative">
         {product?.image && (
           <Image
@@ -25,7 +37,7 @@ const ProductCard: React.FC<{ product: ProductType }> = ({ product }) => {
         )}
         <div
           className="w-[50px] h-[50px] bg-secondary absolute top-3 right-3 rounded-full flex items-center justify-center cursor-pointer"
-          onClick={() => setLiked(!liked)}
+          onClick={addOrRemoveFavorite}
         >
           <span className="material-icons">
             {liked ? "favorite" : "favorite_border"}
@@ -47,10 +59,7 @@ const ProductCard: React.FC<{ product: ProductType }> = ({ product }) => {
               {formatArPrice(product.price)}
             </Typography>
           </div>
-          <div
-            className="w-[50px] h-[50px] bg-brown text-secondary rounded-full flex items-center justify-center cursor-pointer"
-            onClick={() => setLiked(!liked)}
-          >
+          <div className="w-[50px] h-[50px] bg-brown text-secondary rounded-full flex items-center justify-center cursor-pointer">
             <span className="material-icons">add_shopping_cart</span>
           </div>
         </div>
