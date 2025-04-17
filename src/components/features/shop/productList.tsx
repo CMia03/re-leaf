@@ -82,8 +82,8 @@ const ProductList = () => {
               <SelectValue placeholder="Choisir..." />
             </SelectTrigger>
             <SelectContent disablePortal>
-              <SelectItem value="Nom">Nom</SelectItem>
-              <SelectItem value="Prix">Prix</SelectItem>
+              <SelectItem value="Nom">{t("name")}</SelectItem>
+              <SelectItem value="Prix">{t("price")}</SelectItem>
             </SelectContent>
           </Select>
           <MdUnfoldMore className="text-primary cursor-pointer" size={25} />
