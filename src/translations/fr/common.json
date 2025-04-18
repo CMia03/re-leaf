@@ -4,5 +4,12 @@
     "categories": "Catégories",
     "resetFilter": "Réinitialiser le filtre",
     "seeMore": "Voir plus"
+  },
+  "button": {
+    "subscribe": "S'abonner",
+    "confirm": "Valider",
+    "cancel": "Annuler",
+    "apply": "Appliquer",
+    "updateCart": "Mettre à jour le panier"
   }
 }

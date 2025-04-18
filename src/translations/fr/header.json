@@ -41,10 +41,5 @@
     "customerService": "Services clients",
     "openingTime": "Du lundi au vendredi de 9h00 à 12h00 et de 13h30 à 16h00",
     "socialMedia": "Réseaux sociaux"
-  },
-  "button": {
-    "subscribe": "S'abonner",
-    "confirm": "Valider",
-    "cancel": "Annuler"
   }
 }

@@ -1,0 +1,16 @@
+{
+  "cart": {
+    "cart": "Panier",
+    "codePlaceholder": "Code coupon",
+    "product": "Produit",
+    "price": "Prix",
+    "unitPrice": "Prix unitaire",
+    "origin": "Origine",
+    "quantity": "Quantité",
+    "subTotal": "Sous-total",
+    "delivery": "Livraison",
+    "total": "Total",
+    "totalCart": "Total panier",
+    "validateOrder": "Valider la commande"
+  }
+}
