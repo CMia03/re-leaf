@@ -4,9 +4,9 @@ import { Button } from "@/components/ui/button";
 import { formatArPrice } from "@/lib/utils";
 import { useTranslations } from "next-intl";
 import { useState } from "react";
-import { MdChevronLeft, MdChevronRight } from "react-icons/md";
 import { Rating } from "react-simple-star-rating";
 import MenuInformations from "./MenuInformations";
+import { QuantitySelector } from "@/components/re-leaf/QuantitySelector";
 
 const PRODUCT = {
   name: "Huile essentielle de Cannelle",
@@ -46,10 +46,7 @@ const ProductDetails = () => {
   const [productNumber, setProductNumber] = useState<number>(1);
   const ratingNumbers = 5;
 
-  const increaseProductNumber = () => setProductNumber(productNumber + 1);
-  const decreaseProductNumber = () => {
-    if (productNumber > 1) setProductNumber(productNumber - 1);
-  };
+  const handleChangeQuantity = (value: number) => setProductNumber(value);
 
   return (
     <div>
@@ -67,21 +64,10 @@ const ProductDetails = () => {
         {product.description}
       </Typography>
       <div className="flex items-center gap-4 mb-8.5">
-        <div className="bg-[#F8F8F8] px-5 py-2 rounded-full flex items-center gap-2">
-          <MdChevronLeft
-            className="text-primary cursor-pointer"
-            size={21}
-            onClick={decreaseProductNumber}
-          />
-          <Typography variant="p" className="mb-0 px-2">
-            {productNumber}
-          </Typography>
-          <MdChevronRight
-            className="text-primary cursor-pointer"
-            size={21}
-            onClick={increaseProductNumber}
-          />
-        </div>
+        <QuantitySelector
+          value={productNumber}
+          onChange={(newQty) => handleChangeQuantity(newQty)}
+        />
         <Button
           data-slot="carousel-previous"
           variant="default"
