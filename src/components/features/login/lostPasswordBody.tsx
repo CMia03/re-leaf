@@ -4,12 +4,20 @@ import { Typography } from "@/components/re-leaf/Typography";
 import { useTranslations } from "next-intl";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { useRouter } from "next/navigation";
 
 
 
 const LostPasswordBody = () => {
     const t = useTranslations("lostPassword");
+    const router = useRouter();
 
+
+    const handleLostPassword = (e: React.FormEvent) => {
+        e.preventDefault();
+        router.push('/login');
+
+    }
 
 
     return (
@@ -22,7 +30,7 @@ const LostPasswordBody = () => {
                     {t("lostPasswordTitle")}
                 </Typography>
 
-                <form className="flex w-full flex-col items-start gap-5 ">
+                <form onSubmit={handleLostPassword}  className="flex w-full flex-col items-start gap-5 ">
                     <Typography
                         variant="p"
                         className="font-medium"

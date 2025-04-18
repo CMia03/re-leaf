@@ -1,13 +1,16 @@
 import AddresseBody from "./addresseBody";
+import BreadcrumbAccount from "../BreadcrumbAccount";
 
 
 
 const AddresseComponent = () => {
     return (
-        <div>
-            <div className="my-10">
+        <div className="px-[100px]">
+            <BreadcrumbAccount />
+
+            
                 <AddresseBody />
-            </div>
+         
         </div>
     );
 };

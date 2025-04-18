@@ -1,8 +1,11 @@
 import CodePromoBody from "./codePromoBody";
+import BreadcrumbAccount from "../BreadcrumbAccount";
+
 
 const CodePromoComponent = () => {
     return (
-        <div>
+        <div className="px-[100px]">
+            <BreadcrumbAccount />
             <CodePromoBody />
         </div>
     );

@@ -9,7 +9,7 @@ const CommandeBody = () => {
     // const ts = useTranslations("home");
 
     return (
-        <div className="flex flex-col items-center gap-10 px-[100px] my-5">
+        <div className="flex flex-col items-center gap-10 my-5">
             <div className="flex flex-col items-center gap-3">
                 <Typography
                     variant="h2"

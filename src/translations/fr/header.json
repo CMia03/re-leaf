@@ -12,7 +12,13 @@
     "herbs": "Aromates",
     "essentialOiles": "Huiles essentielles",
     "authenticFlavors": "Saveurs authentiques",
-    "contactUs": "Contactez-nous"
+    "contactUs": "Contactez-nous",
+    "myAccount": "Mon compte",
+    "dashboard": "Tableau de bord",
+    "order": "Commande",
+    "address": "Addresse",
+    "promoCode": "Code promo",
+    "information": "Informations"
   },
   "shop": {
     "filterByPrice": "Filtrer par prix",

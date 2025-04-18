@@ -21,6 +21,7 @@ const BreadcrumbHeader = () => {
   const t = useTranslations("header");
   const router = useRouter();
 
+
   const navLinks: NavLinks = {
     "/shop": {
       label: t("shop"),
@@ -47,6 +48,7 @@ const BreadcrumbHeader = () => {
       background: "var(--tertiary-foreground)",
     },
   };
+
 
   const current = navLinks[pathname];
 

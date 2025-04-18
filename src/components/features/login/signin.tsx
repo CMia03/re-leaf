@@ -6,16 +6,29 @@ import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Checkbox } from "@/components/ui/checkbox"
-import {  useState } from "react";
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+
 
 
 const SignIn = () => {
     const t = useTranslations("login");
     const translatePlaceholder = useTranslations("login.placeholder");
+    const router = useRouter();
+
+
+
+    const handleSignIn = (e: React.FormEvent) => {
+        e.preventDefault();
+        router.push('/dashboard');
+
+    }
 
     const [showPassword, setShowPassword] = useState(false);
 
     const togglePasswordVisibility = () => setShowPassword(prev => !prev);
+
+
 
     return (
         <div className="w-full p-6 px-0">
@@ -27,7 +40,7 @@ const SignIn = () => {
                     {t("connection")}
                 </Typography>
 
-                <form className="flex flex-col items-start gap-7 w-full border-r-1 border-r-solid border-r-[#0000001A] pe-15">
+                <form onSubmit={handleSignIn} className="flex flex-col items-start gap-7 w-full border-r-1 border-r-solid border-r-[#0000001A] pe-15">
                     <Label className="flex flex-col items-start gap-5 w-full">
                         <Typography
                             variant="p"
@@ -114,7 +127,7 @@ const SignIn = () => {
                         <div className="w-full">
                             <Typography
                                 variant="p"
-                                className="font-medium  float-end"
+                                className="font-medium hover:underline hover:underline-offset-4 transition  float-end cursor-pointer" onClick={() => router.push("/lostPassword")}
                             >
                                 {t("lostPassword")}
                             </Typography>

@@ -1,9 +1,12 @@
 import PersonnalInfoBody from "./personnalInfoBody";
+import BreadcrumbAccount from "../BreadcrumbAccount";
+
 
 const PersonnalInfoComponent = () => {
     return (
-        <div>
-              <PersonnalInfoBody />
+        <div className="px-[100px]">
+            <BreadcrumbAccount />
+            <PersonnalInfoBody />
         </div>
     );
 };

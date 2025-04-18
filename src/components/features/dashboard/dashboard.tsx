@@ -1,8 +1,11 @@
 import MyAccount from "./myAccount";
+import BreadcrumbAccount from "../BreadcrumbAccount";
+
 
 const DashboardComponent = () => {
     return (
-        <div>
+        <div className="px-[100px]">
+            <BreadcrumbAccount />
             <MyAccount />
         </div>
     );

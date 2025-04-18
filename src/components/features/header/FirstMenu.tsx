@@ -5,6 +5,7 @@ import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
 import logo from "../../../../public/images/logo.svg";
 
+
 const FirstMenuComponent = () => {
   const router = useRouter();
   const t = useTranslations("header");
@@ -109,10 +110,13 @@ const FirstMenuComponent = () => {
               1
             </span>
           </p>
-          
         </picture>
+        {/* NAVLINK LOGIN*/}
         <picture>
-          <i className="cursor-pointer flex flex-row items-center">
+          <i
+            className="cursor-pointer flex flex-row items-center"
+            onClick={() => navigateTo("/login")}
+          >
             <svg
               width="30"
               height="30"
@@ -121,18 +125,18 @@ const FirstMenuComponent = () => {
               xmlns="http://www.w3.org/2000/svg"
             >
               <path
-                d="M27.5 15C27.5 21.9037 21.9037 27.5 15 27.5C8.09625 27.5 2.5 21.9037 2.5 15C2.5 8.09625 8.09625 2.5 15 2.5C21.9037 2.5 27.5 8.09625 27.5 15Z"
-                stroke="black"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
+          d="M27.5 15C27.5 21.9037 21.9037 27.5 15 27.5C8.09625 27.5 2.5 21.9037 2.5 15C2.5 8.09625 8.09625 2.5 15 2.5C21.9037 2.5 27.5 8.09625 27.5 15Z"
+          stroke="black"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
               />
               <path
-                d="M6.875 23.75L7.575 22.525C8.12163 21.568 8.91158 20.7726 9.86475 20.2194C10.8179 19.6662 11.9004 19.3749 13.0025 19.375H16.9975C18.0996 19.3749 19.1821 19.6662 20.1353 20.2194C21.0884 20.7726 21.8784 21.568 22.425 22.525L23.125 23.75M18.4375 11.875C18.4375 12.7867 18.0753 13.661 17.4307 14.3057C16.786 14.9503 15.9117 15.3125 15 15.3125C14.0883 15.3125 13.214 14.9503 12.5693 14.3057C11.9247 13.661 11.5625 12.7867 11.5625 11.875C11.5625 10.9633 11.9247 10.089 12.5693 9.44432C13.214 8.79966 14.0883 8.4375 15 8.4375C15.9117 8.4375 16.786 8.79966 17.4307 9.44432C18.0753 10.089 18.4375 10.9633 18.4375 11.875Z"
-                stroke="black"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
+          d="M6.875 23.75L7.575 22.525C8.12163 21.568 8.91158 20.7726 9.86475 20.2194C10.8179 19.6662 11.9004 19.3749 13.0025 19.375H16.9975C18.0996 19.3749 19.1821 19.6662 20.1353 20.2194C21.0884 20.7726 21.8784 21.568 22.425 22.525L23.125 23.75M18.4375 11.875C18.4375 12.7867 18.0753 13.661 17.4307 14.3057C16.786 14.9503 15.9117 15.3125 15 15.3125C14.0883 15.3125 13.214 14.9503 12.5693 14.3057C11.9247 13.661 11.5625 12.7867 11.5625 11.875C11.5625 10.9633 11.9247 10.089 12.5693 9.44432C13.214 8.79966 14.0883 8.4375 15 8.4375C15.9117 8.4375 16.786 8.79966 17.4307 9.44432C18.0753 10.089 18.4375 10.9633 18.4375 11.875Z"
+          stroke="black"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
               />
             </svg>
           </i>

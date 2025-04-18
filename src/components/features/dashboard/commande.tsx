@@ -1,8 +1,10 @@
 import CommandeBody from "./commandeBody";
+import BreadcrumbAccount from "../BreadcrumbAccount";
 
 const CommandeComponent = () => {
     return (
-        <div>
+        <div className="px-[100px]">
+            <BreadcrumbAccount />
             <CommandeBody />
         </div>
     );
