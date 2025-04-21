@@ -32,8 +32,14 @@ const ProductCard: React.FC<{ product: ProductType }> = ({ product }) => {
           </span>
         </div>
 
-        <div className="absolute bottom-[20px] px-3 w-full flex items-center justify-between">
-          <div>
+        <div className="absolute bottom-[20px] pr-3 w-full flex items-center justify-between">
+          <div
+            className="px-3 py-1"
+            style={{
+              backgroundImage:
+                "linear-gradient(to right, rgba(182, 195, 53, 1), rgba(182, 195, 53, 0.3)",
+            }}
+          >
             <Typography variant="h5" className="text-secondary font-normal">
               {product.name}
             </Typography>
