@@ -7,8 +7,8 @@ import FooterImage2 from "../../../../public/images/Footer-image2.png";
 import Logo from "../../../../public/images/logo-lg.jpeg";
 
 const Informations = () => {
-  // const t = useTranslations("footer");
-  const translationHeader = useTranslations("header.footer");
+  const t = useTranslations("footer");
+  const translationHeader = useTranslations("header");
   const categories: { label: string; value: string }[] = [
     {
       label: translationHeader("peaperBerries"),
@@ -42,7 +42,7 @@ const Informations = () => {
         alt="footer-image2"
       />
       <div className="absolute">
-        <div className="p-16  px-0">
+        <div className="p-16  px-auto">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-[1fr_20%_20%_1fr] gap-6">
             <div className="flex flex-col gap-4">
               <Image
@@ -52,16 +52,16 @@ const Informations = () => {
                 width={200}
               />
               <Typography variant="p" className="text-primary">
-                {translationHeader("informationText")}
+                {t("informationText")}
               </Typography>
             </div>
             <div className="flex flex-col gap-4">
               <Typography variant="h5" className="text-primary">
-                {translationHeader("navigation")}
+                {t("navigation")}
               </Typography>
               {categories.map((category) => (
                 <div key={category.value}>
-                  <Typography variant="D1" className="text-primary">
+                  <Typography variant="p" className="text-primary">
                     {category.label}
                   </Typography>
                 </div>
@@ -69,36 +69,36 @@ const Informations = () => {
             </div>
             <div className="flex flex-col gap-4">
               <Typography variant="h5" className="text-primary">
-                {translationHeader("information")}
+                {t("information")}
               </Typography>
               <Typography variant="p" className="text-primary">
-                {translationHeader("legalNotices")}
+                {t("legalNotices")}
               </Typography>
               <Typography variant="p" className="text-primary">
-                {translationHeader("personalInformations")}
+                {t("personalInformations")}
               </Typography>
               <Typography variant="p" className="text-primary">
-                {translationHeader("generalSalesConditions")}
+                {t("generalSalesConditions")}
               </Typography>
             </div>
             <div className="flex flex-col gap-4">
               <Typography variant="h5" className="text-primary">
-                {translationHeader("customerService")}
+                {t("customerService")}
               </Typography>
-              <Typography variant="D1" className="cursor-default font-bold">
+              <Typography variant="p" className="text-primary font-bold">
                 +261 32 12 345 67
               </Typography>
               <Typography variant="p" className="text-primary">
-                {translationHeader("openingTime")}
+                {t("openingTime")}
               </Typography>
               <div className="flex gap-4 align-center relative">
                 <Typography variant="p" className="text-primary text-sm">
-                  {translationHeader("socialMedia")}
+                  {t("socialMedia")}
                 </Typography>
-                <MdFacebook size={25} color="var(--tertiary)" className="cursor-pointer" />
-                <IoLogoYoutube size={25} color="var(--tertiary)" className="cursor-pointer" />
-                <IoLogoLinkedin size={25} color="var(--tertiary)" className="cursor-pointer" />
-                <IoLogoInstagram size={25} color="var(--tertiary)" className="cursor-pointer" />
+                <MdFacebook size={25} color="var(--tertiary)" />
+                <IoLogoYoutube size={25} color="var(--tertiary)" />
+                <IoLogoLinkedin size={25} color="var(--tertiary)" />
+                <IoLogoInstagram size={25} color="var(--tertiary)" />
               </div>
             </div>
           </div>
@@ -110,11 +110,11 @@ const Informations = () => {
               Copyright
             </Typography>
             <MdCopyright size={20} color="var(--primary)" />
-            <Typography variant="D1" className="text-primary">
+            <Typography variant="p" className="text-primary">
               {year}
             </Typography>
-            <div className="w-1 h-1 bg-primary rounded-full"></div>
-            <Typography variant="D1" className="text-primary">
+            <span className="font-bold">.</span>
+            <Typography variant="p" className="text-primary">
               ReLeaf
             </Typography>
           </div>
