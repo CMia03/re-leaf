@@ -42,7 +42,7 @@ const Informations = () => {
         alt="footer-image2"
       />
       <div className="absolute">
-        <div className="p-16  px-auto">
+        <div className="p-16  px-0">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-[1fr_20%_20%_1fr] gap-6">
             <div className="flex flex-col gap-4">
               <Image
@@ -61,7 +61,7 @@ const Informations = () => {
               </Typography>
               {categories.map((category) => (
                 <div key={category.value}>
-                  <Typography variant="p" className="text-primary">
+                  <Typography variant="D1" className="text-primary">
                     {category.label}
                   </Typography>
                 </div>
@@ -85,7 +85,7 @@ const Informations = () => {
               <Typography variant="h5" className="text-primary">
                 {translationHeader("customerService")}
               </Typography>
-              <Typography variant="p" className="text-primary font-bold">
+              <Typography variant="D1" className="cursor-default font-bold">
                 +261 32 12 345 67
               </Typography>
               <Typography variant="p" className="text-primary">
@@ -95,26 +95,26 @@ const Informations = () => {
                 <Typography variant="p" className="text-primary text-sm">
                   {translationHeader("socialMedia")}
                 </Typography>
-                <MdFacebook size={25} color="var(--tertiary)" />
-                <IoLogoYoutube size={25} color="var(--tertiary)" />
-                <IoLogoLinkedin size={25} color="var(--tertiary)" />
-                <IoLogoInstagram size={25} color="var(--tertiary)" />
+                <MdFacebook size={25} color="var(--tertiary)" className="cursor-pointer" />
+                <IoLogoYoutube size={25} color="var(--tertiary)" className="cursor-pointer" />
+                <IoLogoLinkedin size={25} color="var(--tertiary)" className="cursor-pointer" />
+                <IoLogoInstagram size={25} color="var(--tertiary)" className="cursor-pointer" />
               </div>
             </div>
           </div>
         </div>
         <div>
           <hr />
-          <div className="py-6 flex justify-center items-center gap-2">
-            <Typography variant="p" className="text-primary">
+          <div className="py-6 flex flex-row justify-center items-center gap-2">
+            <Typography variant="D1" className="text-primary">
               Copyright
             </Typography>
             <MdCopyright size={20} color="var(--primary)" />
-            <Typography variant="p" className="text-primary">
+            <Typography variant="D1" className="text-primary">
               {year}
             </Typography>
-            <span className="font-bold">.</span>
-            <Typography variant="p" className="text-primary">
+            <div className="w-1 h-1 bg-primary rounded-full"></div>
+            <Typography variant="D1" className="text-primary">
               ReLeaf
             </Typography>
           </div>

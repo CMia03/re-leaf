@@ -1,0 +1,87 @@
+{
+  "myAccount": {
+    "myAccountTitle": "Mon compte",
+    "myAccountDescription": "Bienvenue dans votre espace client, John Doe",
+    "accountCard": {
+        "title1": "Histoire de commande",
+        "title2": "Adresses",
+        "title3": "Informations personnelles",
+        "title4": "Paramètres de cookie",
+        "title5": "Code Promo",
+        "title6": "Se déconnecter"
+    }
+  },
+  "commande":{
+    "commandeTitle": "Commandes",
+    "commandeDescription": "Retrouvez toutes vos commandes ici",
+    "noCommandeDescription": "Oupss... Vous n’avez pas encore passé de commandes",
+    "btnReadytoCommande": "Commencer à commander"
+  },
+  "detailCommande":{
+    "detailCommandeTitle": "Commande N°",
+    "detailCommandeDescription1": "La commande n°  ",
+    "detailCommandeDescription2": "a été passée le",
+    "detailCommandeDescription3": "et est actuellement",
+    "onHold": "En attente.",
+      "orderDetails": {
+        "titleOrderDetails": "Détails de la commande",
+        "product": "Produit",
+        "price": "Prix",
+        "quantity": "Quantité",
+        "subtotal": "Sous-total"
+        },
+      "payementMethod": {
+        "payementMethod": "Moyen de paiement",
+        "titlePayementMethod": "Paypal / VISA",
+        "accountNumber": "Numéro de compte",
+        "accountHolder": "Titulaire du compte",
+        "dateExpiration": "Date d’expiration"
+    },
+     "summary": {
+        "summary": "Récapitulatif",
+        "subtotal": "Sous-total",
+        "delivery": "Livraison"
+    }
+   }
+  ,
+  "personnalInfo":{
+    "personnalInfoTitle": "Informations personnelles",
+    "basicInformation": "Informations de base",
+    "identifier": "Identifiant",
+    "identifierPlaceholder": "Votre identifiant",
+    "indicationForIdentifier": "Indique comment votre nom apparaîtra dans la section relative au compte et dans les avis",
+    "personnalInfoDescription": "Vos données et informations peuvent être trouvés et édités ici",
+    "changePassword": "Changement de mot de passe",
+    "currentPassword": "Mot de passe actuel (laisser vide pour le conserver)",
+    "newPassword": "Nouveau mot de passe (laisser vide pour conserver l’actuel)",
+    "confirmPassword": "Confirmer le nouveau mot de passe",
+    "saveChanges": "Sauvegarder les changements"
+    
+  },
+    "codePromo":{
+    "codePromoTitle": "Code promo",
+    "codePromoDescription": "Utilisez ces codes promo pour bénéficier de réduction sur nos produits.",
+    "noCodePromoDescription": "Désolé... Pas de code promo utilisable pour le moment",
+    "btnSeeBoutiqueCodePromo": "Voir la boutique",
+    "btnCommandeProductCodePromo": "Commander un produit",
+    "dateExpiration": "Date d’expiration"
+  },
+    "addresse":{
+    "addresseTitle": "Adresses",
+    "addresseDescription": "Les adresses suivantes seront utilisées par défaut sur la page de commande.",
+    "addresseBilling":"Adresse de facturation",
+    "addresseDelivery":"Adresse de livraison",
+    "country/region":"Pays / Région",
+    "city":"Ville",
+    "postalCode":"Code postal",
+    "streetAddress":"Adresse de rue",
+    "phoneNumber":"Numéro de téléphone",
+    "saveChanges":"Sauvegarder les changements",
+    "fullName":"Nom complet",
+    "fullAddress":"Adresse complet",
+    "Phone":"Téléphone",
+    "country,city":"Pays, Ville",
+    "Email":"E-mail"
+    
+  }
+}

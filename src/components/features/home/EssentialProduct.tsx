@@ -11,8 +11,8 @@ import {
   CarouselApi,
   CarouselContent,
   CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
+  // CarouselNext,
+  // CarouselPrevious,
 } from "@/components/ui/carousel";
 import { useEffect, useState } from "react";
 import essentialOil from "../../../../public/images/essentialProduct/essentialprim.png";
@@ -48,15 +48,15 @@ function EssentialProduct() {
   const data = [
     {
       image1: essentialOil,
-      label: "essentialOil" 
+      label: "essentialOil"
     },
     {
       image1: essentialOil,
-      label: "essentialOil" 
+      label: "essentialOil"
     },
     {
       image1: essentialOil,
-      label: "essentialOil" 
+      label: "essentialOil"
     },
   ];
 
@@ -74,16 +74,16 @@ function EssentialProduct() {
   }, [api]);
 
 
- 
+
 
 
   return (
     <div>
 
       <main className='w-full mx-auto my-0 pt-[50px]'>
-        <div className="flex flex-row mx-auto my-0 gap-4 h-[45em] justify-between">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5  justify-between">
           {/* SECTION CAROUSEL */}
-          <section className="w-[59%] h-full contentCarouselReleaf">
+          <section className="w-full h-full contentCarouselReleaf">
             <Carousel className="h-full" setApi={setApi}>
               <CarouselContent className="border h-full">
                 {data.map(({ label }, index) => (
@@ -91,7 +91,7 @@ function EssentialProduct() {
                     key={index}
                     className="h-full flex items-center justify-center"
                   >
-                
+
                     <Card className="border-none h-full  nth-[1]:bg-green-light nth-[2]:bg-[var(--tertiary)]  nth-[3]:bg-[var(--quatro)] w-full rounded-none">
                       <CardContent className="flex flex-col justify-center items-center h-full text-center gap-7 pt-2 pb-2 relative">
                         <Typography variant="p" className="text-white text-[30px]">
@@ -112,10 +112,21 @@ function EssentialProduct() {
                 ))}
               </CarouselContent>
 
-              <CarouselPrevious className="bg-white absolute left-[20px] top-1/2 translate-y-[-50%] w-[48px] h-[48px] p-[8px] hover:text-oceanBlue transition-all duration-300  hover:bg-white border border-grey lg:left-[50px] " />
+              <i onClick={() => api?.scrollPrev()}  className='absolute left-[20px] top-1/2 translate-y-[-50%] lg:left-[50px] cursor-pointer'>
+                <svg width="18" height="32" viewBox="0 0 18 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M16.5 1C16.5 1 1.5 12.0475 1.5 16C1.5 19.9525 16.5 31 16.5 31" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
 
-              <CarouselNext className="bg-white absolute right-[20px] top-1/2 translate-y-[-50%] w-[48px] h-[48px] p-[8px] hover:text-oceanBlue transition-all duration-300 hover:bg-white lg:right-[50px] lg:hover:bg-cardServiceBgLight" />
+              </i>
+              {/* <CarouselPrevious className="bg-white absolute left-[20px] top-1/2 translate-y-[-50%] w-[48px] h-[48px] p-[8px] hover:text-oceanBlue tra nsition-all duration-300  hover:bg-white border border-grey lg:left-[50px] " /> */}
 
+              {/* <CarouselNext className="bg-white absolute right-[20px] top-1/2 translate-y-[-50%] w-[48px] h-[48px] p-[8px] hover:text-oceanBlue transition-all duration-300 hover:bg-white lg:right-[50px] lg:hover:bg-cardServiceBgLight" /> */}
+              <i onClick={() => api?.scrollNext()} className=' absolute right-[20px] top-1/2 translate-y-[-50%] lg:right-[50px] cursor-pointer'>
+                <svg width="18" height="32" viewBox="0 0 18 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M1.5 1C1.5 1 16.5 12.0475 16.5 16C16.5 19.9525 1.5 31 1.5 31" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+
+              </i>
               <div className="absolute bottom-[30px] left-1/2 transform -translate-x-1/2 flex space-x-2">
                 {data.map((_: unknown, index: number) => (
                   <div
@@ -131,12 +142,12 @@ function EssentialProduct() {
 
 
           {/* SECTION GRID PRODUCT */}
-          <section className='w-[100%] h-max'>
-            <div className='flex flex-row w-full h-[45em] gap-4  flex-wrap'>
+          <section className='w-[100%] h-full'>
+            <div className='grid grid-cols-1 md:grid-cols-2 gap-5 w-full h-full'>
               {items.map(({ id, image, label, description }) => (
-                <div key={id}>
-                  <figure className="figureProduct bg-[#F8F8F8] relative">
-                    <div className="flex flex-col  w-[15em] h-[22em]">
+                <div key={id} className='h-full'>
+                  <figure className="figureProduct h-full min-h-full bg-[#F8F8F8] relative">
+                    <div className="flex flex-col w-full h-full">
                       {/* favoris */}
                       <i className="absolute top-0 right-0 m-2 cursor-pointer">
                         <svg
@@ -177,7 +188,7 @@ function EssentialProduct() {
                           </Typography>
                         </div>
                         <div>
-                          <i>
+                          <i className='cursor-pointer'>
                             <svg
                               width="46"
                               height="46"

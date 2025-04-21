@@ -1,9 +1,9 @@
-import { Typography } from "@/components/re-leaf/Typography";
+import LoginComponent from "@/components/features/login/login";
 
 const LoginPage = () => {
   return (
     <div>
-      <Typography variant="p">Hello login</Typography>
+      <LoginComponent />
     </div>
   );
 };

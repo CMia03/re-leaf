@@ -4,7 +4,7 @@ import { useTranslations } from "next-intl";
 const SecondMenuComponents = () => {
   const t = useTranslations("header");
   return (
-    <div className="flex gap-[50px] justify-center items-center h-[61px]">
+    <div className="flex gap-[50px] justify-center items-center h-[61px] border-b-1 border-b-[var(--border)]">
       <picture>
       <Typography variant="D1" className="cursor-pointer">{t("peaperBerries")}</Typography>
 

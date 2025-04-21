@@ -21,6 +21,7 @@ const BreadcrumbHeader = () => {
   const t = useTranslations("header");
   const router = useRouter();
 
+
   const navLinks: NavLinks = {
     "/shop": {
       label: t("shop"),
@@ -48,6 +49,7 @@ const BreadcrumbHeader = () => {
     },
   };
 
+
   const current = navLinks[pathname];
 
   const navigateTo = (path: string) => {
@@ -55,7 +57,7 @@ const BreadcrumbHeader = () => {
   };
 
   return (
-    <div className="mb-8">
+    <div className="mb-0">
       <div className="w-full h-60 relative flex items-center justify-center">
         {current?.image && (
           <Image
@@ -68,26 +70,31 @@ const BreadcrumbHeader = () => {
         )}
 
         <div
-          className="absolute inset-0  flex flex-col justify-center pl-12"
+          className="absolute inset-0 flex flex-col justify-center pl-12"
           style={{
-            backgroundImage: `linear-gradient(to right, ${current?.background}, transparent)`,
+            backgroundImage: `linear-gradient(to right, ${
+              current?.background || "var(--brown)"
+            }, transparent)`,
           }}
         >
-          <Typography variant="h1" className="text-secondary">
-            {current?.label}
+          <Typography
+            variant="h1"
+            className="text-white text-4xl font-medium mb-2"
+          >
+            {pathname === "/contact" ? "Contactez-nous" : current?.label}
           </Typography>
 
           <div className="flex">
             <Typography
               variant="p"
-              className="text-secondary cursor-pointer"
+              className="text-white cursor-pointer"
               onClick={() => navigateTo("/")}
             >
               {t("welcome")}
             </Typography>
 
             {current?.label && (
-              <Typography variant="p" className="text-secondary ml-2">
+              <Typography variant="p" className="text-white ml-2">
                 {`/ ${current.label}`}
               </Typography>
             )}
