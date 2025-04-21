@@ -5,6 +5,7 @@ import { usePathname, useRouter } from "next/navigation";
 import BgImage1 from "../../../public/images/Bg-image1.png";
 import BgImage2 from "../../../public/images/Bg-image2.png";
 import BgImage3 from "../../../public/images/Bg-image3.png";
+import BgImage4 from "../../../public/images/Bg-image4.png";
 import { Typography } from "../re-leaf/Typography";
 
 type NavLink = {
@@ -47,6 +48,12 @@ const BreadcrumbHeader = () => {
       image: BgImage3,
       background: "var(--tertiary-foreground)",
     },
+    "/faq": {
+      label: t("faq"),
+      path: "/faq",
+      image: BgImage4,
+      background: "var(--tertiary-foreground)",
+    }
   };
 
 
@@ -63,7 +70,7 @@ const BreadcrumbHeader = () => {
           <Image
             src={current.image}
             fill
-            className="object-cover"
+            className="object-cover" style={{objectPosition: '50% 30%'}}
             alt={current.label}
             priority
           />
