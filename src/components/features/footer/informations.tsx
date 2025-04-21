@@ -104,9 +104,9 @@ const Informations = () => {
           </div>
         </div>
         <div>
-          <hr />
-          <div className="py-6 flex flex-row justify-center items-center gap-2">
-            <Typography variant="D1" className="text-primary">
+          <hr className="container mx-auto" />
+          <div className="py-6 flex justify-center items-center gap-2">
+            <Typography variant="p" className="text-primary">
               Copyright
             </Typography>
             <MdCopyright size={20} color="var(--primary)" />

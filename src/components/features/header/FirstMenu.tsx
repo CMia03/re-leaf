@@ -65,7 +65,7 @@ const FirstMenuComponent = () => {
           </i>
         </picture>
 
-        <picture className="relative">
+        <picture className="relative" onClick={() => navigateTo("/cart")}>
           <i className=" cursor-pointer flex flex-row items-center">
             <svg
               width="30"
@@ -105,7 +105,7 @@ const FirstMenuComponent = () => {
             </svg>
           </i>
           {/* Number */}
-          <p className="absolute top-0 right-0 w-[2em] h-[2em] cursor-pointer bg-[var(--tertiary)] p-1 text-[0.7em] px-2 m-[-0.75em] text-white rounded-full">
+          <p className="absolute top-0 right-0 h-[2em] cursor-pointer bg-[var(--tertiary-foreground)] p-1 text-[0.7em] px-2 m-[-0.75em] text-white rounded-full">
             <span className="flex flex-row items-center h-full font-bold cursor-default">
               1
             </span>

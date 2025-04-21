@@ -57,7 +57,7 @@ const BreadcrumbHeader = () => {
   };
 
   return (
-    <div className="mb-0">
+    <div className="mb-0 mt-8.5">
       <div className="w-full h-60 relative flex items-center justify-center">
         {current?.image && (
           <Image

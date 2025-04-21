@@ -1,0 +1,23 @@
+{
+  "product": {
+    "ratingNumbers": "avis client",
+    "addToCard": "Ajouter au panier",
+    "category": "Catégorie",
+    "tags": "Tags",
+    "description": "Description",
+    "additionalInfos": "Information additionnelle",
+    "opinion": "Avis",
+    "opinionFor": "Avis pour",
+    "weight": "Poids",
+    "size": "Dimension",
+    "addOpinion": "Ajouter un avis",
+    "opinionRules": "Votre adresse e-mail ne sera pas publiée. Les champs obligatoires sont marqués d'un astérisque(*).",
+    "yourScore": "Votre note *",
+    "emailPlaceholder": "Votre Email*",
+    "namePlaceholder": "Votre Nom*",
+    "opinionPlaceholder": "Votre Avis*",
+    "saveOpinion": "Enregistrer mon nom, mon e-mail et mon site web dans le navigateur pour mon prochain commentaire.",
+    "sendMessage": "Envoyer le message",
+    "similarProducts": "Produits Similaires"
+  }
+}
