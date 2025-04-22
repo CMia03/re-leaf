@@ -9,11 +9,11 @@ import TextAboutBody from "./TextAboutBody";
 
 const AboutComponent = () => {
     return (
-        <div className="container mx-auto">
+        <div className="mx-auto">
             <div className="flex flex-col gap-10 mb-6  px-[100px]">
                 <BreadcrumbHeader />
             </div>
-            <div className="flex flex-row gap-15 mt-20 justify-between px-[100px]">
+            <div className="flex flex-row gap-15 mt-20 justify-between  px-[100px]">
                 <div className="flex flex-col w-[50%] gap-10">
                     <ImageAboutBody />
                 </div>

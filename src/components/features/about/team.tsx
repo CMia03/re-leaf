@@ -35,7 +35,7 @@ const Team = () => {
                 {items.map(({ id, image, name }) => (
                     <div key={id} className="  w-[18em]">
                     <Card className="shadow-none border border-none rounded-tl-[230px] h-[28em] rounded-b-none rounded-tr-[230px] p-0 overflow-hidden">
-                        <CardContent className="relative w-full p-0 flex flex-col items-center text-center gap-4 h-full">
+                        <CardContent className="relative group w-full p-0 flex flex-col items-center text-center gap-4 h-full">
                             <div className="relative w-full h-full">
                                 <Image
                                     src={image}
@@ -44,7 +44,7 @@ const Team = () => {
                                     className="w-full h-full object-cover"
                                 />
 
-                                <div className=" absolute inset-0 flex flex-col justify-end  p-4">
+                                <div className="absolute inset-0 flex flex-col justify-end p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                                     <div className="h-[max-content] px-[20px] py-[15px] flex flex-row justify-center gap-4">
                                         <MdFacebook size={35} color="var(--tertiary) " className="bg-white  rounded-full p-1 cursor-pointer hover:scale-[1.1] transition" />
                                         <IoLogoInstagram size={35} color="var(--tertiary)" className="bg-white  rounded-full p-1 cursor-pointer hover:scale-[1.1] transition" />
