@@ -5,7 +5,7 @@ import FaqQuickNavigationBody from "./faqQuickNavigationBody";
 
 const FaqComponent = () => {
   return (
-    <div className="container mx-auto  px-[100px]">
+    <div className="mx-auto  px-[100px]">
       <div className="flex flex-col gap-10 mb-6">
         <BreadcrumbHeader />
       </div>
