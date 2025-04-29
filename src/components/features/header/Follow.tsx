@@ -11,14 +11,15 @@ const FollowComponents = () => {
   return (
     <div className="text-white">
       <nav className="flex justify-between items-center p-[1em]">
-      <Typography variant="p">{t("bestProduct")}</Typography>
-      <Typography variant="p">{t("freeDelivery")}</Typography>
-      <div className="flex gap-5">
-        <Image src={facebook} className="cursor-pointer hover:scale-[1.1] transition" alt="facebook" width={20} height={20} />
-        <Image src={youtube} className="cursor-pointer hover:scale-[1.1] transition" alt="facebook" width={20} height={20} />
-        <Image src={linkedin} className="cursor-pointer hover:scale-[1.1] transition" alt="facebook" width={20} height={20} />
-        <Image src={instagram} className="cursor-pointer hover:scale-[1.1] transition" alt="facebook" width={20} height={20} />
-      </div>
+        <Typography variant="p">{t("bestProduct")}</Typography>
+        <Typography variant="p">{t("freeDelivery")}</Typography>
+       
+        <div className="flex gap-5">
+          <Image src={facebook} className="cursor-pointer hover:scale-[1.1] transition" alt="facebook" width={20} height={20} />
+          <Image src={youtube} className="cursor-pointer hover:scale-[1.1] transition" alt="facebook" width={20} height={20} />
+          <Image src={linkedin} className="cursor-pointer hover:scale-[1.1] transition" alt="facebook" width={20} height={20} />
+          <Image src={instagram} className="cursor-pointer hover:scale-[1.1] transition" alt="facebook" width={20} height={20} />
+        </div>
       </nav>
     </div>
   );

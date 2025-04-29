@@ -27,8 +27,8 @@ const Informations = () => {
       value: "essentialOiles",
     },
     {
-      label: translationHeader("authenticFlavors"),
-      value: "authenticFlavors",
+      label: translationHeader("naturalFoodAgents"),
+      value: "naturalFoodAgents",
     },
   ];
 

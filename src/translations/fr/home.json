@@ -2,7 +2,7 @@
   "home": {
     "title": "Bienvenue sur notre site",
     "description": "Ceci est une description de notre site",
-    "homeBannerDescription": "Découvrez l’alchimie parfaite de nos épices, huiles essentielles et saveurs authentiques, qui transforment vos aliments en une expérience gustative inoubliable.",
+    "homeBannerDescription": "Découvrez l’alchimie parfaite de nos épices, huiles essentielles et agents naturels alimentaires, qui transforment vos aliments en une expérience gustative inoubliable.",
     "ourEngagement": "Nos Engagements",
     "engagement": {
         "title1": "100 % Naturel & Authentique",
@@ -15,7 +15,7 @@
         "description4": "Sélection d’arômes authentiques aux multiples bienfaits."
     },
     "essentialOil": "Huilles Essentielles",
-    "authenticSavior": "Saveurs authentiques",
+    "naturalFoodAgents": "agents naturels alimentaires",
     "spices": "Epices",
     "startProduct": "produits phares",
     "startProductDescription": "Les incontournables de ReLeaf",
