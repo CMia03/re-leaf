@@ -1,20 +1,16 @@
+import { apiUrl } from "@/components/constants/constants";
 import { Typography } from "@/components/re-leaf/Typography";
+import { Product } from "@/generated/graphql";
 import { formatArPrice } from "@/lib/utils";
-import Image, { StaticImageData } from "next/image";
+import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { FC, MouseEvent, useState } from "react";
 
-interface ProductType {
-  id: number;
-  name: string;
-  price: number;
-  image: StaticImageData;
-}
-const ProductCard: FC<{ product: ProductType }> = ({ product }) => {
+const ProductCard: FC<{ product: Product }> = ({ product }) => {
   const router = useRouter();
 
   const [liked, setLiked] = useState(false);
-  const showDetails = (id: number) => {
+  const showDetails = (id: string) => {
     router.push(`/products/${id}`);
   };
 
@@ -22,13 +18,17 @@ const ProductCard: FC<{ product: ProductType }> = ({ product }) => {
     e.stopPropagation();
     setLiked(!liked);
   };
+  console.log("product", product);
 
   return (
-    <div onClick={() => showDetails(product.id)} className="cursor-pointer">
+    <div
+      onClick={() => showDetails(product.documentId)}
+      className="cursor-pointer"
+    >
       <div className="min-h-[350px] relative">
-        {product?.image && (
+        {product?.cover_image && (
           <Image
-            src={product.image}
+            src={apiUrl + product?.cover_image?.url}
             fill
             className="object-cover"
             alt={product.name}
@@ -43,7 +43,6 @@ const ProductCard: FC<{ product: ProductType }> = ({ product }) => {
             {liked ? "favorite" : "favorite_border"}
           </span>
         </div>
-
         <div className="absolute bottom-[20px] pr-3 w-full flex items-center justify-between">
           <div
             className="px-3 py-1"
