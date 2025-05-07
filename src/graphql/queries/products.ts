@@ -1,8 +1,8 @@
 import { gql } from "@apollo/client";
 
 export const GET_PRODUCTS = gql`
-  query GetProductsWithMeta($page: Int!, $pageSize: Int) {
-    products(pagination: { page: $page, pageSize: $pageSize }) {
+  query GetProducts($page: Int!, $pageSize: Int, $sort: [String]) {
+    products(pagination: { page: $page, pageSize: $pageSize }, sort: $sort) {
       documentId
       slug
       name
@@ -25,6 +25,10 @@ export const GET_PRODUCTS = gql`
       weight
       createdAt
       publishedAt
+      subcategory_id {
+        documentId
+        name
+      }
     }
 
     products_connection(pagination: { page: $page, pageSize: $pageSize }) {
@@ -33,6 +37,89 @@ export const GET_PRODUCTS = gql`
         pageCount
         pageSize
         page
+      }
+    }
+  }
+`;
+
+export const GET_SIMILAR_PRODUCTS_BY_SUB_CATEGORY = gql`
+  query GetProductsByCategory(
+    $page: Int!
+    $pageSize: Int
+    $subCategoryId: ID!
+    $currentProductId: ID!
+  ) {
+    products(
+      pagination: { page: $page, pageSize: $pageSize }
+      filters: {
+        subcategory_id: { documentId: { eq: $subCategoryId } }
+        documentId: { ne: $currentProductId }
+      }
+    ) {
+      documentId
+      slug
+      name
+      description
+      vehicle_type
+      availability
+      price
+      cover_image {
+        documentId
+        url
+        width
+        height
+      }
+      images {
+        url
+        width
+        height
+      }
+      size
+      weight
+      createdAt
+      publishedAt
+      subcategory_id {
+        documentId
+        name
+      }
+    }
+
+    products_connection(pagination: { page: $page, pageSize: $pageSize }) {
+      pageInfo {
+        total
+      }
+    }
+  }
+`;
+
+export const GET_PRODUCT = gql`
+  query GetProduct($documentId: ID!) {
+    product(documentId: $documentId) {
+      documentId
+      slug
+      name
+      description
+      vehicle_type
+      availability
+      price
+      cover_image {
+        documentId
+        url
+        width
+        height
+      }
+      images {
+        url
+        width
+        height
+      }
+      size
+      weight
+      createdAt
+      publishedAt
+      subcategory_id {
+        documentId
+        name
       }
     }
   }

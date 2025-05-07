@@ -1,4 +1,4 @@
-import { formatArPrice } from "@/lib/utils";
+import { formatEuroPrice } from "@/lib/utils";
 import RangeSlider from "react-range-slider-input";
 import { Typography } from "@/components/re-leaf/Typography";
 import { useTranslations } from "next-intl";
@@ -82,8 +82,8 @@ const LeftSection = () => {
             className="range-slider-primary w-full mt-4 "
           />
           <div className="flex justify-between mt-2 text-black text-sm">
-            <span>{formatArPrice(rangeSliderValues[0])}</span>
-            <span>{formatArPrice(rangeSliderValues[1])}</span>
+            <span>{formatEuroPrice(rangeSliderValues[0])}</span>
+            <span>{formatEuroPrice(rangeSliderValues[1])}</span>
           </div>
         </div>
         <Button
@@ -124,7 +124,7 @@ const LeftSection = () => {
                 {product.label}
               </Typography>
               <Typography variant="p" className="text-brown">
-                {formatArPrice(product.price)}
+                {formatEuroPrice(product.price)}
               </Typography>
             </div>
           </div>

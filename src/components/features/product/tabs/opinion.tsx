@@ -43,7 +43,7 @@ const Opinion: FC<MenuInformationsType> = ({ product }) => {
   return (
     <>
       <Typography variant="h4" className="font-normal">
-        {`${comments.length} ${t("opinionFor")} ${product.name}`}
+        {`${comments.length} ${t("opinionFor")} ${product?.name}`}
       </Typography>
       {comments.map((comment, index) => (
         <div key={index} className="flex py-4 gap-6">

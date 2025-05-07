@@ -1,5 +1,6 @@
 "use client";
 import { ITEMS_PER_PAGE } from "@/components/constants/constants";
+import CustomPagination from "@/components/re-leaf/CustomPagination";
 import { Typography } from "@/components/re-leaf/Typography";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import {
@@ -17,7 +18,6 @@ import { useTranslations } from "next-intl";
 import { useEffect, useState } from "react";
 import { MdUnfoldMore } from "react-icons/md";
 import ProductCard from "./productCard";
-import CustomPagination from "@/components/re-leaf/CustomPagination";
 
 type ProductsState = {
   data: Product[];
@@ -25,6 +25,11 @@ type ProductsState = {
   page: number;
   pageCount: number;
   pageSize: number;
+};
+
+type SortType = {
+  value: string;
+  order: string;
 };
 
 const ProductList = () => {
@@ -36,8 +41,8 @@ const ProductList = () => {
     pageCount: 1,
     pageSize: ITEMS_PER_PAGE,
   });
-  const [itemsPerPage, setItemsPerPage] = useState<number>(0);
-  const [sortBy, setSortBy] = useState<string>("");
+  const [itemsPerPage, setItemsPerPage] = useState<number>(ITEMS_PER_PAGE);
+  const [sortBy, setSortBy] = useState<SortType>({ value: "", order: "" });
 
   const handlePageChange = (newPage: number) => {
     fetchProducts(newPage);
@@ -45,12 +50,15 @@ const ProductList = () => {
 
   const fetchProducts = async (pageNumber: number) => {
     const pageSize = itemsPerPage || ITEMS_PER_PAGE;
+    const sort = `${sortBy.value || "name"}:${sortBy.order || "asc"}`;
+
     try {
       const { data } = await client.query({
         query: GET_PRODUCTS,
         variables: {
-          page: pageNumber, // index du 1er élément à récupérer
+          page: pageNumber,
           pageSize,
+          sort,
         },
       });
 
@@ -66,9 +74,20 @@ const ProductList = () => {
     }
   };
 
+  const onSelectSort = (sortValue: string) => {
+    setSortBy({ ...sortBy, value: sortValue });
+  };
+
+  const onChangeSortOrder = () => {
+    setSortBy((prevSort) => ({
+      ...prevSort,
+      order: prevSort.order === "asc" ? "desc" : "asc",
+    }));
+  };
+
   useEffect(() => {
     fetchProducts(1);
-  }, [, itemsPerPage]);
+  }, [, itemsPerPage, sortBy]);
 
   return (
     <div>
@@ -96,16 +115,20 @@ const ProductList = () => {
         </div>
         <div className="flex items-center gap-3">
           <Typography variant="p">{`${t("sortBy")} :`}</Typography>
-          <Select value={sortBy} onValueChange={setSortBy}>
+          <Select value={sortBy.value} onValueChange={onSelectSort}>
             <SelectTrigger className="w-[200px]">
               <SelectValue placeholder="Choisir..." />
             </SelectTrigger>
             <SelectContent disablePortal>
-              <SelectItem value="Nom">{t("name")}</SelectItem>
-              <SelectItem value="Prix">{t("price")}</SelectItem>
+              <SelectItem value="name">{t("name")}</SelectItem>
+              <SelectItem value="price">{t("price")}</SelectItem>
             </SelectContent>
           </Select>
-          <MdUnfoldMore className="text-primary cursor-pointer" size={25} />
+          <MdUnfoldMore
+            className="text-primary cursor-pointer"
+            size={25}
+            onClick={onChangeSortOrder}
+          />
         </div>
       </div>
       <div className="grid lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-8">
@@ -125,11 +148,13 @@ const ProductList = () => {
           </AlertDescription>
         </Alert>
       )}
-      <CustomPagination
-        currentPage={products.page}
-        totalPages={products.pageCount}
-        handlePageChange={handlePageChange}
-      />
+      {products.total > itemsPerPage && (
+        <CustomPagination
+          currentPage={products.page}
+          totalPages={products.pageCount}
+          handlePageChange={handlePageChange}
+        />
+      )}
     </div>
   );
 };
