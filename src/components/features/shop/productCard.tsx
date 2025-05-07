@@ -1,20 +1,16 @@
+import { apiUrl } from "@/components/constants/constants";
 import { Typography } from "@/components/re-leaf/Typography";
-import { formatArPrice } from "@/lib/utils";
-import Image, { StaticImageData } from "next/image";
+import { Product } from "@/generated/graphql";
+import { formatEuroPrice } from "@/lib/utils";
+import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { FC, MouseEvent, useState } from "react";
 
-interface ProductType {
-  id: number;
-  name: string;
-  price: number;
-  image: StaticImageData;
-}
-const ProductCard: FC<{ product: ProductType }> = ({ product }) => {
+const ProductCard: FC<{ product: Product }> = ({ product }) => {
   const router = useRouter();
 
   const [liked, setLiked] = useState(false);
-  const showDetails = (id: number) => {
+  const showDetails = (id: string) => {
     router.push(`/products/${id}`);
   };
 
@@ -24,11 +20,14 @@ const ProductCard: FC<{ product: ProductType }> = ({ product }) => {
   };
 
   return (
-    <div onClick={() => showDetails(product.id)} className="cursor-pointer">
+    <div
+      onClick={() => showDetails(product.documentId)}
+      className="cursor-pointer"
+    >
       <div className="min-h-[350px] relative">
-        {product?.image && (
+        {product?.cover_image && (
           <Image
-            src={product.image}
+            src={apiUrl + product?.cover_image?.url}
             fill
             className="object-cover"
             alt={product.name}
@@ -43,23 +42,25 @@ const ProductCard: FC<{ product: ProductType }> = ({ product }) => {
             {liked ? "favorite" : "favorite_border"}
           </span>
         </div>
-
-        <div className="absolute bottom-[20px] pr-3 w-full flex items-center justify-between">
+        <div className="absolute bottom-[20px] pr-3 w-full gap-4 flex items-center justify-between">
           <div
-            className="px-3 py-1"
+            className="px-3 py-1 flex-1"
             style={{
               backgroundImage:
                 "linear-gradient(to right, rgba(182, 195, 53, 1), rgba(182, 195, 53, 0.3)",
             }}
           >
-            <Typography variant="h5" className="text-secondary font-normal">
+            <Typography
+              variant="h5"
+              className="text-secondary font-normal text-[17px]"
+            >
               {product.name}
             </Typography>
             <Typography variant="h5" className="text-brown font-normal">
-              {formatArPrice(product.price)}
+              {formatEuroPrice(product.price)}
             </Typography>
           </div>
-          <div className="w-[50px] h-[50px] bg-brown text-secondary rounded-full flex items-center justify-center cursor-pointer">
+          <div className="w-[50px] h-[50px] bg-brown  text-secondary rounded-full flex items-center justify-center cursor-pointer">
             <span className="material-icons">add_shopping_cart</span>
           </div>
         </div>

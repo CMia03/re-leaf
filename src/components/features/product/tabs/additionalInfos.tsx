@@ -10,13 +10,13 @@ const AdditionalInfos: FC<MenuInformationsType> = ({ product }) => {
       <div className="flex">
         {`${t("weight")} : `}
         <Typography variant="p" className="pl-6">
-          {product.weight}
+          {product?.weight}
         </Typography>
       </div>
       <div className="flex">
         {`${t("size")} : `}
         <Typography variant="p" className="pl-6">
-          {product.size}
+          {product?.size}
         </Typography>
       </div>
     </div>

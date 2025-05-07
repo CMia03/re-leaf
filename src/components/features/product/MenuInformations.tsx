@@ -8,13 +8,13 @@ import {
 import { FC, useState } from "react";
 import { useTranslations } from "next-intl";
 import clsx from "clsx";
-import { ProductType } from "./productDetails";
 import Description from "./tabs/description";
 import AdditionalInfos from "./tabs/additionalInfos";
 import Opinion from "./tabs/opinion";
+import { Product } from "@/generated/graphql";
 
 export interface MenuInformationsType {
-  product: ProductType;
+  product?: Product;
 }
 
 const MenuInformations: FC<MenuInformationsType> = ({ product }) => {

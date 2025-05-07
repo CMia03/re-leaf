@@ -5,6 +5,12 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
-export const formatArPrice = (value: number): string => {
-  return value.toLocaleString("fr-FR").replace(/,/g, ".") + " Ar";
+export const formatEuroPrice = (value: number | null | undefined): string => {
+  if (typeof value !== "number") return "0,00 €";
+  return (
+    value.toLocaleString("fr-FR", {
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2,
+    }) + " €"
+  );
 };
