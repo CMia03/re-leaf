@@ -1,0 +1,30 @@
+{
+  "about": {
+    "aboutParagraphe": {
+      "aboutParagraphe1": "qui sommes-nous ?",
+      "aboutParagrapheDescription1": "Lorem ipsum dolor sit amet, consec tetur adipis cing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo conse quat iruire dolor sum est. ",
+      "aboutParagraphe2": "Notre vision",
+      "aboutParagrapheDescription2": "Lorem ipsum dolor sit amet, consec tetur adipis cing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo conse quat iruire dolor sum est. "
+
+    },
+    "aboutQuote": {
+      "quoteTitle": "Lorem ipsum dolor sit amet, consec tetur adipis cing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+    
+    },
+    
+    "aboutTeam": {
+      "teamTitle": "Notre équipe",
+      "teamDescription": "Lorem ipsum dolor sit amet, consec tetur adipis cing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+    
+    },
+    "abouPourcentage": {
+      "loyalCustomers": "Clients fidèles",
+      "satisfactionRate": "Taux de satisfaction",
+      "productSold": "Produits vendus",
+      "yearsExperience": "Années d’expérience"
+      
+    }
+    
+
+  }
+}
