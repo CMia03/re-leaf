@@ -83,7 +83,10 @@ export const mockCartItems: CartItem[] = [
 const CartList = () => {
   const t = useTranslations("cart");
   const translationButton = useTranslations("button");
-  const handleChangeQuantity = (id: string, value: number) => {};
+  const handleChangeQuantity = (id: string, value: number) => {
+    console.log("quantity Id", id);
+    console.log("quantity value", value);
+  };
 
   return (
     <div>

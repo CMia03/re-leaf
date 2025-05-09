@@ -25,7 +25,7 @@ export default async function RootLayout({
   params: { locale },
 }: Readonly<{
   children: React.ReactNode;
-  params: { locale: string };
+  params: never;
 }>) {
   let messages;
   try {
