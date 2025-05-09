@@ -1,6 +1,6 @@
 import React from 'react'
 import Image from "next/image"
-import imgVideo from "../../../../public/images/video/image copy.png";
+import imgVideo from "../../../../public/images/video/image.png";
 
 function HomeVideo() {
   return (
