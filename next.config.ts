@@ -3,7 +3,7 @@ import createNextIntlPlugin from "next-intl/plugin";
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    domains: ["localhost"], // Ajoutez localhost ici
+    domains: ["localhost", "re-leaf-strapi.onrender.com"],
   },
 };
 
