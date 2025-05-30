@@ -1,13 +1,16 @@
 "use client";
 import { Typography } from "@/components/re-leaf/Typography";
 import { Button } from "@/components/ui/button";
-import { formatEuroPrice } from "@/lib/utils";
+import { fetchTotalCart, formatEuroPrice } from "@/lib/utils";
 import { useTranslations } from "next-intl";
 import { FC, useEffect, useState } from "react";
 import { Rating } from "react-simple-star-rating";
 import MenuInformations from "./MenuInformations";
 import { QuantitySelector } from "@/components/re-leaf/QuantitySelector";
 import { Product } from "@/generated/graphql";
+import { ADD_TO_CART } from "@/graphql/queries/cart";
+import client from "@/graphql/appoloClient";
+import { useCart } from "@/components/contexts/CartContext";
 
 // export type ProductType = {
 //   name: string;
@@ -29,13 +32,34 @@ interface ProductDetailsProps {
 }
 
 const ProductDetails: FC<ProductDetailsProps> = ({ product }) => {
+  const { setTotalCart } = useCart();
   const t = useTranslations("product");
   const [productNumber, setProductNumber] = useState<number>(1);
   const ratingNumbers = 5;
 
   const handleChangeQuantity = (value: number) => setProductNumber(value);
 
-  useEffect(() => {}, []);
+  const addToCart = async () => {
+    try {
+      const { data } = await client.mutate({
+        mutation: ADD_TO_CART,
+        variables: {
+          data: {
+            product: product?.documentId,
+            quantity: productNumber,
+          },
+        },
+      });
+      getTotalCart();
+    } catch (error) {
+      console.error("Erreur lors du chargement des produits :", error);
+    }
+  };
+
+  const getTotalCart = async () => {
+    const total = await fetchTotalCart();
+    setTotalCart(total);
+  };
 
   return (
     <div>
@@ -62,6 +86,7 @@ const ProductDetails: FC<ProductDetailsProps> = ({ product }) => {
           variant="default"
           size="lg"
           className="rounded-full  px-8 cursor-pointer"
+          onClick={addToCart}
         >
           <span>{t("addToCard")}</span>
         </Button>

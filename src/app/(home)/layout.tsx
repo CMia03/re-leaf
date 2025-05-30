@@ -1,5 +1,6 @@
 import Footer from "@/components/features/Footer";
 import Header from "@/components/features/Header";
+import { CartProvider } from "@/components/contexts/CartContext";
 
 export default async function HomeLayout({
   children,
@@ -9,12 +10,14 @@ export default async function HomeLayout({
   return (
     <div className="relative flex min-h-screen overflow-hidden">
       <div className="w-full flex flex-col">
-        <main>
-          <Header />
-          {/* <div className="lg:h-[165px] h-[169px]"></div> */}
-          {children}
-          <Footer />
-        </main>
+        <CartProvider>
+          <main>
+            <Header />
+            {/* <div className="lg:h-[165px] h-[169px]"></div> */}
+            {children}
+            <Footer />
+          </main>
+        </CartProvider>
       </div>
     </div>
   );
