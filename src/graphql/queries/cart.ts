@@ -1,24 +1,33 @@
 import { gql } from "@apollo/client";
 
 export const GET_CART = gql`
-  query GetCart {
-  productQuots {
-    documentId
-    product {
-      name
+  query GetCart($page: Int!, $pageSize: Int) {
+    productQuots(pagination: { page: $page, pageSize: $pageSize }) {
       documentId
-      subcategory_id {
+      product {
         name
+        documentId
+        subcategory_id {
+          name
+        }
+        cover_image {
+          name
+          url
+        }
+        price
       }
-      cover_image {
-        name
-        url
-      }
-      price
+      quantity
     }
-    quantity
+
+    productQuots_connection(pagination: { page: $page, pageSize: $pageSize }) {
+      pageInfo {
+        total
+        pageCount
+        pageSize
+        page
+      }
+    }
   }
-}
 `;
 
 export const ADD_TO_CART = gql`
@@ -32,7 +41,7 @@ export const ADD_TO_CART = gql`
   }
 `;
 
-export const GET_TOTAL_CART = gql `
+export const GET_TOTAL_CART = gql`
   query GetTotalCart {
     productQuots_connection {
       pageInfo {
@@ -42,12 +51,10 @@ export const GET_TOTAL_CART = gql `
   }
 `;
 
-export const REMOVE_FROM_CART = gql `
-  mutation RemoveFromCart ($documentId: ID!) {
+export const REMOVE_FROM_CART = gql`
+  mutation RemoveFromCart($documentId: ID!) {
     deleteProductQuot(documentId: $documentId) {
       documentId
     }
   }
 `;
-
-

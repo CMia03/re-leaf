@@ -1,9 +1,17 @@
 "use client";
-import { apiUrl } from "@/components/constants/constants";
+import { apiUrl, ITEMS_PER_PAGE } from "@/components/constants/constants";
 import { useCart } from "@/components/contexts/CartContext";
 import { QuantitySelector } from "@/components/re-leaf/QuantitySelector";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { Typography } from "@/components/re-leaf/Typography";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import {
   Table,
   TableHeader,
@@ -21,6 +29,9 @@ import { Maybe } from "graphql/jsutils/Maybe";
 import { useTranslations } from "next-intl";
 import { useEffect, useState } from "react";
 import { MdClose } from "react-icons/md";
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
+import { InfoIcon } from "lucide-react";
+import CustomPagination from "@/components/re-leaf/CustomPagination";
 
 //   {
 //     id: "oil-001",
@@ -76,26 +87,61 @@ import { MdClose } from "react-icons/md";
 //     category: "Bien-être",
 //   },
 // ];
+
+type ProductQuotStates = {
+  data: ProductQuot[];
+  total: number;
+  page: number;
+  pageCount: number;
+  pageSize: number;
+};
+
 const CartList = () => {
   const { setTotalCart } = useCart();
-  const [cartList, setCartList] = useState<ProductQuot[]>([]);
+  const [cartList, setCartList] = useState<ProductQuotStates>({
+    data: [],
+    total: 0,
+    page: 1,
+    pageCount: 1,
+    pageSize: ITEMS_PER_PAGE,
+  });
+  const [itemsPerPage, setItemsPerPage] = useState<number>(ITEMS_PER_PAGE);
+
   const t = useTranslations("cart");
+  const tHeader = useTranslations("header");
   const translationButton = useTranslations("button");
   const handleChangeQuantity = (id: string | undefined, value: number) => {};
 
+  const handlePageChange = (newPage: number) => {
+    fetchCarts(newPage);
+  };
+
   const fetchCarts = async (pageNumber: number) => {
-    // const pageSize = itemsPerPage || ITEMS_PER_PAGE;
+    const pageSize = itemsPerPage || ITEMS_PER_PAGE;
     // const sort = `${sortBy.value || "name"}:${sortBy.order || "asc"}`;
 
     try {
       const { data } = await client.query({
         query: GET_CART,
+        variables: {
+          page: pageNumber,
+          pageSize,
+        },
         fetchPolicy: "network-only",
       });
 
-      setCartList(data.productQuots);
+      setCartList({
+        data: data.productQuots,
+        total: data.productQuots_connection.pageInfo.total,
+        page: data.productQuots_connection.pageInfo.page,
+        pageCount: data.productQuots_connection.pageInfo.pageCount,
+        pageSize: data.productQuots_connection.pageInfo.pageSize,
+      });
     } catch (error) {
-      console.error("Erreur lors du chargement des produits :", error);
+      console.error(
+        "Erreur lors du chargement des produits dans le panier :",
+        error
+      );
     }
   };
 
@@ -134,10 +180,40 @@ const CartList = () => {
 
   useEffect(() => {
     fetchCarts(1);
-  }, []);
+  }, [, itemsPerPage]);
 
   return (
     <div>
+      <div className="flex items-center gap-3 mb-2">
+        <Typography variant="p"> {`${tHeader("show")} :`} </Typography>
+        <Select
+          value={itemsPerPage ? itemsPerPage.toString() : ""}
+          onValueChange={(value) => setItemsPerPage(parseInt(value))}
+        >
+          <SelectTrigger className="w-auto">
+            <SelectValue placeholder="Choisir..." />
+          </SelectTrigger>
+          <SelectContent disablePortal>
+            {[...Array(9)].map((_, i) => {
+              const value = (i + 1).toString();
+              return (
+                <SelectItem key={value} value={value}>
+                  {value}
+                </SelectItem>
+              );
+            })}
+          </SelectContent>
+        </Select>
+      </div>
+      {cartList.total === 0 && (
+        <Alert>
+          <InfoIcon />
+          <AlertTitle>Pannier vide</AlertTitle>
+          <AlertDescription>
+            Veuillez ajouter des produits au panier pour commander.
+          </AlertDescription>
+        </Alert>
+      )}
       <Table>
         <TableHeader>
           <TableRow>
@@ -150,7 +226,7 @@ const CartList = () => {
           </TableRow>
         </TableHeader>
         <TableBody>
-          {cartList.map((item, index) => (
+          {cartList.data.map((item, index) => (
             <TableRow key={index}>
               <TableCell>
                 <div
@@ -220,6 +296,13 @@ const CartList = () => {
           <span>{translationButton("updateCart")}</span>
         </Button>
       </div>
+      {cartList.total > itemsPerPage && (
+        <CustomPagination
+          currentPage={cartList.page}
+          totalPages={cartList.pageCount}
+          handlePageChange={handlePageChange}
+        />
+      )}
     </div>
   );
 };
