@@ -78,3 +78,11 @@ export const REMOVE_FROM_CART = gql`
     }
   }
 `;
+
+export const UPDATE_CART_QUANTITY = gql`
+  mutation UpdateProductQuot($documentId: ID!, $data: ProductQuotInput!) {
+    updateProductQuot(documentId: $documentId, data: $data) {
+      quantity
+    }
+  }
+`;

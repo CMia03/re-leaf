@@ -1,6 +1,7 @@
 {
   "cart": {
     "cart": "Panier",
+    "show": "Afficher",
     "codePlaceholder": "Code coupon",
     "product": "Produit",
     "price": "Prix",

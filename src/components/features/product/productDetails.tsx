@@ -3,15 +3,16 @@ import { Typography } from "@/components/re-leaf/Typography";
 import { Button } from "@/components/ui/button";
 import { fetchTotalCart, formatEuroPrice } from "@/lib/utils";
 import { useTranslations } from "next-intl";
-import { FC, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import { Rating } from "react-simple-star-rating";
 import MenuInformations from "./MenuInformations";
 import { QuantitySelector } from "@/components/re-leaf/QuantitySelector";
-import { Product } from "@/generated/graphql";
-import { ADD_TO_CART } from "@/graphql/queries/cart";
+import { Product, ProductQuot } from "@/generated/graphql";
+import { ADD_TO_CART, GET_ALL_CART } from "@/graphql/queries/cart";
 import client from "@/graphql/appoloClient";
 import { useCart } from "@/components/contexts/CartContext";
 import { toast } from "sonner";
+import { fetchAllCart } from "./productActions";
 
 interface ProductDetailsProps {
   product?: Product;
@@ -23,7 +24,13 @@ const ProductDetails: FC<ProductDetailsProps> = ({ product }) => {
   const [productNumber, setProductNumber] = useState<number>(1);
   const ratingNumbers = 5;
 
+  const [allCart, setAllCart] = useState<ProductQuot[]>([]);
   const handleChangeQuantity = (value: number) => setProductNumber(value);
+
+  const fetchCart = async () => {
+    const cart = await fetchAllCart();
+    setAllCart(cart);
+  };
 
   const addToCart = async () => {
     try {
@@ -50,10 +57,19 @@ const ProductDetails: FC<ProductDetailsProps> = ({ product }) => {
     }
   };
 
+  const cartItem = allCart?.find(
+    (item) => item.product?.documentId === product?.documentId
+  );
+  const isInCart = Boolean(cartItem);
+
   const getTotalCart = async () => {
     const total = await fetchTotalCart();
     setTotalCart(total);
   };
+
+  useEffect(() => {
+    fetchCart();
+  }, []);
 
   return (
     <div>
@@ -70,11 +86,22 @@ const ProductDetails: FC<ProductDetailsProps> = ({ product }) => {
       <Typography variant="p" className="mb-4">
         {product?.description}
       </Typography>
+      <div className="mb-2">
+        {isInCart ? (
+          <span className="text-xl">
+            {t("productToCard")}
+            {cartItem?.quantity}
+          </span>
+        ) : (
+          ""
+        )}
+      </div>
       <div className="flex items-center gap-4 mb-8.5">
         <QuantitySelector
           value={productNumber}
           onChange={(newQty) => handleChangeQuantity(newQty)}
         />
+
         <Button
           data-slot="carousel-previous"
           variant="default"
@@ -82,7 +109,12 @@ const ProductDetails: FC<ProductDetailsProps> = ({ product }) => {
           className="rounded-full  px-8 cursor-pointer"
           onClick={addToCart}
         >
-          <span>{t("addToCard")}</span>
+          {/* <span className="text-xl">{cartItem?.quantity}</span> */}
+          {isInCart ? (
+            <span>{t("updateCard")}</span>
+          ) : (
+            <span>{t("addToCard")}</span>
+          )}
         </Button>
       </div>
       <div className="flex flex-col gap-3 mb-20">

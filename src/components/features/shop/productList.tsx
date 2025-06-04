@@ -21,6 +21,7 @@ import ProductCard from "./productCard";
 import { fetchTotalCart } from "@/lib/utils";
 import { useCart } from "@/components/contexts/CartContext";
 import { GET_ALL_CART } from "@/graphql/queries/cart";
+import { fetchAllCart } from "../product/productActions";
 
 type ProductsState = {
   data: Product[];
@@ -79,14 +80,6 @@ const ProductList = () => {
     }
   };
 
-  const fetchAllCart = async () => {
-    const { data } = await client.query({
-      query: GET_ALL_CART,
-      fetchPolicy: "network-only",
-    });
-    setAllCart(data.productQuots);
-  };
-
   const onSelectSort = (sortValue: string) => {
     setSortBy({ ...sortBy, value: sortValue });
   };
@@ -98,15 +91,20 @@ const ProductList = () => {
     }));
   };
 
+  const fetchCart = async () => {
+    const cart = await fetchAllCart();
+    setAllCart(cart);
+  };
+
   const getTotalCart = async () => {
-    await fetchAllCart();
     const total = await fetchTotalCart();
     setTotalCart(total);
+    fetchCart();
   };
 
   useEffect(() => {
     fetchProducts(1);
-    fetchAllCart();
+    fetchCart();
   }, [, itemsPerPage, sortBy]);
 
   return (

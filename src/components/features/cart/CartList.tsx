@@ -32,7 +32,7 @@ import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { InfoIcon } from "lucide-react";
 import CustomPagination from "@/components/re-leaf/CustomPagination";
 import { toast } from "sonner";
-import CartItem from "./cartItem";
+import CartItem from "./CartItem";
 
 type ProductQuotStates = {
   data: ProductQuot[];
