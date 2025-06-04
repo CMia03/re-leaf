@@ -14,79 +14,23 @@ import {
 } from "@/components/ui/select";
 import {
   Table,
-  TableHeader,
   TableBody,
-  TableRow,
-  TableHead,
   TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
 } from "@/components/ui/table";
-import { Product, ProductQuot } from "@/generated/graphql";
+import { ProductQuot } from "@/generated/graphql";
 import client from "@/graphql/appoloClient";
 import { GET_CART, REMOVE_FROM_CART } from "@/graphql/queries/cart";
 import { fetchTotalCart } from "@/lib/utils";
-import { useMutation } from "@apollo/client";
 import { Maybe } from "graphql/jsutils/Maybe";
 import { useTranslations } from "next-intl";
-import { useEffect, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import { MdClose } from "react-icons/md";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { InfoIcon } from "lucide-react";
 import CustomPagination from "@/components/re-leaf/CustomPagination";
-
-//   {
-//     id: "oil-001",
-//     name: "Huile Essentielle de Lavande",
-//     description: "Apaisante et relaxante, idéale pour le sommeil et le stress.",
-//     imageUrl:
-//       "https://img.passeportsante.net/1200x675/2021-05-03/i103924-huile-essentielle-lavande-vraie.webp",
-//     price: 7.99,
-//     quantity: 2,
-//     stock: 50,
-//     volume: "10ml",
-//     origin: "Provence, France",
-//     category: "Relaxation",
-//   },
-//   {
-//     id: "oil-002",
-//     name: "Huile Essentielle de Menthe Poivrée",
-//     description: "Revigorante, utilisée pour les maux de tête et la digestion.",
-//     imageUrl:
-//       "https://comptoirdeshuiles.com/cdn/shop/files/Hessentielle_menthe_poivree.webp?v=1726661622",
-//     price: 6.49,
-//     quantity: 1,
-//     stock: 30,
-//     volume: "10ml",
-//     origin: "Inde",
-//     category: "Respiration",
-//   },
-//   {
-//     id: "oil-003",
-//     name: "Huile Essentielle d’Eucalyptus",
-//     description: "Décongestionnante, idéale en cas de rhume ou de toux.",
-//     imageUrl:
-//       "https://ermada.fr/wp-content/uploads/2023/04/ermada-huile-essentielle-eucalyptus-madagascar.jpg",
-//     price: 5.99,
-//     quantity: 3,
-//     stock: 40,
-//     volume: "15ml",
-//     origin: "Australie",
-//     category: "Respiration",
-//   },
-//   {
-//     id: "oil-004",
-//     name: "Huile Essentielle d’Orange Douce",
-//     description:
-//       "Calmante et réconfortante, parfaite pour diffuser à la maison.",
-//     imageUrl:
-//       "https://www.lessencedesnotes.com/cdn/shop/articles/Romarin_3.png?v=1733328574",
-//     price: 4.99,
-//     quantity: 1,
-//     stock: 25,
-//     volume: "10ml",
-//     origin: "Brésil",
-//     category: "Bien-être",
-//   },
-// ];
 
 type ProductQuotStates = {
   data: ProductQuot[];
@@ -96,7 +40,9 @@ type ProductQuotStates = {
   pageSize: number;
 };
 
-const CartList = () => {
+const CartList: FC<{
+  getLocalTotalPrice: (cartList: ProductQuot[]) => void;
+}> = ({ getLocalTotalPrice }) => {
   const { setTotalCart } = useCart();
   const [cartList, setCartList] = useState<ProductQuotStates>({
     data: [],
@@ -108,7 +54,7 @@ const CartList = () => {
   const [itemsPerPage, setItemsPerPage] = useState<number>(ITEMS_PER_PAGE);
 
   const t = useTranslations("cart");
-  const tHeader = useTranslations("header");
+  const tHeader = useTranslations("shop");
   const translationButton = useTranslations("button");
   const handleChangeQuantity = (id: string | undefined, value: number) => {};
 
@@ -146,8 +92,7 @@ const CartList = () => {
   };
 
   const handleRefreshList = async () => {
-    fetchCarts(1);
-    getTotalCart();
+    await fetchCarts(1);
   };
 
   const getTotalCart = async () => {
@@ -181,6 +126,13 @@ const CartList = () => {
   useEffect(() => {
     fetchCarts(1);
   }, [, itemsPerPage]);
+
+  useEffect(() => {
+    if (cartList?.data) {
+      getLocalTotalPrice(cartList.data);
+      getTotalCart();
+    }
+  }, [cartList]);
 
   return (
     <div>
@@ -288,13 +240,13 @@ const CartList = () => {
             <span>{translationButton("apply")}</span>
           </Button>
         </div>
-        <Button
+        {/* <Button
           variant={"default"}
           size={"lg"}
           className="rounded-full text-secondary cursor-pointer"
         >
           <span>{translationButton("updateCart")}</span>
-        </Button>
+        </Button> */}
       </div>
       {cartList.total > itemsPerPage && (
         <CustomPagination

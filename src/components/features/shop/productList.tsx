@@ -18,6 +18,8 @@ import { useTranslations } from "next-intl";
 import { useEffect, useState } from "react";
 import { MdUnfoldMore } from "react-icons/md";
 import ProductCard from "./productCard";
+import { fetchTotalCart } from "@/lib/utils";
+import { useCart } from "@/components/contexts/CartContext";
 
 type ProductsState = {
   data: Product[];
@@ -33,6 +35,7 @@ type SortType = {
 };
 
 const ProductList = () => {
+  const { setTotalCart } = useCart();
   const t = useTranslations("shop");
   const [products, setProducts] = useState<ProductsState>({
     data: [],
@@ -85,6 +88,11 @@ const ProductList = () => {
     }));
   };
 
+  const getTotalCart = async () => {
+    const total = await fetchTotalCart();
+    setTotalCart(total);
+  };
+
   useEffect(() => {
     fetchProducts(1);
   }, [, itemsPerPage, sortBy]);
@@ -134,7 +142,11 @@ const ProductList = () => {
       <div className="grid lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-8">
         {products.data &&
           products.data.map((product) => (
-            <ProductCard key={product.documentId} product={product} />
+            <ProductCard
+              key={product.documentId}
+              product={product}
+              getTotalCart={getTotalCart}
+            />
           ))}
       </div>
       {products.total === 0 && (

@@ -1,12 +1,17 @@
 import { apiUrl } from "@/components/constants/constants";
 import { Typography } from "@/components/re-leaf/Typography";
 import { Product } from "@/generated/graphql";
+import client from "@/graphql/appoloClient";
+import { ADD_TO_CART } from "@/graphql/queries/cart";
 import { formatEuroPrice } from "@/lib/utils";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { FC, MouseEvent, useState } from "react";
 
-const ProductCard: FC<{ product: Product }> = ({ product }) => {
+const ProductCard: FC<{ product: Product; getTotalCart: () => void }> = ({
+  product,
+  getTotalCart,
+}) => {
   const router = useRouter();
 
   const [liked, setLiked] = useState(false);
@@ -17,6 +22,24 @@ const ProductCard: FC<{ product: Product }> = ({ product }) => {
   const addOrRemoveFavorite = (e: MouseEvent<HTMLDivElement>) => {
     e.stopPropagation();
     setLiked(!liked);
+  };
+
+  const addToCart = async (e: MouseEvent<HTMLDivElement>) => {
+    e.stopPropagation();
+    try {
+      const { data } = await client.mutate({
+        mutation: ADD_TO_CART,
+        variables: {
+          data: {
+            product: product?.documentId,
+            quantity: 1,
+          },
+        },
+      });
+      getTotalCart();
+    } catch (error) {
+      console.error("Erreur lors du chargement des produits :", error);
+    }
   };
 
   return (
@@ -60,7 +83,10 @@ const ProductCard: FC<{ product: Product }> = ({ product }) => {
               {formatEuroPrice(product.price)}
             </Typography>
           </div>
-          <div className="w-[50px] h-[50px] bg-brown  text-secondary rounded-full flex items-center justify-center cursor-pointer">
+          <div
+            className="w-[50px] h-[50px] bg-brown  text-secondary rounded-full flex items-center justify-center cursor-pointer"
+            onClick={addToCart}
+          >
             <span className="material-icons">add_shopping_cart</span>
           </div>
         </div>
