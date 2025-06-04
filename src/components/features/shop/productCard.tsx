@@ -1,17 +1,19 @@
 import { apiUrl } from "@/components/constants/constants";
 import { Typography } from "@/components/re-leaf/Typography";
-import { Product } from "@/generated/graphql";
+import { Product, ProductQuot } from "@/generated/graphql";
 import client from "@/graphql/appoloClient";
 import { ADD_TO_CART } from "@/graphql/queries/cart";
 import { formatEuroPrice } from "@/lib/utils";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { FC, MouseEvent, useState } from "react";
+import { toast } from "sonner";
 
-const ProductCard: FC<{ product: Product; getTotalCart: () => void }> = ({
-  product,
-  getTotalCart,
-}) => {
+const ProductCard: FC<{
+  product: Product;
+  getTotalCart: () => void;
+  allCart: ProductQuot[];
+}> = ({ product, getTotalCart, allCart }) => {
   const router = useRouter();
 
   const [liked, setLiked] = useState(false);
@@ -27,7 +29,7 @@ const ProductCard: FC<{ product: Product; getTotalCart: () => void }> = ({
   const addToCart = async (e: MouseEvent<HTMLDivElement>) => {
     e.stopPropagation();
     try {
-      const { data } = await client.mutate({
+      const { data, errors } = await client.mutate({
         mutation: ADD_TO_CART,
         variables: {
           data: {
@@ -36,12 +38,18 @@ const ProductCard: FC<{ product: Product; getTotalCart: () => void }> = ({
           },
         },
       });
-      getTotalCart();
+      if (!errors) {
+        toast.success("Le produit a bien été ajouté au panier.");
+        getTotalCart();
+      }
     } catch (error) {
       console.error("Erreur lors du chargement des produits :", error);
     }
   };
-
+  const cartItem = allCart?.find(
+    (item) => item.product?.documentId === product.documentId
+  );
+  const isInCart = Boolean(cartItem);
   return (
     <div
       onClick={() => showDetails(product.documentId)}
@@ -84,10 +92,15 @@ const ProductCard: FC<{ product: Product; getTotalCart: () => void }> = ({
             </Typography>
           </div>
           <div
-            className="w-[50px] h-[50px] bg-brown  text-secondary rounded-full flex items-center justify-center cursor-pointer"
+            className={`w-[50px] h-[50px] rounded-full flex items-center justify-center cursor-pointer
+    ${isInCart ? "bg-white text-black" : "bg-brown text-secondary"}`}
             onClick={addToCart}
           >
-            <span className="material-icons">add_shopping_cart</span>
+            {isInCart ? (
+              <span className="text-xl">{cartItem?.quantity}</span>
+            ) : (
+              <span className="material-icons">add_shopping_cart</span>
+            )}
           </div>
         </div>
       </div>

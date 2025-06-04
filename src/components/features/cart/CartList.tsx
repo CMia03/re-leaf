@@ -31,6 +31,8 @@ import { MdClose } from "react-icons/md";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { InfoIcon } from "lucide-react";
 import CustomPagination from "@/components/re-leaf/CustomPagination";
+import { toast } from "sonner";
+import CartItem from "./cartItem";
 
 type ProductQuotStates = {
   data: ProductQuot[];
@@ -110,6 +112,7 @@ const CartList: FC<{
           },
         })
         .then(({ data, errors }) => {
+          toast.success("Le produit a bien été retiré.");
           handleRefreshList();
         });
     } catch (error) {}
@@ -166,65 +169,30 @@ const CartList: FC<{
           </AlertDescription>
         </Alert>
       )}
-      <Table>
-        <TableHeader>
-          <TableRow>
-            <TableHead></TableHead>
-            <TableHead></TableHead>
-            <TableHead>{t("product")}</TableHead>
-            <TableHead>{t("unitPrice")}</TableHead>
-            <TableHead>{t("quantity")}</TableHead>
-            <TableHead>{t("total")}</TableHead>
-          </TableRow>
-        </TableHeader>
-        <TableBody>
-          {cartList.data.map((item, index) => (
-            <TableRow key={index}>
-              <TableCell>
-                <div
-                  className="text-lg text-muted-foreground cursor-pointer"
-                  onClick={() => handleRemoveItem(item.documentId)}
-                >
-                  <MdClose />
-                </div>
-              </TableCell>
-              <TableCell>
-                <div className="flex items-center gap-3">
-                  <img
-                    src={`${apiUrl}${item.product?.cover_image.url}`}
-                    alt={item.product?.cover_image.name}
-                    className="w-10 h-10 object-cover rounded"
-                  />
-                </div>
-              </TableCell>
-              <TableCell>
-                <div className="flex items-center gap-3">
-                  <div>
-                    <div className="font-medium">{item.product?.name}</div>
-                    <div className="text-sm text-muted-foreground">
-                      {item.product?.subcategory_id?.name}
-                    </div>
-                  </div>
-                </div>
-              </TableCell>
-              <TableCell>{item.product?.price?.toFixed(2)} €</TableCell>
-              <TableCell>
-                <div className="flex items-center">
-                  <QuantitySelector
-                    value={item.quantity}
-                    onChange={(value) =>
-                      handleChangeQuantity(item.product?.documentId, value)
-                    }
-                  />
-                </div>
-              </TableCell>
-              <TableCell>
-                {getTotalPrice(item.quantity, item.product?.price)} €
-              </TableCell>
+      {cartList.total > 0 && (
+        <Table className="w-full border-separate border-spacing-y-3">
+          <TableHeader>
+            <TableRow className="border-b border-b-[var(--border)]">
+              <TableHead></TableHead>
+              <TableHead></TableHead>
+              <TableHead>{t("product")}</TableHead>
+              <TableHead>{t("unitPrice")}</TableHead>
+              <TableHead>{t("quantity")}</TableHead>
+              <TableHead>{t("total")}</TableHead>
             </TableRow>
-          ))}
-        </TableBody>
-      </Table>
+          </TableHeader>
+          <TableBody className="w-full border-separate border-spacing-y-3">
+            {cartList.data.map((item, index) => (
+              <CartItem
+                key={index}
+                item={item}
+                onRemove={handleRemoveItem}
+                getTotalPrice={getTotalPrice}
+              />
+            ))}
+          </TableBody>
+        </Table>
+      )}
 
       <div className="flex items-center lg:justify-between justify-center my-8.5 gap-6 flex-wrap">
         <div className="relative lg:w-[30%] w-[400px] ">
@@ -240,13 +208,13 @@ const CartList: FC<{
             <span>{translationButton("apply")}</span>
           </Button>
         </div>
-        {/* <Button
+        <Button
           variant={"default"}
           size={"lg"}
           className="rounded-full text-secondary cursor-pointer"
         >
           <span>{translationButton("updateCart")}</span>
-        </Button> */}
+        </Button>
       </div>
       {cartList.total > itemsPerPage && (
         <CustomPagination

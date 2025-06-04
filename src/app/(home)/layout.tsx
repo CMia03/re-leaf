@@ -1,7 +1,7 @@
 import Footer from "@/components/features/Footer";
 import Header from "@/components/features/Header";
 import { CartProvider } from "@/components/contexts/CartContext";
-
+import { Toaster } from "@/components/ui/sonner";
 export default async function HomeLayout({
   children,
 }: {
@@ -16,6 +16,7 @@ export default async function HomeLayout({
             {/* <div className="lg:h-[165px] h-[169px]"></div> */}
             {children}
             <Footer />
+            <Toaster />
           </main>
         </CartProvider>
       </div>

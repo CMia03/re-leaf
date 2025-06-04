@@ -3,7 +3,7 @@ import { Typography } from "@/components/re-leaf/Typography";
 import { Button } from "@/components/ui/button";
 import { fetchTotalCart, formatEuroPrice } from "@/lib/utils";
 import { useTranslations } from "next-intl";
-import { FC, useEffect, useState } from "react";
+import { FC, useState } from "react";
 import { Rating } from "react-simple-star-rating";
 import MenuInformations from "./MenuInformations";
 import { QuantitySelector } from "@/components/re-leaf/QuantitySelector";
@@ -11,21 +11,7 @@ import { Product } from "@/generated/graphql";
 import { ADD_TO_CART } from "@/graphql/queries/cart";
 import client from "@/graphql/appoloClient";
 import { useCart } from "@/components/contexts/CartContext";
-
-// export type ProductType = {
-//   name: string;
-//   price: number;
-//   description: string;
-//   category: string;
-//   sku: string;
-//   tags: {
-//     id: string;
-//     label: string;
-//   }[];
-//   descriptionTab: string;
-//   weight: string;
-//   size: string;
-// };
+import { toast } from "sonner";
 
 interface ProductDetailsProps {
   product?: Product;
@@ -41,7 +27,7 @@ const ProductDetails: FC<ProductDetailsProps> = ({ product }) => {
 
   const addToCart = async () => {
     try {
-      const { data } = await client.mutate({
+      const { data, errors } = await client.mutate({
         mutation: ADD_TO_CART,
         variables: {
           data: {
@@ -50,7 +36,15 @@ const ProductDetails: FC<ProductDetailsProps> = ({ product }) => {
           },
         },
       });
-      getTotalCart();
+
+      if (!errors) {
+        toast.success("Le produit a bien été ajouté.");
+        getTotalCart();
+      } else {
+        toast("Erreur !", {
+          description: "Erreur innatendue",
+        });
+      }
     } catch (error) {
       console.error("Erreur lors du chargement des produits :", error);
     }

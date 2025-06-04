@@ -29,6 +29,26 @@ export const GET_CART = gql`
     }
   }
 `;
+export const GET_ALL_CART = gql`
+  query GetCart {
+    productQuots {
+      documentId
+      product {
+        name
+        documentId
+        subcategory_id {
+          name
+        }
+        cover_image {
+          name
+          url
+        }
+        price
+      }
+      quantity
+    }
+  }
+`;
 
 export const ADD_TO_CART = gql`
   mutation AddToCart($data: ProductQuotInput!) {

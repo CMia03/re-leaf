@@ -10,7 +10,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { Product } from "@/generated/graphql";
+import { Product, ProductQuot } from "@/generated/graphql";
 import client from "@/graphql/appoloClient";
 import { GET_PRODUCTS } from "@/graphql/queries/products";
 import { InfoIcon } from "lucide-react";
@@ -20,6 +20,7 @@ import { MdUnfoldMore } from "react-icons/md";
 import ProductCard from "./productCard";
 import { fetchTotalCart } from "@/lib/utils";
 import { useCart } from "@/components/contexts/CartContext";
+import { GET_ALL_CART } from "@/graphql/queries/cart";
 
 type ProductsState = {
   data: Product[];
@@ -45,6 +46,7 @@ const ProductList = () => {
     pageSize: ITEMS_PER_PAGE,
   });
   const [itemsPerPage, setItemsPerPage] = useState<number>(ITEMS_PER_PAGE);
+  const [allCart, setAllCart] = useState<ProductQuot[]>([]);
   const [sortBy, setSortBy] = useState<SortType>({ value: "", order: "" });
 
   const handlePageChange = (newPage: number) => {
@@ -77,6 +79,14 @@ const ProductList = () => {
     }
   };
 
+  const fetchAllCart = async () => {
+    const { data } = await client.query({
+      query: GET_ALL_CART,
+      fetchPolicy: "network-only",
+    });
+    setAllCart(data.productQuots);
+  };
+
   const onSelectSort = (sortValue: string) => {
     setSortBy({ ...sortBy, value: sortValue });
   };
@@ -89,12 +99,14 @@ const ProductList = () => {
   };
 
   const getTotalCart = async () => {
+    await fetchAllCart();
     const total = await fetchTotalCart();
     setTotalCart(total);
   };
 
   useEffect(() => {
     fetchProducts(1);
+    fetchAllCart();
   }, [, itemsPerPage, sortBy]);
 
   return (
@@ -145,6 +157,7 @@ const ProductList = () => {
             <ProductCard
               key={product.documentId}
               product={product}
+              allCart={allCart}
               getTotalCart={getTotalCart}
             />
           ))}
