@@ -1,59 +1,47 @@
-import React from 'react'
+import React from "react";
 import { Typography } from "@/components/re-leaf/Typography";
-import { Button } from "@/components/ui/button"
-import { ChevronRight } from "lucide-react"
+import { Button } from "@/components/ui/button";
+import { ChevronRight } from "lucide-react";
 
-import blog1 from '../../../../public/images/blog/blog1.png'
-import blog2 from '../../../../public/images/blog/blog2.png'
-import flowerAbs from '../../../../public/images/flowerAbsoluteBlog.png'
+import blog1 from "../../../../public/images/blog/blog1.png";
+import blog2 from "../../../../public/images/blog/blog2.png";
+import flowerAbs from "../../../../public/images/flowerAbsoluteBlog.png";
 // import image2 from '../../../../public/images/engagements/image2.png'
 import Image from "next/image";
 import { Card, CardContent } from "@/components/ui/card";
 import { useTranslations } from "next-intl";
-
+import ArticleBlog from "../blog/articleBlog";
 
 function BlogAndConseil() {
   const t = useTranslations("home");
-  const translate = useTranslations("home.blog&adviceCard")
-  
+  const translate = useTranslations("home.blog&adviceCard");
 
-  const data = [
-    {
-      image: blog1,
-      dateNumber: "15",
-      month: translate('month').toUpperCase(),
-      description: translate('description1'),
-      title: translate('title1').toUpperCase(),
-      loremDesc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis'
-    },
-    {
-      image: blog2,
-      dateNumber: "28",
-      month: translate('month2').toUpperCase(),
-      description: translate('description2'),
-      title: translate('title2').toUpperCase(),
-      loremDesc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis'
-    },
-
-  ]
   return (
-    <div className='relative w-full pt-[50px]'>
+    <div className="relative w-full pt-[50px]">
       <section>
         <div className="flex flex-row justify-between items-center mt-10 mx-5">
-          <Typography variant="h2" className="justify-center border-none rounded-none text-center">{t('blog&advice').toUpperCase()} </Typography>
-          <Button variant="outline" className="border-1 border-black border-solid p-6 w-max cursor-pointer  rounded-full">
+          <Typography
+            variant="h2"
+            className="justify-center border-none rounded-none text-center"
+          >
+            {t("blog&advice").toUpperCase()}{" "}
+          </Typography>
+          <Button
+            variant="outline"
+            className="border-1 border-black border-solid p-6 w-max cursor-pointer  rounded-full"
+          >
             <Typography variant="p" className="text-black ps-6">
-              {t('seeAllArticle')}
+              {t("seeAllArticle")}
             </Typography>
 
-            <ChevronRight className='scale-[1.2] me-6'/>
+            <ChevronRight className="scale-[1.2] me-6" />
           </Button>
         </div>
       </section>
 
       {/* SECTION ARTICLE */}
       <section>
-        <div className="flex flex-row justify-between items-center">
+        {/* <div className="flex flex-row justify-between items-center">
 
           {data.map((item, index) => (
             <div key={index} className='bg-red-700 flex-1'>
@@ -75,7 +63,6 @@ function BlogAndConseil() {
                     </Button>
                   </div>
 
-                  {/* DATE */}
                   <div className='absolute top-0 right-0 mr-11 mt-11 rounded-tl-[230px] h-[7em] w-[5em] bg-[#B6C335] rounded-b-none rounded-tr-[230px] flex flex-col gap-0 justify-center items-center p-3'>
                     <Typography variant="h1" className="text-white text-md font-500">{item.dateNumber}</Typography>
                     <Typography variant="p" className="text-white text-md font-500">{item.month}</Typography>
@@ -84,18 +71,17 @@ function BlogAndConseil() {
               </Card>
             </div>
           ))}
-        </div>
-
+        </div> */}
+        <ArticleBlog searchTerm={""} />
       </section>
-      
+
       <Image
         src={flowerAbs}
-        alt={'flower'}
-
+        alt={"flower"}
         className="absolute bottom-0 right-0 object-contain w-[8em] h-[16em] mb-[-5em]"
       />
     </div>
-  )
+  );
 }
 
-export default BlogAndConseil
+export default BlogAndConseil;

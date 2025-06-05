@@ -12,12 +12,14 @@ import { GET_ARTICLES } from "@/graphql/queries/articles";
 import client from "@/graphql/appoloClient";
 import { Blog } from "@/generated/graphql";
 import { apiUrl } from "@/components/constants/constants";
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
+import { InfoIcon } from "lucide-react";
 
 type BlogWithDate = Blog & {
   dateNumber: number;
   month: string;
 };
-const ArticleBlog = () => {
+const ArticleBlog = ({ searchTerm }: { searchTerm: string }) => {
   const t = useTranslations("home");
   const translate = useTranslations("home.blog&adviceCard");
 
@@ -47,15 +49,21 @@ const ArticleBlog = () => {
       console.error("Erreur lors du chargement des articles :", error);
     }
   };
-
+  const filteredArticles = articles.filter(
+    (article) =>
+      article?.title?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      article?.content?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      article?.dateNumber.toString().includes(searchTerm.toLowerCase()) ||
+      article?.month.toLowerCase().includes(searchTerm.toLowerCase())
+  );
   const [currentPage, setCurrentPage] = useState(1);
-  const articlesPerPage = 4;
-  const totalPages = Math.ceil(articles.length / articlesPerPage);
+  const articlesPerPage = 6;
+  const totalPages = Math.ceil(filteredArticles.length / articlesPerPage);
   const articleBlogRef = useRef<HTMLDivElement>(null);
 
   const indexOfLastArticle = currentPage * articlesPerPage;
   const indexOfFirstArticle = indexOfLastArticle - articlesPerPage;
-  const currentArticles = articles.slice(
+  const currentArticles = filteredArticles.slice(
     indexOfFirstArticle,
     indexOfLastArticle
   );
@@ -74,6 +82,15 @@ const ArticleBlog = () => {
 
   return (
     <div className="container mx-auto" ref={articleBlogRef}>
+      {searchTerm && filteredArticles.length === 0 && (
+        <div className="mt-3">
+          <Alert>
+            <InfoIcon />
+            <AlertTitle>Aucun résultat</AlertTitle>
+            <AlertDescription>Veuillez changer les mots clés.</AlertDescription>
+          </Alert>
+        </div>
+      )}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-10 w-full">
         {currentArticles.map((item, index) => (
           <div key={index}>
@@ -132,9 +149,8 @@ const ArticleBlog = () => {
           </div>
         ))}
       </div>
-
       {/* Pagination */}
-      {articles.length > articlesPerPage && (
+      {filteredArticles.length > articlesPerPage && (
         <div className="flex justify-center mt-15 gap-4">
           <Button
             onClick={() => handlePageChange(currentPage - 1)}
@@ -179,6 +195,7 @@ const ArticleBlog = () => {
               </Button>
             )
           )}
+
           {/* Bouton Suivant */}
           <Button
             onClick={() => handlePageChange(currentPage + 1)}

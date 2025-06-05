@@ -3,6 +3,7 @@
     "title": "Bienvenue sur notre site",
     "description": "Ceci est une description de notre site",
     "homeBannerDescription": "Découvrez l’alchimie parfaite de nos épices, huiles essentielles et agents naturels alimentaires, qui transforment vos aliments en une expérience gustative inoubliable.",
+    "homeBannerDescription2": "Offrez à vos produits le meilleur de la nature : des agents alimentaires 100% naturels, pour une qualité supérieure, un goût authentique et une démarche responsable.",
     "ourEngagement": "Nos Engagements",
     "engagement": {
       "title1": "100 % Naturel & Authentique",
@@ -42,7 +43,7 @@
     "flowerForDescription": "Une fusion originale entre miel et épices locales.",
     "blog&advice": "Blog & conseil",
     "seeAllArticle": "Voir tout les articles",
-    "seeAllButtonPepper&Berries": "Voir tout les poivres & baies",
+    "seeAllButton": "Voir tout les ",
     "blog&adviceCard": {
       "title1": "Huile essentielle de Menthe poivrée",
       "month": "Mars",

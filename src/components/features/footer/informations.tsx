@@ -86,7 +86,7 @@ const Informations = () => {
                 {t("customerService")}
               </Typography>
               <Typography variant="p" className="text-primary font-bold">
-                +261 32 12 345 67
+                {t("phoneDescription")}
               </Typography>
               <Typography variant="p" className="text-primary">
                 {t("openingTime")}

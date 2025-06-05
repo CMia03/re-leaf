@@ -8,7 +8,11 @@ import { Rating } from "react-simple-star-rating";
 import MenuInformations from "./MenuInformations";
 import { QuantitySelector } from "@/components/re-leaf/QuantitySelector";
 import { Product, ProductQuot } from "@/generated/graphql";
-import { ADD_TO_CART, GET_ALL_CART } from "@/graphql/queries/cart";
+import {
+  ADD_TO_CART,
+  GET_ALL_CART,
+  UPDATE_CART_QUANTITY,
+} from "@/graphql/queries/cart";
 import client from "@/graphql/appoloClient";
 import { useCart } from "@/components/contexts/CartContext";
 import { toast } from "sonner";
@@ -32,20 +36,42 @@ const ProductDetails: FC<ProductDetailsProps> = ({ product }) => {
     setAllCart(cart);
   };
 
-  const addToCart = async () => {
+  const addOrUpdateToCart = async () => {
     try {
+      const isUpdate = cartItem && cartItem.quantity && cartItem.quantity > 0;
+
+      const variables =
+        cartItem?.quantity && isUpdate
+          ? {
+              documentId: cartItem.documentId, // non-null assertion car isUpdate est vrai
+              data: {
+                quantity: productNumber,
+              },
+            }
+          : {
+              data: {
+                product: product?.documentId,
+                quantity: productNumber,
+              },
+            };
+
+      if (!isUpdate && !product?.documentId) {
+        toast.error("Produit introuvable.");
+        return;
+      }
       const { data, errors } = await client.mutate({
-        mutation: ADD_TO_CART,
-        variables: {
-          data: {
-            product: product?.documentId,
-            quantity: productNumber,
-          },
-        },
+        mutation: isUpdate ? UPDATE_CART_QUANTITY : ADD_TO_CART,
+        variables,
       });
 
       if (!errors) {
-        toast.success("Le produit a bien été ajouté.");
+        toast.success(
+          isUpdate
+            ? "Quantité mise à jour dans le panier."
+            : "Le produit a bien été ajouté au panier."
+        );
+
+        await fetchCart(); // ← Ajout ici pour recharger les données
         getTotalCart();
       } else {
         toast("Erreur !", {
@@ -86,7 +112,7 @@ const ProductDetails: FC<ProductDetailsProps> = ({ product }) => {
       <Typography variant="p" className="mb-4">
         {product?.description}
       </Typography>
-      <div className="mb-2">
+      <div className="mb-4">
         {isInCart ? (
           <span className="text-xl">
             {t("productToCard")}
@@ -107,7 +133,7 @@ const ProductDetails: FC<ProductDetailsProps> = ({ product }) => {
           variant="default"
           size="lg"
           className="rounded-full  px-8 cursor-pointer"
-          onClick={addToCart}
+          onClick={addOrUpdateToCart}
         >
           {/* <span className="text-xl">{cartItem?.quantity}</span> */}
           {isInCart ? (

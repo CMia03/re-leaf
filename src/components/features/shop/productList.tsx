@@ -15,7 +15,7 @@ import client from "@/graphql/appoloClient";
 import { GET_PRODUCTS } from "@/graphql/queries/products";
 import { InfoIcon } from "lucide-react";
 import { useTranslations } from "next-intl";
-import { useEffect, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import { MdUnfoldMore } from "react-icons/md";
 import ProductCard from "./productCard";
 import { fetchTotalCart } from "@/lib/utils";
@@ -36,7 +36,11 @@ type SortType = {
   order: string;
 };
 
-const ProductList = () => {
+const ProductList: FC<{
+  showFilters?: boolean;
+  currentItemsPerPage?: number;
+  rowItems?: number;
+}> = ({ showFilters = true, currentItemsPerPage, rowItems }) => {
   const { setTotalCart } = useCart();
   const t = useTranslations("shop");
   const [products, setProducts] = useState<ProductsState>({
@@ -44,9 +48,11 @@ const ProductList = () => {
     total: 0,
     page: 1,
     pageCount: 1,
-    pageSize: ITEMS_PER_PAGE,
+    pageSize: currentItemsPerPage || ITEMS_PER_PAGE,
   });
-  const [itemsPerPage, setItemsPerPage] = useState<number>(ITEMS_PER_PAGE);
+  const [itemsPerPage, setItemsPerPage] = useState<number>(
+    currentItemsPerPage || ITEMS_PER_PAGE
+  );
   const [allCart, setAllCart] = useState<ProductQuot[]>([]);
   const [sortBy, setSortBy] = useState<SortType>({ value: "", order: "" });
 
@@ -109,47 +115,53 @@ const ProductList = () => {
 
   return (
     <div>
-      <div className="flex justify-between py-3 mb-4 gap-6 flex-wrap">
-        <div className="flex items-center gap-3">
-          <Typography variant="p">{`${t("show")} :`}</Typography>
-          <Select
-            value={itemsPerPage ? itemsPerPage.toString() : ""}
-            onValueChange={(value) => setItemsPerPage(parseInt(value))}
-          >
-            <SelectTrigger className="w-auto">
-              <SelectValue placeholder="Choisir..." />
-            </SelectTrigger>
-            <SelectContent disablePortal>
-              {[...Array(9)].map((_, i) => {
-                const value = (i + 1).toString();
-                return (
-                  <SelectItem key={value} value={value}>
-                    {value}
-                  </SelectItem>
-                );
-              })}
-            </SelectContent>
-          </Select>
+      {showFilters && (
+        <div className="flex justify-between py-3 mb-4 gap-6 flex-wrap">
+          <div className="flex items-center gap-3">
+            <Typography variant="p">{`${t("show")} :`}</Typography>
+            <Select
+              value={itemsPerPage ? itemsPerPage.toString() : ""}
+              onValueChange={(value) => setItemsPerPage(parseInt(value))}
+            >
+              <SelectTrigger className="w-auto">
+                <SelectValue placeholder="Choisir..." />
+              </SelectTrigger>
+              <SelectContent disablePortal>
+                {[...Array(9)].map((_, i) => {
+                  const value = (i + 1).toString();
+                  return (
+                    <SelectItem key={value} value={value}>
+                      {value}
+                    </SelectItem>
+                  );
+                })}
+              </SelectContent>
+            </Select>
+          </div>
+          <div className="flex items-center gap-3">
+            <Typography variant="p">{`${t("sortBy")} :`}</Typography>
+            <Select value={sortBy.value} onValueChange={onSelectSort}>
+              <SelectTrigger className="w-[200px]">
+                <SelectValue placeholder="Choisir..." />
+              </SelectTrigger>
+              <SelectContent disablePortal>
+                <SelectItem value="name">{t("name")}</SelectItem>
+                <SelectItem value="price">{t("price")}</SelectItem>
+              </SelectContent>
+            </Select>
+            <MdUnfoldMore
+              className="text-primary cursor-pointer"
+              size={25}
+              onClick={onChangeSortOrder}
+            />
+          </div>
         </div>
-        <div className="flex items-center gap-3">
-          <Typography variant="p">{`${t("sortBy")} :`}</Typography>
-          <Select value={sortBy.value} onValueChange={onSelectSort}>
-            <SelectTrigger className="w-[200px]">
-              <SelectValue placeholder="Choisir..." />
-            </SelectTrigger>
-            <SelectContent disablePortal>
-              <SelectItem value="name">{t("name")}</SelectItem>
-              <SelectItem value="price">{t("price")}</SelectItem>
-            </SelectContent>
-          </Select>
-          <MdUnfoldMore
-            className="text-primary cursor-pointer"
-            size={25}
-            onClick={onChangeSortOrder}
-          />
-        </div>
-      </div>
-      <div className="grid lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-8">
+      )}
+      <div
+        className={`grid lg:grid-cols-${
+          rowItems ? "rowItems" : "3"
+        } sm:grid-cols-2 grid-cols-1 gap-8`}
+      >
         {products.data &&
           products.data.map((product) => (
             <ProductCard
@@ -171,7 +183,7 @@ const ProductList = () => {
           </AlertDescription>
         </Alert>
       )}
-      {products.total > itemsPerPage && (
+      {showFilters && products.total > itemsPerPage && (
         <CustomPagination
           currentPage={products.page}
           totalPages={products.pageCount}
