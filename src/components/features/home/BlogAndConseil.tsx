@@ -1,25 +1,28 @@
+"use client";
 import React from "react";
 import { Typography } from "@/components/re-leaf/Typography";
 import { Button } from "@/components/ui/button";
 import { ChevronRight } from "lucide-react";
-
-import blog1 from "../../../../public/images/blog/blog1.png";
-import blog2 from "../../../../public/images/blog/blog2.png";
 import flowerAbs from "../../../../public/images/flowerAbsoluteBlog.png";
-// import image2 from '../../../../public/images/engagements/image2.png'
 import Image from "next/image";
 import { Card, CardContent } from "@/components/ui/card";
 import { useTranslations } from "next-intl";
 import ArticleBlog from "../blog/articleBlog";
+import { useRouter } from "next/navigation";
 
 function BlogAndConseil() {
   const t = useTranslations("home");
   const translate = useTranslations("home.blog&adviceCard");
+  const router = useRouter();
+
+  const toBlog = () => {
+    router.push(`/blog`);
+  };
 
   return (
     <div className="relative w-full pt-[50px]">
       <section>
-        <div className="flex flex-row justify-between items-center mt-10 mx-5">
+        <div className="container flex flex-row justify-between items-center mt-10 mb-10 mx-auto">
           <Typography
             variant="h2"
             className="justify-center border-none rounded-none text-center"
@@ -30,7 +33,11 @@ function BlogAndConseil() {
             variant="outline"
             className="border-1 border-black border-solid p-6 w-max cursor-pointer  rounded-full"
           >
-            <Typography variant="p" className="text-black ps-6">
+            <Typography
+              variant="p"
+              className="text-black ps-6"
+              onClick={toBlog}
+            >
               {t("seeAllArticle")}
             </Typography>
 
@@ -39,40 +46,8 @@ function BlogAndConseil() {
         </div>
       </section>
 
-      {/* SECTION ARTICLE */}
       <section>
-        {/* <div className="flex flex-row justify-between items-center">
-
-          {data.map((item, index) => (
-            <div key={index} className='bg-red-700 flex-1'>
-              <Card className="w-full mx-auto border-none rounded-none shadow-none">
-                <CardContent className="relative flex flex-col items-center text-center gap-4 p-6">
-                  <Image
-                    src={item.image}
-                    alt={item.title}
-
-                    className="w-full h-full rounded-none"
-                  />
-                  <div className="flex flex-col items-start text-left gap-5 mt-4">
-                    <Typography variant="p" className="text-gray-600 text-md font-500">{item.description}</Typography>
-                    <Typography variant="h2" className="font-semibold" style={{ lineHeight: '1.4em'}}>{item.title}</Typography>
-                    <Typography variant="D1" className=" text-md font-normal">{item.loremDesc}</Typography>
-                    <Button className="p-5.5 px-8 rounded-full mt-4 cursor-pointer">
-                      {t('seeMore')}
-              
-                    </Button>
-                  </div>
-
-                  <div className='absolute top-0 right-0 mr-11 mt-11 rounded-tl-[230px] h-[7em] w-[5em] bg-[#B6C335] rounded-b-none rounded-tr-[230px] flex flex-col gap-0 justify-center items-center p-3'>
-                    <Typography variant="h1" className="text-white text-md font-500">{item.dateNumber}</Typography>
-                    <Typography variant="p" className="text-white text-md font-500">{item.month}</Typography>
-                  </div>
-                </CardContent>
-              </Card>
-            </div>
-          ))}
-        </div> */}
-        <ArticleBlog searchTerm={""} />
+        <ArticleBlog searchTerm={""} articleNumber={2} />
       </section>
 
       <Image

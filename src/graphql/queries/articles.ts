@@ -1,17 +1,24 @@
 import { gql } from "@apollo/client";
 
 export const GET_ARTICLES = gql`
-  query GetArticle {
-    blogs {
+  query GetArticle($page: Int!, $pageSize: Int) {
+    blogs(pagination: { page: $page, pageSize: $pageSize }) {
       title
       cover_image {
-        name
         url
         width
         height
       }
       content
       publish_at
+    }
+    blogs_connection {
+      pageInfo {
+        total
+        pageCount
+        pageSize
+        page
+      }
     }
   }
 `;
