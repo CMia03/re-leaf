@@ -9,7 +9,7 @@ import {
 import { useTranslations } from "next-intl";
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import AboutPdc from "../../../../public/images/A Propos.png";
+import AboutPdc from "../../../../public/images/home_cover_image2.jpg";
 import banner2 from "../../../../public/images/Banniere2.png";
 import flowerBanner1 from "../../../../public/images/flowerBanner1.png";
 import flowerBanner2 from "../../../../public/images/flowerBanner2.png";
@@ -24,12 +24,11 @@ const HomeBanner = () => {
   const data = [
     {
       image1: pdc,
+      textKey: "homeBannerDescription",
     },
     {
       image2: AboutPdc,
-    },
-    {
-      image3: banner2,
+      textKey: "homeBannerDescription2",
     },
   ];
 
@@ -61,7 +60,7 @@ const HomeBanner = () => {
                     variant="h2"
                     className="text-white font-normal  h-full w-[60%] text-center mx-auto my-0 flex items-center justify-center"
                   >
-                    {t("homeBannerDescription")}
+                    {t(item.textKey)}
                   </Typography>
                 </div>
 

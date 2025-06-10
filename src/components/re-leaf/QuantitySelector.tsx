@@ -1,7 +1,8 @@
 import { MdChevronLeft, MdChevronRight } from "react-icons/md";
 import { Typography } from "./Typography";
+import { Maybe } from "@/generated/graphql";
 interface QuantitySelectorProps {
-  value: number;
+  value: Maybe<number> | undefined;
   min?: number;
   max?: number;
   onChange: (value: number) => void;
@@ -14,11 +15,11 @@ export function QuantitySelector({
   onChange,
 }: QuantitySelectorProps) {
   const handleDecrease = () => {
-    if (value > min) onChange(value - 1);
+    if (value && value > min) onChange(value - 1);
   };
 
   const handleIncrease = () => {
-    if (value < max) onChange(value + 1);
+    if (value && value < max) onChange(value + 1);
   };
 
   return (

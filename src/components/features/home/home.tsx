@@ -14,12 +14,10 @@ const HomeComponent = () => {
     <div className="flex flex-col gap-10">
       <HomeBanner />
       <OurEngagement />
-      <Savior />
       <StarProduct />
       <AboutBannerHome />
       <New />
       <EssentialProduct />
-      <HomeVideo />
       <BlogAndConseil />
       <HomeTestimonial />
     </div>

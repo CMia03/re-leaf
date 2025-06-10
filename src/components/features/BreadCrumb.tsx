@@ -1,4 +1,5 @@
 "use client";
+import { capitalize } from "@/lib/utils";
 import { Typography } from "../re-leaf/Typography";
 import { useRouter } from "next/navigation";
 
@@ -15,10 +16,10 @@ const Breadcrumb = ({
         <span key={index} className="flex  gap-2">
           <Typography
             variant="p"
-            className="cursor-pointer"
+            className="cursor-pointer capitalize"
             onClick={() => item.path && navigateTo(item.path)}
           >
-            {item.label}
+            {capitalize(item.label)}
           </Typography>
           {index !== BreadcrumbItems.length - 1 && "/"}
         </span>

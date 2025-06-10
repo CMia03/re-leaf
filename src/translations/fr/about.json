@@ -2,29 +2,23 @@
   "about": {
     "aboutParagraphe": {
       "aboutParagraphe1": "qui sommes-nous ?",
-      "aboutParagrapheDescription1": "Lorem ipsum dolor sit amet, consec tetur adipis cing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo conse quat iruire dolor sum est. ",
+      "aboutParagrapheDescription1": "Une équipe engagée, convaincue que la nature détient les clés du bien-être. Entre huiles essentielles puissantes, épices savoureuses et ingrédients naturels, nous élaborons des solutions de qualité supérieure, pour vous offrir chaque jour le meilleur de la terre.",
       "aboutParagraphe2": "Notre vision",
-      "aboutParagrapheDescription2": "Lorem ipsum dolor sit amet, consec tetur adipis cing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo conse quat iruire dolor sum est. "
-
+      "aboutParagrapheDescription2": "Allier l’authenticité de la nature et l’audace de l’innovation pour des produits d’exception, respectueux de vous et de l’environnement. Notre ambition : inspirer un mode de vie éthique, sain et durable."
     },
     "aboutQuote": {
       "quoteTitle": "Lorem ipsum dolor sit amet, consec tetur adipis cing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-    
     },
-    
+
     "aboutTeam": {
       "teamTitle": "Notre équipe",
       "teamDescription": "Lorem ipsum dolor sit amet, consec tetur adipis cing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-    
     },
     "abouPourcentage": {
       "loyalCustomers": "Clients fidèles",
       "satisfactionRate": "Taux de satisfaction",
       "productSold": "Produits vendus",
       "yearsExperience": "Années d’expérience"
-      
     }
-    
-
   }
 }

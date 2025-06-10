@@ -2,8 +2,9 @@ import { Typography } from "@/components/re-leaf/Typography";
 import { Button } from "@/components/ui/button";
 import { Table, TableBody, TableCell, TableRow } from "@/components/ui/table";
 import { useTranslations } from "next-intl";
+import { FC } from "react";
 
-const TotalCart = () => {
+const TotalCart: FC<{ cartTotalPrice: number }> = ({ cartTotalPrice }) => {
   const t = useTranslations("cart");
   return (
     <div>
@@ -14,15 +15,19 @@ const TotalCart = () => {
         <TableBody>
           <TableRow>
             <TableCell>{t("subTotal")}</TableCell>
-            <TableCell className="text-right">40 €</TableCell>
+            <TableCell className="text-right">{`${cartTotalPrice.toFixed(
+              2
+            )} €`}</TableCell>
           </TableRow>
           <TableRow>
             <TableCell>{t("delivery")}</TableCell>
-            <TableCell className="text-right">2 €</TableCell>
+            <TableCell className="text-right">0 €</TableCell>
           </TableRow>
           <TableRow>
             <TableCell>{t("total")}</TableCell>
-            <TableCell className="text-right">42 €</TableCell>
+            <TableCell className="text-right">{`${cartTotalPrice.toFixed(
+              2
+            )} €`}</TableCell>
           </TableRow>
         </TableBody>
       </Table>

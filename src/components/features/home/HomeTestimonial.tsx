@@ -14,7 +14,6 @@ import logo4 from "../../../../public/images/logo/image copy 6.png";
 import user from "../../../../public/images/testimonial/userprofile.png";
 import { Typography } from "@/components/re-leaf/Typography";
 import { useTranslations } from "next-intl";
-// import { Card, CardContent } from "@/components/ui/card";
 
 // CAROUSEL
 import {
@@ -59,7 +58,7 @@ function HomeTestimonial() {
 
   return (
     <div className="pt-[50px]">
-      <section>
+      {/* <section>
         <div className="grid grid-cols-1 md:grid-cols-2 w-full my-0 mx-auto">
           <picture className="flex-1">
             <Image src={essentialOil} alt={"gg"} className="w-full h-full" />
@@ -120,7 +119,7 @@ function HomeTestimonial() {
             </Carousel>
           </section>
         </div>
-      </section>
+      </section> */}
 
       {/* SECTION LOGO */}
       <section>

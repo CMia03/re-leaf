@@ -1,40 +1,45 @@
-import { formatEuroPrice } from "@/lib/utils";
+import { capitalize, formatEuroPrice } from "@/lib/utils";
 import RangeSlider from "react-range-slider-input";
 import { Typography } from "@/components/re-leaf/Typography";
 import { useTranslations } from "next-intl";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import Image, { StaticImageData } from "next/image";
 import BgImage2 from "../../../../public/images/Bg-image2.png";
-const LeftSection = () => {
+import client from "@/graphql/appoloClient";
+import { GET_PRODUCTS_PER_CATEGORY } from "@/graphql/queries/categories";
+import { Product } from "@/generated/graphql";
+interface Category {
+  documentId: string;
+  name: string;
+  products: Product[];
+}
+const LeftSection = ({
+  onCategorySelect,
+  selectedCategoryId,
+}: {
+  onCategorySelect: (id: string | null) => void;
+  selectedCategoryId: string | null;
+}) => {
   const t = useTranslations("shop");
   const translationHeader = useTranslations("header");
   const [rangeSliderValues, setRangeSliderValues] = useState<[number, number]>([
     0, 2000000,
   ]);
 
-  const categories: { label: string; value: string }[] = [
-    {
-      label: translationHeader("peaperBerries"),
-      value: "peaperBerries",
-    },
-    {
-      label: translationHeader("spicy"),
-      value: "spicy",
-    },
-    {
-      label: translationHeader("herbs"),
-      value: "herbs",
-    },
-    {
-      label: translationHeader("essentialOiles"),
-      value: "essentialOiles",
-    },
-    {
-      label: translationHeader("authenticFlavors"),
-      value: "authenticFlavors",
-    },
-  ];
+  const [categories, setCategories] = useState<Category[]>([]);
+
+  const fetchCategories = async () => {
+    try {
+      const { data } = await client.query({
+        query: GET_PRODUCTS_PER_CATEGORY,
+      });
+
+      setCategories(data.categories);
+    } catch (error) {
+      console.error("Erreur lors du chargement des categories:", error);
+    }
+  };
   const products: { label: string; price: number; image: StaticImageData }[] = [
     {
       label: translationHeader("peaperBerries"),
@@ -62,6 +67,10 @@ const LeftSection = () => {
       image: BgImage2,
     },
   ];
+
+  useEffect(() => {
+    fetchCategories();
+  }, []);
 
   return (
     <div>
@@ -91,6 +100,9 @@ const LeftSection = () => {
           variant={"default"}
           size={"lg"}
           className="rounded-full mt-2"
+          onClick={() => {
+            onCategorySelect(null); // c'est CETTE ligne qui déclenche le reset côté ShopComponent
+          }}
         >
           <span>{t("resetFilter")}</span>
         </Button>
@@ -99,13 +111,26 @@ const LeftSection = () => {
         <Typography variant="h4" className="text-primary font-normal">
           {t("categories")}
         </Typography>
-        {categories.map((item, index) => (
-          <div key={index} className="flex items-center mt-2">
-            <Typography variant="p" className="text-primary font-normal mt-2">
-              {item.label}
-            </Typography>
-          </div>
-        ))}
+        {categories.map((item, index) => {
+          const isActive = selectedCategoryId === item.documentId;
+          return (
+            <div
+              key={index}
+              onClick={() => onCategorySelect(item.documentId)}
+              className={`flex items-center mt-2 px-3 py-2 rounded-md cursor-pointer transition-colors
+                ${
+                  isActive
+                    ? "text-[var(--tertiary)]"
+                    : "text-primary hover:bg-muted/75"
+                }
+              `}
+            >
+              <Typography variant="p" className="text-[16px]">
+                {capitalize(item.name)}
+              </Typography>
+            </div>
+          );
+        })}
       </div>
       <div className="mt-8">
         <Typography variant="h4" className="text-primary font-normal">

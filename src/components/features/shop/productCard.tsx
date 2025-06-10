@@ -1,12 +1,19 @@
 import { apiUrl } from "@/components/constants/constants";
 import { Typography } from "@/components/re-leaf/Typography";
-import { Product } from "@/generated/graphql";
+import { Product, ProductQuot } from "@/generated/graphql";
+import client from "@/graphql/appoloClient";
+import { ADD_TO_CART, UPDATE_CART_QUANTITY } from "@/graphql/queries/cart";
 import { formatEuroPrice } from "@/lib/utils";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { FC, MouseEvent, useState } from "react";
+import { toast } from "sonner";
 
-const ProductCard: FC<{ product: Product }> = ({ product }) => {
+const ProductCard: FC<{
+  product: Product;
+  getTotalCart: () => void;
+  allCart: ProductQuot[];
+}> = ({ product, getTotalCart, allCart }) => {
   const router = useRouter();
 
   const [liked, setLiked] = useState(false);
@@ -19,6 +26,62 @@ const ProductCard: FC<{ product: Product }> = ({ product }) => {
     setLiked(!liked);
   };
 
+  const updateCart = async (
+    cartItem: ProductQuot | undefined,
+    e: MouseEvent<HTMLDivElement>
+  ) => {
+    e.stopPropagation();
+
+    try {
+      // Si le produit est déjà dans le panier avec une quantité > 0
+      const isUpdate = cartItem && cartItem.quantity && cartItem.quantity > 0;
+
+      // Définir les variables selon le cas
+      const variables =
+        cartItem?.quantity && isUpdate
+          ? {
+              documentId: cartItem.documentId, // non-null assertion car isUpdate est vrai
+              data: {
+                quantity: cartItem.quantity + 1,
+              },
+            }
+          : {
+              data: {
+                product: product?.documentId,
+                quantity: 1,
+              },
+            };
+
+      // Ne pas lancer la mutation si product est indéfini
+      if (!isUpdate && !product?.documentId) {
+        toast.error("Produit introuvable.");
+        return;
+      }
+
+      // Lancer la mutation adaptée
+      const { data, errors } = await client.mutate({
+        mutation: isUpdate ? UPDATE_CART_QUANTITY : ADD_TO_CART,
+        variables,
+      });
+
+      if (!errors) {
+        toast.success(
+          isUpdate
+            ? "Quantité mise à jour dans le panier."
+            : "Le produit a bien été ajouté au panier."
+        );
+        getTotalCart();
+      }
+    } catch (error) {
+      console.error("Erreur lors de la mise à jour du panier :", error);
+      toast.error("Une erreur est survenue.");
+    }
+  };
+
+  const cartItem = allCart?.find(
+    (item) => item.product?.documentId === product.documentId
+  );
+  const isInCart = Boolean(cartItem);
   return (
     <div
       onClick={() => showDetails(product.documentId)}
@@ -60,8 +123,16 @@ const ProductCard: FC<{ product: Product }> = ({ product }) => {
               {formatEuroPrice(product.price)}
             </Typography>
           </div>
-          <div className="w-[50px] h-[50px] bg-brown  text-secondary rounded-full flex items-center justify-center cursor-pointer">
-            <span className="material-icons">add_shopping_cart</span>
+          <div
+            className={`w-[50px] h-[50px] rounded-full flex items-center justify-center cursor-pointer
+    ${isInCart ? "bg-white text-black" : "bg-brown text-secondary"}`}
+            onClick={(e) => updateCart(cartItem, e)}
+          >
+            {isInCart ? (
+              <span className="text-xl">{cartItem?.quantity}</span>
+            ) : (
+              <span className="material-icons">add_shopping_cart</span>
+            )}
           </div>
         </div>
       </div>

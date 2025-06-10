@@ -2,6 +2,8 @@
   "product": {
     "ratingNumbers": "avis client",
     "addToCard": "Ajouter au panier",
+    "updateCard": "Mettre à jour le panier",
+    "productToCard": "Quantité de produit au panier: ",
     "category": "Catégorie",
     "tags": "Tags",
     "description": "Description",

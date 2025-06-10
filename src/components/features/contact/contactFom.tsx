@@ -29,7 +29,10 @@ const ContactForm = () => {
                 {t("address")}
               </Typography>
               <Typography variant="p" className="text-gray-700">
-                {t("addressDescription")}
+                {t("addressDescription1")}
+              </Typography>
+              <Typography variant="p" className="text-gray-700">
+                {t("addressDescription2")}
               </Typography>
             </div>
           </div>
