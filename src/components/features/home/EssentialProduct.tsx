@@ -9,8 +9,6 @@ import {
   CarouselApi,
   CarouselContent,
   CarouselItem,
-  // CarouselNext,
-  // CarouselPrevious,
 } from "@/components/ui/carousel";
 import { useEffect, useState } from "react";
 
@@ -62,19 +60,19 @@ function EssentialProduct() {
     fetchEssentialProduct();
   }, []);
 
-  // useEffect(() => {
-  //   fetchEssentialProduct();
-  //   if (!api) {
-  //     return;
-  //   }
-  //   const onSelect = () => {
-  //     setCurrent(api.selectedScrollSnap());
-  //   };
-  //   api.on("select", onSelect);
-  //   return () => {
-  //     api.off("select", onSelect);
-  //   };
-  // }, [api]);
+  useEffect(() => {
+    fetchEssentialProduct();
+    if (!api) {
+      return;
+    }
+    const onSelect = () => {
+      setCurrent(api.selectedScrollSnap());
+    };
+    api.on("select", onSelect);
+    return () => {
+      api.off("select", onSelect);
+    };
+  }, [api]);
 
   return (
     <div>
@@ -93,7 +91,7 @@ function EssentialProduct() {
                       <CardContent className="flex flex-col justify-center items-center h-full text-center gap-7 pt-2 pb-2 relative">
                         <Typography
                           variant="p"
-                          className="text-white text-[30px]"
+                          className="text-white text-[30px] capitalize"
                         >
                           {item.name}
                         </Typography>
@@ -147,9 +145,7 @@ function EssentialProduct() {
                   />
                 </svg>
               </i>
-              {/* <CarouselPrevious className="bg-white absolute left-[20px] top-1/2 translate-y-[-50%] w-[48px] h-[48px] p-[8px] hover:text-oceanBlue tra nsition-all duration-300  hover:bg-white border border-grey lg:left-[50px] " /> */}
 
-              {/* <CarouselNext className="bg-white absolute right-[20px] top-1/2 translate-y-[-50%] w-[48px] h-[48px] p-[8px] hover:text-oceanBlue transition-all duration-300 hover:bg-white lg:right-[50px] lg:hover:bg-cardServiceBgLight" /> */}
               <i
                 onClick={() => api?.scrollNext()}
                 className=" absolute right-[20px] top-1/2 translate-y-[-50%] lg:right-[50px] cursor-pointer"

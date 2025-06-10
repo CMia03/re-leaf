@@ -52,7 +52,7 @@ const ArticleBlog = ({
         query: GET_ARTICLES,
         variables: {
           page,
-          pageSize: 9999,
+          pageSize: 100,
         },
         fetchPolicy: "network-only",
       });

@@ -4,6 +4,7 @@ import { apiUrl } from "@/components/constants/constants";
 import { ProductQuot } from "@/generated/graphql";
 import { MdClose } from "react-icons/md";
 import { QuantitySelector } from "@/components/re-leaf/QuantitySelector";
+import { capitalize } from "@/lib/utils";
 
 type CartItemProps = {
   item: ProductQuot;
@@ -42,7 +43,7 @@ const CartItem: FC<CartItemProps> = ({ item, onRemove, getTotalPrice }) => {
       <td>
         <div className="flex items-center gap-3">
           <div>
-            <div className="font-medium">{item.product?.name}</div>
+            <div className="font-medium">{capitalize(item.product?.name)}</div>
             <div className="text-sm text-muted-foreground">
               {item.product?.subcategory_id?.name}
             </div>

@@ -40,7 +40,13 @@ const ProductList: FC<{
   showFilters?: boolean;
   currentItemsPerPage?: number;
   rowItems?: number;
-}> = ({ showFilters = true, currentItemsPerPage, rowItems }) => {
+  selectedCategoryId?: string | null;
+}> = ({
+  showFilters = true,
+  currentItemsPerPage,
+  rowItems,
+  selectedCategoryId,
+}) => {
   const { setTotalCart } = useCart();
   const t = useTranslations("shop");
   const [products, setProducts] = useState<ProductsState>({
@@ -71,6 +77,15 @@ const ProductList: FC<{
           page: pageNumber,
           pageSize,
           sort,
+          filters: selectedCategoryId
+            ? {
+                category: {
+                  documentId: {
+                    eq: selectedCategoryId,
+                  },
+                },
+              }
+            : {},
         },
       });
 
@@ -111,7 +126,7 @@ const ProductList: FC<{
   useEffect(() => {
     fetchProducts(1);
     fetchCart();
-  }, [, itemsPerPage, sortBy]);
+  }, [itemsPerPage, sortBy, selectedCategoryId]);
 
   return (
     <div>

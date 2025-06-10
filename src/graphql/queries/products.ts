@@ -1,8 +1,17 @@
 import { gql } from "@apollo/client";
 
 export const GET_PRODUCTS = gql`
-  query GetProducts($page: Int!, $pageSize: Int, $sort: [String]) {
-    products(pagination: { page: $page, pageSize: $pageSize }, sort: $sort) {
+  query GetProducts(
+    $page: Int!
+    $pageSize: Int
+    $sort: [String]
+    $filters: ProductFiltersInput
+  ) {
+    products(
+      pagination: { page: $page, pageSize: $pageSize }
+      sort: $sort
+      filters: $filters
+    ) {
       documentId
       slug
       name
@@ -31,7 +40,10 @@ export const GET_PRODUCTS = gql`
       }
     }
 
-    products_connection(pagination: { page: $page, pageSize: $pageSize }) {
+    products_connection(
+      pagination: { page: $page, pageSize: $pageSize }
+      filters: $filters
+    ) {
       pageInfo {
         total
         pageCount

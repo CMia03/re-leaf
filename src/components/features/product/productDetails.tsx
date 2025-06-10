@@ -1,7 +1,7 @@
 "use client";
 import { Typography } from "@/components/re-leaf/Typography";
 import { Button } from "@/components/ui/button";
-import { fetchTotalCart, formatEuroPrice } from "@/lib/utils";
+import { capitalize, fetchTotalCart, formatEuroPrice } from "@/lib/utils";
 import { useTranslations } from "next-intl";
 import { FC, useEffect, useState } from "react";
 import { Rating } from "react-simple-star-rating";
@@ -99,8 +99,8 @@ const ProductDetails: FC<ProductDetailsProps> = ({ product }) => {
 
   return (
     <div>
-      <Typography variant="h1" className="mb-2 font-normal">
-        {product?.name}
+      <Typography variant="h1" className="mb-2 font-normal capitalize">
+        {capitalize(product?.name)}
       </Typography>
       <Typography variant="h3" className="mb-2 font-normal text-brown">
         {formatEuroPrice(product?.price)}

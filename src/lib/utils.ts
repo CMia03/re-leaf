@@ -24,10 +24,14 @@ export const fetchTotalCart = async () => {
       fetchPolicy: "network-only",
     });
     const total = data.productQuots_connection.pageInfo.total;
-    console.log("TotalCart", total);
 
     return total;
   } catch (error) {
     console.error("Erreur lors du chargement des produits :", error);
   }
+};
+
+export const capitalize = (str: string | undefined) => {
+  if (!str) return "";
+  return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
 };
