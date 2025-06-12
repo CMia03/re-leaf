@@ -3,21 +3,28 @@ import "react-range-slider-input/dist/style.css";
 import BreadcrumbHeader from "../BreadcrumbHeader";
 import LeftSection from "./leftSection";
 import ProductList from "./productList";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useSearchParams } from "next/navigation";
 
 const ShopComponent = () => {
-  const [selectedCategoryId, setSelectedCategoryId] = useState<string | null>(
-    null
-  );
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+  const searchParams = useSearchParams();
+
+  useEffect(() => {
+    const slugFromUrl = searchParams.get("category");
+    if (slugFromUrl) {
+      setSelectedCategory(slugFromUrl);
+    }
+  }, [searchParams]);
   return (
     <div className="container mx-auto px-6">
       <BreadcrumbHeader />
       <div className="grid lg:grid-cols-[350px_1fr] grid-cols-1 gap-8 mt-6">
         <LeftSection
-          onCategorySelect={setSelectedCategoryId}
-          selectedCategoryId={selectedCategoryId}
+          onCategorySelect={setSelectedCategory}
+          selectedCategory={selectedCategory}
         />
-        <ProductList selectedCategoryId={selectedCategoryId} />
+        <ProductList selectedCategory={selectedCategory} />
       </div>
     </div>
   );

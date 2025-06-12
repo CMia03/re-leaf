@@ -34,7 +34,7 @@ export const GET_PRODUCTS = gql`
       weight
       createdAt
       publishedAt
-      subcategory_id {
+      category {
         documentId
         name
       }
@@ -90,7 +90,7 @@ export const GET_SIMILAR_PRODUCTS_BY_SUB_CATEGORY = gql`
       weight
       createdAt
       publishedAt
-      subcategory_id {
+      category {
         documentId
         name
       }
@@ -129,7 +129,7 @@ export const GET_PRODUCT = gql`
       weight
       createdAt
       publishedAt
-      subcategory_id {
+      category {
         documentId
         name
       }

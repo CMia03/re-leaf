@@ -2,7 +2,7 @@ import { Typography } from "@/components/re-leaf/Typography";
 import { Product, ProductQuot } from "@/generated/graphql";
 import client from "@/graphql/appoloClient";
 import { ADD_TO_CART, UPDATE_CART_QUANTITY } from "@/graphql/queries/cart";
-import { formatEuroPrice } from "@/lib/utils";
+import { capitalize, formatEuroPrice } from "@/lib/utils";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { FC, MouseEvent, useState } from "react";
@@ -116,7 +116,7 @@ const ProductCard: FC<{
               variant="h5"
               className="text-secondary font-normal text-[17px]"
             >
-              {product.name}
+              {capitalize(product.name)}
             </Typography>
             <Typography variant="h5" className="text-brown font-normal">
               {formatEuroPrice(product.price)}

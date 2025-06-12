@@ -5,6 +5,7 @@ export const GET_PRODUCTS_PER_CATEGORY = gql`
     categories {
       documentId
       name
+      slug
       products {
         documentId
         name

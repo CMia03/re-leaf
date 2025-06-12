@@ -1,3 +1,4 @@
+"use client";
 import { Typography } from "@/components/re-leaf/Typography";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
@@ -5,32 +6,40 @@ import { IoLogoInstagram, IoLogoLinkedin, IoLogoYoutube } from "react-icons/io";
 import { MdCopyright, MdFacebook } from "react-icons/md";
 import FooterImage2 from "../../../../public/images/Footer-image2.png";
 import Logo from "../../../../public/images/logo-lg.jpeg";
+import client from "@/graphql/appoloClient";
+import { GET_CATEGORY } from "@/graphql/queries/essentialProduct";
+import { useEffect, useState } from "react";
+import { Category } from "@/generated/graphql";
+import { capitalize } from "@/lib/utils";
+import { Maybe } from "graphql/jsutils/Maybe";
+import { useRouter } from "next/navigation";
 
 const Informations = () => {
   const t = useTranslations("footer");
   const translationHeader = useTranslations("header");
-  const categories: { label: string; value: string }[] = [
-    {
-      label: translationHeader("peaperBerries"),
-      value: "peaperBerries",
-    },
-    {
-      label: translationHeader("spicy"),
-      value: "spicy",
-    },
-    {
-      label: translationHeader("herbs"),
-      value: "herbs",
-    },
-    {
-      label: translationHeader("essentialOiles"),
-      value: "essentialOiles",
-    },
-    {
-      label: translationHeader("naturalFoodAgents"),
-      value: "naturalFoodAgents",
-    },
-  ];
+
+  const router = useRouter();
+  const goToCategory = (slug: Maybe<string> | undefined) => {
+    router.push(`/shop?category=${slug}`);
+  };
+
+  const [categories, setCategories] = useState<Category[]>([]);
+
+  const fetchFooterCategories = async () => {
+    try {
+      const { data } = await client.query({
+        query: GET_CATEGORY,
+      });
+
+      setCategories(data.categories);
+    } catch (error) {
+      console.error("Erreur lors du chargement des categories:", error);
+    }
+  };
+
+  useEffect(() => {
+    fetchFooterCategories();
+  }, []);
 
   const year = new Date().getFullYear();
   return (
@@ -59,10 +68,14 @@ const Informations = () => {
               <Typography variant="h5" className="text-primary">
                 {t("navigation")}
               </Typography>
-              {categories.map((category) => (
-                <div key={category.value}>
-                  <Typography variant="p" className="text-primary">
-                    {category.label}
+              {categories.map((category, index) => (
+                <div key={index}>
+                  <Typography
+                    variant="p"
+                    className="text-primary cursor-pointer"
+                    onClick={() => goToCategory(category.slug)}
+                  >
+                    {capitalize(category.name)}
                   </Typography>
                 </div>
               ))}

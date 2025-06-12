@@ -31,7 +31,7 @@ export const fetchTotalCart = async () => {
   }
 };
 
-export const capitalize = (str: string | undefined) => {
+export const capitalize = (str: string | undefined | null) => {
   if (!str) return "";
   return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
 };

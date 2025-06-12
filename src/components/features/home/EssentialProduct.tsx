@@ -11,9 +11,7 @@ import {
   CarouselItem,
 } from "@/components/ui/carousel";
 import { useEffect, useState } from "react";
-
 import { ChevronRight } from "lucide-react";
-
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Typography } from "@/components/re-leaf/Typography";
@@ -22,9 +20,16 @@ import client from "@/graphql/appoloClient";
 import { GET_CATEGORY } from "@/graphql/queries/essentialProduct";
 import { Category } from "@/generated/graphql";
 import ProductList from "../shop/productList";
+import { useRouter } from "next/navigation";
+import { Maybe } from "graphql/jsutils/Maybe";
 
 function EssentialProduct() {
   const t = useTranslations("home");
+  const router = useRouter();
+
+  const goToCategory = (slug: Maybe<string> | undefined) => {
+    router.push(`/shop?category=${slug}`);
+  };
 
   // CAROUSEL
   const [api, setApi] = useState<CarouselApi>();
@@ -95,13 +100,13 @@ function EssentialProduct() {
                         <Button
                           variant="outline"
                           className="p-6 w-max cursor-pointer rounded-full"
+                          onClick={() => goToCategory(item.slug)}
                         >
                           <Typography
                             variant="p"
                             className="text-green-light font-semibold ps-6"
                           >
                             {t("seeAllButton")}
-                            {item.name?.toLowerCase()}
                           </Typography>
 
                           <ChevronRight className="scale-[1.2] me-6 text-green-light" />

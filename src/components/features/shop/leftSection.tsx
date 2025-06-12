@@ -11,20 +11,21 @@ import { GET_PRODUCTS_PER_CATEGORY } from "@/graphql/queries/categories";
 import { Product } from "@/generated/graphql";
 interface Category {
   documentId: string;
+  slug: string;
   name: string;
   products: Product[];
 }
 const LeftSection = ({
   onCategorySelect,
-  selectedCategoryId,
+  selectedCategory,
 }: {
-  onCategorySelect: (id: string | null) => void;
-  selectedCategoryId: string | null;
+  onCategorySelect: (slug: string | null) => void;
+  selectedCategory: string | null;
 }) => {
   const t = useTranslations("shop");
   const translationHeader = useTranslations("header");
   const [rangeSliderValues, setRangeSliderValues] = useState<[number, number]>([
-    0, 2000000,
+    0, 10000,
   ]);
 
   const [categories, setCategories] = useState<Category[]>([]);
@@ -82,7 +83,7 @@ const LeftSection = ({
 
           <RangeSlider
             min={0}
-            max={2000000}
+            max={10000}
             step={100}
             value={rangeSliderValues}
             onInput={(newValues: [number, number]) =>
@@ -112,11 +113,12 @@ const LeftSection = ({
           {t("categories")}
         </Typography>
         {categories.map((item, index) => {
-          const isActive = selectedCategoryId === item.documentId;
+          // if (!item.slug) return null;
+          const isActive = selectedCategory === item.slug;
           return (
             <div
               key={index}
-              onClick={() => onCategorySelect(item.documentId)}
+              onClick={() => onCategorySelect(item.slug)}
               className={`flex items-center mt-2 px-3 py-2 rounded-md cursor-pointer transition-colors
                 ${
                   isActive

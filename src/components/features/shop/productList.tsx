@@ -39,12 +39,12 @@ const ProductList: FC<{
   showFilters?: boolean;
   currentItemsPerPage?: number;
   rowItems?: number;
-  selectedCategoryId?: string | null;
+  selectedCategory?: string | null;
 }> = ({
   showFilters = true,
   currentItemsPerPage,
   rowItems,
-  selectedCategoryId,
+  selectedCategory,
 }) => {
   const { setTotalCart } = useCart();
   const t = useTranslations("shop");
@@ -75,12 +75,12 @@ const ProductList: FC<{
         variables: {
           page: pageNumber,
           pageSize,
-          sort,
-          filters: selectedCategoryId
+          sort: [sort],
+          filters: selectedCategory
             ? {
                 category: {
-                  documentId: {
-                    eq: selectedCategoryId,
+                  slug: {
+                    eq: selectedCategory,
                   },
                 },
               }
@@ -122,10 +122,24 @@ const ProductList: FC<{
     fetchCart();
   };
 
+  const colClassMap: { [key: number]: string } = {
+    1: "lg:grid-cols-1",
+    2: "lg:grid-cols-2",
+    3: "lg:grid-cols-3",
+    4: "lg:grid-cols-4",
+    5: "lg:grid-cols-5",
+    6: "lg:grid-cols-6",
+  };
+
+  const lgCols =
+    rowItems && colClassMap[rowItems]
+      ? colClassMap[rowItems]
+      : "lg:grid-cols-3";
+
   useEffect(() => {
     fetchProducts(1);
     fetchCart();
-  }, [itemsPerPage, sortBy, selectedCategoryId]);
+  }, [itemsPerPage, sortBy, selectedCategory]);
 
   return (
     <div>
@@ -171,11 +185,7 @@ const ProductList: FC<{
           </div>
         </div>
       )}
-      <div
-        className={`grid lg:grid-cols-${
-          rowItems || "3"
-        } sm:grid-cols-2 grid-cols-1 gap-8`}
-      >
+      <div className={`grid grid-cols-1 sm:grid-cols-2 ${lgCols} gap-8`}>
         {products.data &&
           products.data.map((product) => (
             <ProductCard
