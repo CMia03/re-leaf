@@ -125,7 +125,7 @@ const ArticleBlog = ({
             <Card className="w-full border-none rounded-none shadow-none p-0">
               <CardContent className="relative flex flex-col items-center text-center gap-4 p-0">
                 <Image
-                  src={`${apiUrl}${item.cover_image?.url}`}
+                  src={`${item.cover_image?.url}`}
                   alt={item.title || ""}
                   width={item.cover_image?.width || 500}
                   height={item.cover_image?.height || 300}

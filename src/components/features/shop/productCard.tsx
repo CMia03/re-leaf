@@ -1,4 +1,3 @@
-import { apiUrl } from "@/components/constants/constants";
 import { Typography } from "@/components/re-leaf/Typography";
 import { Product, ProductQuot } from "@/generated/graphql";
 import client from "@/graphql/appoloClient";
@@ -90,7 +89,7 @@ const ProductCard: FC<{
       <div className="min-h-[350px] relative">
         {product?.cover_image && (
           <Image
-            src={apiUrl + product?.cover_image?.url}
+            src={product?.cover_image?.url}
             fill
             className="object-cover"
             alt={product.name}

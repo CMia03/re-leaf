@@ -34,7 +34,7 @@ const CartItem: FC<CartItemProps> = ({ item, onRemove, getTotalPrice }) => {
       <td>
         <div className="flex items-center gap-3">
           <img
-            src={`${apiUrl}${item.product?.cover_image.url}`}
+            src={`${item.product?.cover_image.url}`}
             alt={item.product?.cover_image.name}
             className="w-10 h-10 object-cover rounded"
           />

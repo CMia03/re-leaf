@@ -22,7 +22,7 @@ const ProductImages: FC<ProductDetailsProps> = ({ product }) => {
         {product?.images?.map((image, index) => (
           <img
             key={index}
-            src={`${apiUrl}${image?.url}`}
+            src={`${image?.url}`}
             className="w-16 h-16 object-cover cursor-pointer"
             onClick={() => setSelectedImage(image)}
           />
@@ -30,9 +30,9 @@ const ProductImages: FC<ProductDetailsProps> = ({ product }) => {
       </div>
       <div className="relative w-full">
         <img
-          alt={`${apiUrl}${selectedImage?.url}`}
-          src={`${apiUrl}${selectedImage?.url}`}
-          onClick={() => window.open(`${apiUrl}${selectedImage?.url}`)}
+          alt={`${selectedImage?.url}`}
+          src={`${selectedImage?.url}`}
+          onClick={() => window.open(`${selectedImage?.url}`)}
         />
       </div>
     </div>

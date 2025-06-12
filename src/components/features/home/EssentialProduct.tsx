@@ -97,7 +97,7 @@ function EssentialProduct() {
                         </Typography>
                         {categories[index].image && (
                           <Image
-                            src={`${apiUrl}${categories[index].image?.url}`}
+                            src={`${categories[index].image?.url}`}
                             alt={item.name || ""}
                             width={307}
                             height={373}
