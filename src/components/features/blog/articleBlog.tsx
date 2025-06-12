@@ -31,7 +31,7 @@ const ArticleBlog = ({
   articleNumber,
 }: {
   searchTerm: string;
-  articleNumber: number;
+  articleNumber?: number;
 }) => {
   const t = useTranslations("home");
 

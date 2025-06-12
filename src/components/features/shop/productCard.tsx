@@ -10,8 +10,8 @@ import { toast } from "sonner";
 
 const ProductCard: FC<{
   product: Product;
-  getTotalCart: () => void;
-  allCart: ProductQuot[];
+  getTotalCart?: () => void;
+  allCart?: ProductQuot[];
 }> = ({ product, getTotalCart, allCart }) => {
   const router = useRouter();
 
@@ -69,7 +69,7 @@ const ProductCard: FC<{
             ? "Quantité mise à jour dans le panier."
             : "Le produit a bien été ajouté au panier."
         );
-        getTotalCart();
+        if (getTotalCart) getTotalCart();
       }
     } catch (error) {
       console.error("Erreur lors de la mise à jour du panier :", error);
