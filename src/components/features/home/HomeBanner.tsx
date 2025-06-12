@@ -10,7 +10,6 @@ import { useTranslations } from "next-intl";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import AboutPdc from "../../../../public/images/home_cover_image2.jpg";
-import banner2 from "../../../../public/images/Banniere2.png";
 import flowerBanner1 from "../../../../public/images/flowerBanner1.png";
 import flowerBanner2 from "../../../../public/images/flowerBanner2.png";
 import pdc from "../../../../public/images/pdc.jpg";

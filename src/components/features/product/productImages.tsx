@@ -1,5 +1,4 @@
 "use client";
-import { apiUrl } from "@/components/constants/constants";
 import { Maybe, Product, UploadFile } from "@/generated/graphql";
 import { FC, useEffect, useState } from "react";
 interface ProductDetailsProps {

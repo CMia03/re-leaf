@@ -58,7 +58,7 @@ const ProductCard: FC<{
       }
 
       // Lancer la mutation adaptée
-      const { data, errors } = await client.mutate({
+      const { errors } = await client.mutate({
         mutation: isUpdate ? UPDATE_CART_QUANTITY : ADD_TO_CART,
         variables,
       });

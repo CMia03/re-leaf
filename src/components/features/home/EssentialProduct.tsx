@@ -12,11 +12,6 @@ import {
 } from "@/components/ui/carousel";
 import { useEffect, useState } from "react";
 
-// CARD
-import essential from "../../../../public/images/essentialProduct/essentiel1.png";
-import essential1 from "../../../../public/images/essentialProduct/image copy 2.png";
-import essential2 from "../../../../public/images/essentialProduct/image copy.png";
-import essential3 from "../../../../public/images/essentialProduct/image.png";
 import { ChevronRight } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
@@ -26,18 +21,10 @@ import { useTranslations } from "next-intl";
 import client from "@/graphql/appoloClient";
 import { GET_CATEGORY } from "@/graphql/queries/essentialProduct";
 import { Category } from "@/generated/graphql";
-import { apiUrl } from "@/components/constants/constants";
 import ProductList from "../shop/productList";
 
 function EssentialProduct() {
   const t = useTranslations("home");
-
-  const items = [
-    { id: 1, image: essential3, label: "Produit 1", description: "20€" },
-    { id: 2, image: essential2, label: "Produit 2", description: "20€" },
-    { id: 3, image: essential, label: "Produit 3", description: "20€" },
-    { id: 4, image: essential1, label: "Produit 4", description: "20€" },
-  ];
 
   // CAROUSEL
   const [api, setApi] = useState<CarouselApi>();

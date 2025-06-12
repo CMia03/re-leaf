@@ -8,11 +8,7 @@ import { Rating } from "react-simple-star-rating";
 import MenuInformations from "./MenuInformations";
 import { QuantitySelector } from "@/components/re-leaf/QuantitySelector";
 import { Product, ProductQuot } from "@/generated/graphql";
-import {
-  ADD_TO_CART,
-  GET_ALL_CART,
-  UPDATE_CART_QUANTITY,
-} from "@/graphql/queries/cart";
+import { ADD_TO_CART, UPDATE_CART_QUANTITY } from "@/graphql/queries/cart";
 import client from "@/graphql/appoloClient";
 import { useCart } from "@/components/contexts/CartContext";
 import { toast } from "sonner";
@@ -59,7 +55,7 @@ const ProductDetails: FC<ProductDetailsProps> = ({ product }) => {
         toast.error("Produit introuvable.");
         return;
       }
-      const { data, errors } = await client.mutate({
+      const { errors } = await client.mutate({
         mutation: isUpdate ? UPDATE_CART_QUANTITY : ADD_TO_CART,
         variables,
       });

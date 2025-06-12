@@ -1,6 +1,5 @@
 "use client";
 import { FC, useState } from "react";
-import { apiUrl } from "@/components/constants/constants";
 import { ProductQuot } from "@/generated/graphql";
 import { MdClose } from "react-icons/md";
 import { QuantitySelector } from "@/components/re-leaf/QuantitySelector";

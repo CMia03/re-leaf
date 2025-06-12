@@ -1,61 +1,16 @@
 "use client";
 
-import React from "react";
 import Image from "next/image";
-import { useEffect, useState } from "react";
 
-import essentialOil from "../../../../public/images/testimonial/bg-testmonial.png";
-import image from "../../../../public/images/testimonial/image.png";
-import logo from "../../../../public/images/logo/image.png";
-import logo2 from "../../../../public/images/logo/image copy.png";
-import logo3 from "../../../../public/images/logo/image copy 5.png";
 import logo5 from "../../../../public/images/logo/image copy 4.png";
+import logo3 from "../../../../public/images/logo/image copy 5.png";
 import logo4 from "../../../../public/images/logo/image copy 6.png";
-import user from "../../../../public/images/testimonial/userprofile.png";
-import { Typography } from "@/components/re-leaf/Typography";
-import { useTranslations } from "next-intl";
+import logo2 from "../../../../public/images/logo/image copy.png";
+import logo from "../../../../public/images/logo/image.png";
 
 // CAROUSEL
-import {
-  Carousel,
-  CarouselApi,
-  CarouselContent,
-  CarouselItem,
-} from "@/components/ui/carousel";
 
 function HomeTestimonial() {
-  const t = useTranslations("home");
-
-  const [api, setApi] = useState<CarouselApi>();
-  const [current, setCurrent] = useState(0);
-  const data = [
-    {
-      image1: essentialOil,
-      label: "essentialOil",
-    },
-    {
-      image1: essentialOil,
-      label: "essentialOil",
-    },
-    {
-      image1: essentialOil,
-      label: "essentialOil",
-    },
-  ];
-
-  useEffect(() => {
-    if (!api) {
-      return;
-    }
-    const onSelect = () => {
-      setCurrent(api.selectedScrollSnap());
-    };
-    api.on("select", onSelect);
-    return () => {
-      api.off("select", onSelect);
-    };
-  }, [api]);
-
   return (
     <div className="pt-[50px]">
       {/* <section>

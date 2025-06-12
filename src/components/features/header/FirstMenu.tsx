@@ -4,9 +4,7 @@ import { useTranslations } from "next-intl";
 import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
 import logo from "../../../../public/images/logo.svg";
-import client from "@/graphql/appoloClient";
-import { GET_TOTAL_CART } from "@/graphql/queries/cart";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useCart } from "@/components/contexts/CartContext";
 import { fetchTotalCart } from "@/lib/utils";
 

@@ -1,5 +1,4 @@
 import { Typography } from "@/components/re-leaf/Typography";
-import { useTranslations } from "next-intl";
 import { marcellus } from "../../../../public/fonts/config/config";
 import Image from "next/image";
 import profile from "../../../../public/images/about/profile.png";
@@ -7,8 +6,6 @@ import quote1 from "../../../../public/images/about/quote1.png";
 import quote2 from "../../../../public/images/about/quote2.png";
 
 const QuoteAboutBody = () => {
-  const translate = useTranslations("about.aboutQuote");
-
   const quickNavList = [
     {
       //   quoteTitle: translate("quoteTitle"),

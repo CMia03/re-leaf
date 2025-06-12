@@ -9,7 +9,6 @@ import { useTranslations } from "next-intl";
 import { GET_ARTICLES } from "@/graphql/queries/articles";
 import client from "@/graphql/appoloClient";
 import { Blog } from "@/generated/graphql";
-import { apiUrl } from "@/components/constants/constants";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { InfoIcon } from "lucide-react";
 import CustomPagination from "@/components/re-leaf/CustomPagination";
@@ -57,7 +56,7 @@ const ArticleBlog = ({
         fetchPolicy: "network-only",
       });
 
-      const formattedArticles = data.blogs.map((blog: any) => {
+      const formattedArticles = data.blogs.map((blog: Blog) => {
         const date = new Date(blog.publish_at);
         const dateNumber = date.getDate();
         const month = date

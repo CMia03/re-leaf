@@ -5,14 +5,12 @@ import { Button } from "@/components/ui/button";
 import { ChevronRight } from "lucide-react";
 import flowerAbs from "../../../../public/images/flowerAbsoluteBlog.png";
 import Image from "next/image";
-import { Card, CardContent } from "@/components/ui/card";
 import { useTranslations } from "next-intl";
 import ArticleBlog from "../blog/articleBlog";
 import { useRouter } from "next/navigation";
 
 function BlogAndConseil() {
   const t = useTranslations("home");
-  const translate = useTranslations("home.blog&adviceCard");
   const router = useRouter();
 
   const toBlog = () => {

@@ -1,10 +1,11 @@
 "use client";
-import { apiUrl, ITEMS_PER_PAGE } from "@/components/constants/constants";
+import { ITEMS_PER_PAGE } from "@/components/constants/constants";
 import { useCart } from "@/components/contexts/CartContext";
-import { QuantitySelector } from "@/components/re-leaf/QuantitySelector";
+import CustomPagination from "@/components/re-leaf/CustomPagination";
+import { Typography } from "@/components/re-leaf/Typography";
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Typography } from "@/components/re-leaf/Typography";
 import {
   Select,
   SelectContent,
@@ -15,7 +16,6 @@ import {
 import {
   Table,
   TableBody,
-  TableCell,
   TableHead,
   TableHeader,
   TableRow,
@@ -25,12 +25,9 @@ import client from "@/graphql/appoloClient";
 import { GET_CART, REMOVE_FROM_CART } from "@/graphql/queries/cart";
 import { fetchTotalCart } from "@/lib/utils";
 import { Maybe } from "graphql/jsutils/Maybe";
+import { InfoIcon } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { FC, useEffect, useState } from "react";
-import { MdClose } from "react-icons/md";
-import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
-import { InfoIcon } from "lucide-react";
-import CustomPagination from "@/components/re-leaf/CustomPagination";
 import { toast } from "sonner";
 import CartItem from "./CartItem";
 
@@ -58,7 +55,6 @@ const CartList: FC<{
   const t = useTranslations("cart");
   const tHeader = useTranslations("shop");
   const translationButton = useTranslations("button");
-  const handleChangeQuantity = (id: string | undefined, value: number) => {};
 
   const handlePageChange = (newPage: number) => {
     fetchCarts(newPage);
@@ -111,11 +107,13 @@ const CartList: FC<{
             documentId: id,
           },
         })
-        .then(({ data, errors }) => {
+        .then(() => {
           toast.success("Le produit a bien été retiré.");
           handleRefreshList();
         });
-    } catch (error) {}
+    } catch (error) {
+      console.warn("error", error);
+    }
   };
 
   const getTotalPrice = (

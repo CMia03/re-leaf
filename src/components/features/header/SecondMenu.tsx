@@ -1,6 +1,5 @@
 "use client";
 import { Typography } from "@/components/re-leaf/Typography";
-import { useTranslations } from "next-intl";
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -23,7 +22,6 @@ interface Category {
 }
 
 const SecondMenuComponents = () => {
-  const t = useTranslations("header");
   const [categories, setCategories] = useState<Category[]>([]);
 
   const router = useRouter();

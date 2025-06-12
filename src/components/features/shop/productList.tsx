@@ -20,7 +20,6 @@ import { MdUnfoldMore } from "react-icons/md";
 import ProductCard from "./productCard";
 import { fetchTotalCart } from "@/lib/utils";
 import { useCart } from "@/components/contexts/CartContext";
-import { GET_ALL_CART } from "@/graphql/queries/cart";
 import { fetchAllCart } from "../product/productActions";
 
 type ProductsState = {
@@ -174,7 +173,7 @@ const ProductList: FC<{
       )}
       <div
         className={`grid lg:grid-cols-${
-          rowItems ? "rowItems" : "3"
+          rowItems || "3"
         } sm:grid-cols-2 grid-cols-1 gap-8`}
       >
         {products.data &&
