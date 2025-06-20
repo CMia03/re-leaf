@@ -9,6 +9,8 @@ import BgImage2 from "../../../../public/images/Bg-image2.png";
 import client from "@/graphql/appoloClient";
 import { GET_PRODUCTS_PER_CATEGORY } from "@/graphql/queries/categories";
 import { Product } from "@/generated/graphql";
+import { GET_BEST_PRODUCTS } from "@/graphql/queries/products";
+import { apiUrl } from "@/components/constants/constants";
 interface Category {
   documentId: string;
   slug: string;
@@ -18,9 +20,11 @@ interface Category {
 const LeftSection = ({
   onCategorySelect,
   selectedCategory,
+  onPriceRangeChange,
 }: {
   onCategorySelect: (slug: string | null) => void;
   selectedCategory: string | null;
+  onPriceRangeChange: (range: [number, number]) => void;
 }) => {
   const t = useTranslations("shop");
   const translationHeader = useTranslations("header");
@@ -41,36 +45,25 @@ const LeftSection = ({
       console.error("Erreur lors du chargement des categories:", error);
     }
   };
-  const products: { label: string; price: number; image: StaticImageData }[] = [
-    {
-      label: translationHeader("peaperBerries"),
-      price: 20,
-      image: BgImage2,
-    },
-    {
-      label: translationHeader("spicy"),
-      price: 300,
-      image: BgImage2,
-    },
-    {
-      label: translationHeader("herbs"),
-      price: 600,
-      image: BgImage2,
-    },
-    {
-      label: translationHeader("essentialOiles"),
-      price: 5000,
-      image: BgImage2,
-    },
-    {
-      label: translationHeader("authenticFlavors"),
-      price: 20,
-      image: BgImage2,
-    },
-  ];
+
+  const [bestProducts, setBestProducts] = useState<Product[]>([]);
+
+  const fetchBestProducts = async () => {
+    try {
+      const { data } = await client.query({
+        query: GET_BEST_PRODUCTS,
+      });
+      // console.log(data);
+
+      setBestProducts(data.products);
+    } catch (error) {
+      console.error("Erreur lors du chargement des meilleurs produits:", error);
+    }
+  };
 
   useEffect(() => {
     fetchCategories();
+    fetchBestProducts();
   }, []);
 
   return (
@@ -86,9 +79,10 @@ const LeftSection = ({
             max={10000}
             step={100}
             value={rangeSliderValues}
-            onInput={(newValues: [number, number]) =>
-              setRangeSliderValues(newValues)
-            }
+            onInput={(newValues: [number, number]) => {
+              setRangeSliderValues(newValues);
+              onPriceRangeChange(newValues);
+            }}
             className="range-slider-primary w-full mt-4 "
           />
           <div className="flex justify-between mt-2 text-black text-sm">
@@ -102,7 +96,9 @@ const LeftSection = ({
           size={"lg"}
           className="rounded-full mt-2"
           onClick={() => {
-            onCategorySelect(null); // c'est CETTE ligne qui déclenche le reset côté ShopComponent
+            onCategorySelect(null);
+            onPriceRangeChange([0, 10000]);
+            setRangeSliderValues([0, 10000]);
           }}
         >
           <span>{t("resetFilter")}</span>
@@ -138,17 +134,18 @@ const LeftSection = ({
         <Typography variant="h4" className="text-primary font-normal">
           {t("bestProducts")}
         </Typography>
-        {products.map((product, index) => (
+        {bestProducts.map((product, index) => (
           <div key={index} className="flex items-center mt-3 gap-4">
             <Image
-              src={product.image}
+              src={`${product?.cover_image?.url}`}
               className="object-cover"
-              alt={product.label}
+              alt={product.name}
+              height={70}
               width={70}
             />
             <div className="flex flex-col">
               <Typography variant="p" className="text-primary">
-                {product.label}
+                {capitalize(product.name)}
               </Typography>
               <Typography variant="p" className="text-brown">
                 {formatEuroPrice(product.price)}
