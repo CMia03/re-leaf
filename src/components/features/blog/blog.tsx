@@ -25,8 +25,8 @@ const BlogComponent = () => {
           <SearchBlog onSearchChange={(value) => setSearchTerm(value)} />
           <CategorieBlog />
           <LatestArticles />
-          <GalerieBlog />
-          <TagsBlog />
+          {/* <GalerieBlog />
+          <TagsBlog /> */}
         </div>
       </div>
     </div>

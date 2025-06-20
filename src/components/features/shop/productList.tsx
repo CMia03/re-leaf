@@ -40,11 +40,13 @@ const ProductList: FC<{
   currentItemsPerPage?: number;
   rowItems?: number;
   selectedCategory?: string | null;
+  priceRange?: [number, number];
 }> = ({
   showFilters = true,
   currentItemsPerPage,
   rowItems,
   selectedCategory,
+  priceRange = [0, 10000],
 }) => {
   const { setTotalCart } = useCart();
   const t = useTranslations("shop");
@@ -76,15 +78,19 @@ const ProductList: FC<{
           page: pageNumber,
           pageSize,
           sort: [sort],
-          filters: selectedCategory
-            ? {
-                category: {
-                  slug: {
-                    eq: selectedCategory,
-                  },
+          filters: {
+            ...(selectedCategory && {
+              category: {
+                slug: {
+                  eq: selectedCategory,
                 },
-              }
-            : {},
+              },
+            }),
+            price: {
+              gte: priceRange[0],
+              lte: priceRange[1],
+            },
+          },
         },
       });
 
@@ -140,6 +146,16 @@ const ProductList: FC<{
     fetchProducts(1);
     fetchCart();
   }, [itemsPerPage, sortBy, selectedCategory]);
+
+  useEffect(() => {
+    const handler = setTimeout(() => {
+      fetchProducts(1);
+    }, 500);
+
+    return () => {
+      clearTimeout(handler);
+    };
+  }, [priceRange]);
 
   return (
     <div>

@@ -37,6 +37,7 @@ export const GET_PRODUCTS = gql`
       category {
         documentId
         name
+        slug
       }
     }
 
@@ -132,6 +133,41 @@ export const GET_PRODUCT = gql`
       category {
         documentId
         name
+        slug
+      }
+    }
+  }
+`;
+
+export const GET_BEST_PRODUCTS = gql`
+  query GetBestProducts {
+    products(pagination: { limit: 5 }) {
+      documentId
+      slug
+      name
+      description
+      vehicle_type
+      availability
+      price
+      cover_image {
+        documentId
+        url
+        width
+        height
+      }
+      images {
+        url
+        width
+        height
+      }
+      size
+      weight
+      createdAt
+      publishedAt
+      category {
+        documentId
+        name
+        slug
       }
     }
   }

@@ -22,6 +22,7 @@ import { Category } from "@/generated/graphql";
 import ProductList from "../shop/productList";
 import { useRouter } from "next/navigation";
 import { Maybe } from "graphql/jsutils/Maybe";
+import { apiUrl } from "@/components/constants/constants";
 
 function EssentialProduct() {
   const t = useTranslations("home");
@@ -53,7 +54,7 @@ function EssentialProduct() {
   }, []);
 
   useEffect(() => {
-    fetchEssentialProduct();
+    // fetchEssentialProduct();
     if (!api) {
       return;
     }

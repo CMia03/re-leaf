@@ -22,3 +22,35 @@ export const GET_ARTICLES = gql`
     }
   }
 `;
+
+export const GET_LATEST_ARTICLES = gql`
+  query getLatestArticle {
+    blogs {
+      title
+      content
+      content_t
+      cover_image {
+        name
+        url
+        width
+        height
+      }
+      publish_at
+      publishedAt
+      createdAt
+    }
+  }
+`;
+
+export const GET_GALERIE_ARTICLES = gql`
+  query getGalerieBlog {
+    blogs {
+      cover_image {
+        name
+        url
+        width
+        height
+      }
+    }
+  }
+`;
