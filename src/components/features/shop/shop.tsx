@@ -21,13 +21,12 @@ const ShopComponent = () => {
     }
   }, [searchParams]);
 
-  // Déclenche le filtre réel avec un léger délai pour éviter les appels en boucle
   useEffect(() => {
     const timeout = setTimeout(() => {
       setAppliedPriceRange(priceRange);
-    }, 400); // 400ms de délai : suffisant pour un ressenti fluide
+    }, 400);
 
-    return () => clearTimeout(timeout); // Nettoyage si l'utilisateur continue de slider
+    return () => clearTimeout(timeout);
   }, [priceRange]);
 
   return (

@@ -53,7 +53,6 @@ const LeftSection = ({
       const { data } = await client.query({
         query: GET_BEST_PRODUCTS,
       });
-      // console.log(data);
 
       setBestProducts(data.products);
     } catch (error) {
@@ -130,7 +129,7 @@ const LeftSection = ({
           );
         })}
       </div>
-      <div className="mt-8">
+      {/* <div className="mt-8">
         <Typography variant="h4" className="text-primary font-normal">
           {t("bestProducts")}
         </Typography>
@@ -153,7 +152,7 @@ const LeftSection = ({
             </div>
           </div>
         ))}
-      </div>
+      </div> */}
     </div>
   );
 };

@@ -29,9 +29,11 @@ type BlogStates = {
 const ArticleBlog = ({
   searchTerm,
   articleNumber,
+  selectedCategory,
 }: {
   searchTerm: string;
   articleNumber?: number;
+  selectedCategory?: string | null;
 }) => {
   const t = useTranslations("home");
 
