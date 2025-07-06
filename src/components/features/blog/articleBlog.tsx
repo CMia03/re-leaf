@@ -8,12 +8,13 @@ import { Card, CardContent } from "@/components/ui/card";
 import { useTranslations } from "next-intl";
 import { GET_ARTICLES } from "@/graphql/queries/articles";
 import client from "@/graphql/appoloClient";
-import { Blog } from "@/generated/graphql";
+import { Blog, Category } from "@/generated/graphql";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { InfoIcon } from "lucide-react";
 import CustomPagination from "@/components/re-leaf/CustomPagination";
 
 type BlogStatesWithMeta = Blog & {
+  category: Category;
   dateNumber: number;
   month: string;
 };
@@ -49,11 +50,22 @@ const ArticleBlog = ({
 
   const fetchArticleBlog = async (page: number) => {
     try {
+      const filters = selectedCategory
+        ? {
+            category: {
+              slug: {
+                eq: selectedCategory,
+              },
+            },
+          }
+        : {};
+
       const { data } = await client.query({
         query: GET_ARTICLES,
         variables: {
           page,
           pageSize: 100,
+          filters,
         },
         fetchPolicy: "network-only",
       });
@@ -89,7 +101,7 @@ const ArticleBlog = ({
 
   useEffect(() => {
     fetchArticleBlog(1);
-  }, []);
+  }, [selectedCategory]);
 
   const filteredArticles = searchTerm
     ? articles.data.filter(
@@ -137,7 +149,7 @@ const ArticleBlog = ({
                     variant="p"
                     className="text-gray-600 text-md font-500"
                   >
-                    {item.title}
+                    {item.category?.name}
                   </Typography>
                   <Typography
                     variant="h2"

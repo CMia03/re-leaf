@@ -30,8 +30,8 @@ const BlogComponent = () => {
           <SearchBlog onSearchChange={(value) => setSearchTerm(value)} />
           <CategorieBlog onCategorySelect={setSelectedCategory} />
           <LatestArticles />
-          {/* <GalerieBlog />
-          <TagsBlog /> */}
+          <GalerieBlog />
+          {/* <TagsBlog /> */}
         </div>
       </div>
     </div>
