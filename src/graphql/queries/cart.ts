@@ -30,7 +30,7 @@ export const GET_CART = gql`
   }
 `;
 export const GET_ALL_CART = gql`
-  query GetCart {
+  query GetAllCart {
     productQuots {
       documentId
       product {

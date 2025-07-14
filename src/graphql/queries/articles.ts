@@ -1,8 +1,9 @@
 import { gql } from "@apollo/client";
 
 export const GET_ARTICLES = gql`
-  query GetArticle($page: Int!, $pageSize: Int, $filters: BlogFiltersInput) {
+  query GetArticles($page: Int!, $pageSize: Int, $filters: BlogFiltersInput) {
     blogs(pagination: { page: $page, pageSize: $pageSize }, filters: $filters) {
+      documentId
       title
       cover_image {
         url
@@ -55,6 +56,25 @@ export const GET_GALERIE_ARTICLES = gql`
         width
         height
       }
+    }
+  }
+`;
+export const GET_ARTICLE = gql`
+  query GetArticle($documentId: ID!) {
+    blog(documentId: $documentId) {
+      documentId
+      title
+      cover_image {
+        url
+        width
+        height
+      }
+      category {
+        name
+        slug
+      }
+      content
+      publish_at
     }
   }
 `;

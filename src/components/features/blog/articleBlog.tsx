@@ -12,6 +12,7 @@ import { Blog, Category } from "@/generated/graphql";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { InfoIcon } from "lucide-react";
 import CustomPagination from "@/components/re-leaf/CustomPagination";
+import { useRouter } from "next/navigation";
 
 type BlogStatesWithMeta = Blog & {
   category: Category;
@@ -37,6 +38,7 @@ const ArticleBlog = ({
   selectedCategory?: string | null;
 }) => {
   const t = useTranslations("home");
+  const router = useRouter();
 
   const [articles, setArticles] = useState<BlogStates>({
     data: [],
@@ -99,6 +101,10 @@ const ArticleBlog = ({
     articleBlogRef.current?.scrollIntoView({ behavior: "smooth" });
   };
 
+  const showDetails = (id: string) => {
+    router.push(`/blog/${id}`);
+  };
+
   useEffect(() => {
     fetchArticleBlog(1);
   }, [selectedCategory]);
@@ -153,8 +159,9 @@ const ArticleBlog = ({
                   </Typography>
                   <Typography
                     variant="h2"
-                    className="font-semibold clampTitle"
+                    className="font-semibold clampTitle cursor-pointer"
                     style={{ lineHeight: "1.4em" }}
+                    onClick={() => showDetails(item.documentId)}
                   >
                     {item.title}
                   </Typography>
@@ -164,7 +171,10 @@ const ArticleBlog = ({
                   >
                     {item.content}
                   </Typography>
-                  <Button className="p-5.5 px-8 rounded-full mt-4 cursor-pointer">
+                  <Button
+                    className="p-5.5 px-8 rounded-full mt-4 cursor-pointer"
+                    onClick={() => showDetails(item.documentId)}
+                  >
                     {t("seeMore")}
                   </Button>
                 </div>

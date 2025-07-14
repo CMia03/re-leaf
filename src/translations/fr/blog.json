@@ -24,6 +24,12 @@
       "paragraphe5": "Piment",
       "paragraphe6": "Citron",
       "paragraphe7": "Camomille"
+    },
+    "comments": {
+      "commentNumber": "commentaires pour cet article",
+      "addComment": "Laisser un commentaire",
+      "submit": "Soumettre",
+      "respond": "Répondre"
     }
   }
 }
