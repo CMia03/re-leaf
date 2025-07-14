@@ -7,7 +7,7 @@ import { FC, useEffect, useState } from "react";
 import { Rating } from "react-simple-star-rating";
 import MenuInformations from "./MenuInformations";
 import { QuantitySelector } from "@/components/re-leaf/QuantitySelector";
-import { Product, ProductQuot } from "@/generated/graphql";
+import { Category, Product, ProductQuot } from "@/generated/graphql";
 import { ADD_TO_CART, UPDATE_CART_QUANTITY } from "@/graphql/queries/cart";
 import client from "@/graphql/appoloClient";
 import { useCart } from "@/components/contexts/CartContext";
@@ -23,6 +23,13 @@ const ProductDetails: FC<ProductDetailsProps> = ({ product }) => {
   const t = useTranslations("product");
   const [productNumber, setProductNumber] = useState<number>(1);
   const ratingNumbers = 5;
+
+  const typedProduct = product as Product & {
+    category?: {
+      name?: string;
+      slug?: string;
+    };
+  };
 
   const [allCart, setAllCart] = useState<ProductQuot[]>([]);
   const handleChangeQuantity = (value: number) => setProductNumber(value);
@@ -145,14 +152,16 @@ const ProductDetails: FC<ProductDetailsProps> = ({ product }) => {
         </div>
         <div>
           {`${t("category")} : `}
-          <span className="pl-6">{product?.feature}</span>
+          <span className="pl-6">
+            {capitalize(typedProduct?.category?.name)}
+          </span>
         </div>
-        <div>
+        {/* <div>
           {`${t("tags")} : `}
-          {/* <span className="pl-6 text-[#1E1E1EA1]">
+          <span className="pl-6 text-[#1E1E1EA1]">
             {product.tags.map((item) => item.label).join(" - ")}
-          </span> */}
-        </div>
+          </span>
+        </div> */}
       </div>
       <MenuInformations product={product} />
     </div>

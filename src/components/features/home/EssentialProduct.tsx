@@ -17,11 +17,12 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Typography } from "@/components/re-leaf/Typography";
 import { useTranslations } from "next-intl";
 import client from "@/graphql/appoloClient";
-import { GET_CATEGORY } from "@/graphql/queries/essentialProduct";
 import { Category } from "@/generated/graphql";
 import ProductList from "../shop/productList";
 import { useRouter } from "next/navigation";
 import { Maybe } from "graphql/jsutils/Maybe";
+import { apiUrl } from "@/components/constants/constants";
+import { GET_PRODUCTS_PER_CATEGORY } from "@/graphql/queries/categories";
 
 function EssentialProduct() {
   const t = useTranslations("home");
@@ -39,7 +40,7 @@ function EssentialProduct() {
   const fetchEssentialProduct = async () => {
     try {
       const { data } = await client.query({
-        query: GET_CATEGORY,
+        query: GET_PRODUCTS_PER_CATEGORY,
       });
 
       setCategories(data.categories);
@@ -53,7 +54,7 @@ function EssentialProduct() {
   }, []);
 
   useEffect(() => {
-    fetchEssentialProduct();
+    // fetchEssentialProduct();
     if (!api) {
       return;
     }

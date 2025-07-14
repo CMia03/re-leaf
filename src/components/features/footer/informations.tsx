@@ -7,12 +7,12 @@ import { MdCopyright, MdFacebook } from "react-icons/md";
 import FooterImage2 from "../../../../public/images/Footer-image2.png";
 import Logo from "../../../../public/images/logo-lg.jpeg";
 import client from "@/graphql/appoloClient";
-import { GET_CATEGORY } from "@/graphql/queries/essentialProduct";
 import { useEffect, useState } from "react";
 import { Category } from "@/generated/graphql";
 import { capitalize } from "@/lib/utils";
 import { Maybe } from "graphql/jsutils/Maybe";
 import { useRouter } from "next/navigation";
+import { GET_PRODUCTS_PER_CATEGORY } from "@/graphql/queries/categories";
 
 const Informations = () => {
   const t = useTranslations("footer");
@@ -28,7 +28,7 @@ const Informations = () => {
   const fetchFooterCategories = async () => {
     try {
       const { data } = await client.query({
-        query: GET_CATEGORY,
+        query: GET_PRODUCTS_PER_CATEGORY,
       });
 
       setCategories(data.categories);

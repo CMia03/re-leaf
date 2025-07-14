@@ -22,12 +22,11 @@ interface Category {
 }
 
 const SecondMenuComponents = () => {
-  const [categories, setCategories] = useState<Category[]>([]);
-
   const router = useRouter();
   const showDetails = (id: string) => {
     router.push(`/products/${id}`);
   };
+  const [categories, setCategories] = useState<Category[]>([]);
 
   const fetchProductsPerCategories = async () => {
     try {
