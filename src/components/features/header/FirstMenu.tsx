@@ -85,7 +85,7 @@ const RightIconsMenu: FC<{
 );
 
 const FirstMenuComponent = () => {
-  const [isSidebarOpen, setSidebarOpen] = useState<Boolean>(false);
+  const [isSidebarOpen, setSidebarOpen] = useState<boolean>(false);
   const router = useRouter();
   const t = useTranslations("header");
   const pathname = usePathname(); // Obtient le chemin actuel

@@ -10,7 +10,7 @@ export const fetchAllCart = async () => {
 
     return data?.productQuots || [];
   } catch (error) {
-    console.error("Erreur lors de la récuperation de tous les paniers");
+    console.error("Erreur lors de la récuperation de tous les paniers", error);
     return [];
   }
 };

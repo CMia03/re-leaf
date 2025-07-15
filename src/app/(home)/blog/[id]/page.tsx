@@ -1,6 +1,5 @@
 "use client";
 import BlogDetailsComponent from "@/components/features/blog/details/blogDetails";
-import ProductComponent from "@/components/features/product/productComponent";
 import { useParams } from "next/navigation";
 export const dynamic = "force-dynamic";
 

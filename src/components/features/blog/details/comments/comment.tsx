@@ -1,7 +1,5 @@
-import { FC } from "react";
 import { Typography } from "@/components/re-leaf/Typography";
 import { useTranslations } from "next-intl";
-import { Rating } from "react-simple-star-rating";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
@@ -39,7 +37,7 @@ const comments = [
   },
 ];
 
-const Comment: FC<{}> = () => {
+const Comment = () => {
   const t = useTranslations("label.comments");
   const tProduct = useTranslations("product");
   return (

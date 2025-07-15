@@ -1,16 +1,13 @@
-import { capitalize, formatEuroPrice } from "@/lib/utils";
-import RangeSlider from "react-range-slider-input";
 import { Typography } from "@/components/re-leaf/Typography";
-import { useTranslations } from "next-intl";
-import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
-import Image, { StaticImageData } from "next/image";
-import BgImage2 from "../../../../public/images/Bg-image2.png";
+import { Product } from "@/generated/graphql";
 import client from "@/graphql/appoloClient";
 import { GET_PRODUCTS_PER_CATEGORY } from "@/graphql/queries/categories";
-import { Product } from "@/generated/graphql";
 import { GET_BEST_PRODUCTS } from "@/graphql/queries/products";
-import { apiUrl } from "@/components/constants/constants";
+import { capitalize, formatEuroPrice } from "@/lib/utils";
+import { useTranslations } from "next-intl";
+import { useEffect, useState } from "react";
+import RangeSlider from "react-range-slider-input";
 interface Category {
   documentId: string;
   slug: string;
@@ -27,7 +24,6 @@ const LeftSection = ({
   onPriceRangeChange: (range: [number, number]) => void;
 }) => {
   const t = useTranslations("shop");
-  const translationHeader = useTranslations("header");
   const [rangeSliderValues, setRangeSliderValues] = useState<[number, number]>([
     0, 10000,
   ]);
@@ -46,7 +42,7 @@ const LeftSection = ({
     }
   };
 
-  const [bestProducts, setBestProducts] = useState<Product[]>([]);
+  const [, setBestProducts] = useState<Product[]>([]);
 
   const fetchBestProducts = async () => {
     try {

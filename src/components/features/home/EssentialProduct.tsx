@@ -21,7 +21,6 @@ import { Category } from "@/generated/graphql";
 import ProductList from "../shop/productList";
 import { useRouter } from "next/navigation";
 import { Maybe } from "graphql/jsutils/Maybe";
-import { apiUrl } from "@/components/constants/constants";
 import { GET_PRODUCTS_PER_CATEGORY } from "@/graphql/queries/categories";
 
 function EssentialProduct() {

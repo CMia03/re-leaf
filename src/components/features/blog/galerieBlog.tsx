@@ -6,7 +6,6 @@ import Image from "next/image";
 import { GET_GALERIE_ARTICLES } from "@/graphql/queries/articles";
 import client from "@/graphql/appoloClient";
 import { Blog } from "@/generated/graphql";
-import { apiUrl } from "@/components/constants/constants";
 
 const GalerieBlog = () => {
   const t = useTranslations("label");

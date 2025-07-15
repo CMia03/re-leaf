@@ -16,7 +16,6 @@ import { GET_PRODUCTS_PER_CATEGORY } from "@/graphql/queries/categories";
 
 const Informations = () => {
   const t = useTranslations("footer");
-  const translationHeader = useTranslations("header");
 
   const router = useRouter();
   const goToCategory = (slug: Maybe<string> | undefined) => {

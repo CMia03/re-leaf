@@ -6,7 +6,6 @@ import CategorieBlog from "./categorieBlog";
 import GalerieBlog from "./galerieBlog";
 import LatestArticles from "./latestArticles";
 import SearchBlog from "./searchBlog";
-import TagsBlog from "./tagsBlog";
 
 const BlogComponent = () => {
   const [searchTerm, setSearchTerm] = useState("");

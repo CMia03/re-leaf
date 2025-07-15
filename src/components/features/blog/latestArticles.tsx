@@ -3,19 +3,15 @@
 import React, { useEffect, useState } from "react";
 import { Typography } from "@/components/re-leaf/Typography";
 
-// import blog1 from '../../../../public/images/blog/blog1.png'
-import latestblogimg from "../../../../public/images/blog/latestblogimg.png";
 import Image from "next/image";
 import { Card, CardContent } from "@/components/ui/card";
 import { useTranslations } from "next-intl";
 import client from "@/graphql/appoloClient";
 import { GET_LATEST_ARTICLES } from "@/graphql/queries/articles";
 import { Blog } from "@/generated/graphql";
-import { apiUrl } from "@/components/constants/constants";
 
 const LatestArticles = () => {
   const t = useTranslations("label");
-  const translate = useTranslations("label.latestArticleLists");
 
   const [latestArticles, setLatestArticles] = useState<Blog[]>([]);
 

@@ -15,7 +15,7 @@ import ReactMarkdown from "react-markdown";
 
 const BlogDetailsComponent: FC<{ blogId?: string }> = ({ blogId }) => {
   const [blog, setBlog] = useState<Blog>();
-  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+  const [, setSelectedCategory] = useState<string | null>(null);
 
   const fetchCurrentBlog = async (id?: string) => {
     try {

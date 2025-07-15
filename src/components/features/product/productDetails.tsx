@@ -7,7 +7,7 @@ import { FC, useEffect, useState } from "react";
 import { Rating } from "react-simple-star-rating";
 import MenuInformations from "./MenuInformations";
 import { QuantitySelector } from "@/components/re-leaf/QuantitySelector";
-import { Category, Product, ProductQuot } from "@/generated/graphql";
+import { Product, ProductQuot } from "@/generated/graphql";
 import { ADD_TO_CART, UPDATE_CART_QUANTITY } from "@/graphql/queries/cart";
 import client from "@/graphql/appoloClient";
 import { useCart } from "@/components/contexts/CartContext";

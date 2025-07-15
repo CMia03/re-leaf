@@ -4,7 +4,6 @@ import { useTranslations } from "next-intl";
 import { Category } from "@/generated/graphql";
 import client from "@/graphql/appoloClient";
 import { GET_BLOG_PER_CATEGORY } from "@/graphql/queries/categories";
-import { Button } from "@/components/ui/button";
 
 const CategorieBlog = ({
   onCategorySelect,
@@ -12,8 +11,6 @@ const CategorieBlog = ({
   onCategorySelect: (slug: string | null) => void;
 }) => {
   const t = useTranslations("label");
-  // const translate = useTranslations("label.listCategorie");
-  const translate = useTranslations("header");
 
   const [categories, setCategories] = useState<Category[]>([]);
 

@@ -1,4 +1,3 @@
-import { apiUrl } from "@/components/constants/constants";
 import { Typography } from "@/components/re-leaf/Typography";
 import { Product, ProductQuot } from "@/generated/graphql";
 import client from "@/graphql/appoloClient";
