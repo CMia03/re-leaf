@@ -1,6 +1,5 @@
 'use client'
 import React, { useState } from 'react'
-import Image from "next/image"
 
 function HomeVideo() {
   const [isPlaying, setIsPlaying] = useState(false);
@@ -12,14 +11,6 @@ function HomeVideo() {
   return (
     <div className='pt-[50px]'>
       <section className='w-full h-[40em] relative group cursor-pointer' onClick={handlePlayClick}>
-        {/* <Image
-          src="/images/Video/image.png"
-          alt='Vidéo de présentation'
-          width={1920}
-          height={1080}
-          className='w-full h-full object-cover transition-transform duration-300 group-hover:scale-105'
-          priority
-        /> */}
 
         {!isPlaying && (
           <div className='absolute inset-0 bg-black/20 flex items-center justify-center transition-opacity duration-300 group-hover:bg-black/30'>
