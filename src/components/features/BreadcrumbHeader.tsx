@@ -24,33 +24,33 @@ const BreadcrumbHeader = () => {
 
 
   const navLinks: NavLinks = {
-    "/shop": {
+    "/fr/shop": {
       label: t("shop"),
-      path: "/shop",
+      path: "/fr/shop",
       image: BgImage1,
       background: "var(--tertiary)",
     },
-    "/blog": {
+    "/fr/blog": {
       label: t("blog"),
-      path: "/blog",
+      path: "/fr/blog",
       image: BgImage2,
       background: "var(--tertiary-foreground)",
     },
-    "/contact": {
+    "/fr/contact": {
       label: t("contactUs"),
-      path: "/contact",
+      path: "/fr/contact",
       image: BgImage2,
       background: "var(--brown)",
     },
-    "/about": {
+    "/fr/about": {
       label: t("about"),
-      path: "/about",
+      path: "/fr/about",
       image: BgImage3,
       background: "var(--tertiary-foreground)",
     },
-    "/faq": {
+    "/fr/faq": {
       label: t("faq"),
-      path: "/faq",
+      path: "/fr/faq",
       image: BgImage4,
       background: "var(--tertiary-foreground)",
     }
