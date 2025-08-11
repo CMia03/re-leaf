@@ -131,9 +131,9 @@ function EssentialProduct() {
                   <path
                     d="M16.5 1C16.5 1 1.5 12.0475 1.5 16C1.5 19.9525 16.5 31 16.5 31"
                     stroke="white"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
                   />
                 </svg>
               </i>
@@ -152,9 +152,9 @@ function EssentialProduct() {
                   <path
                     d="M1.5 1C1.5 1 16.5 12.0475 16.5 16C16.5 19.9525 1.5 31 1.5 31"
                     stroke="white"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
                   />
                 </svg>
               </i>

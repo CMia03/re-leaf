@@ -98,9 +98,9 @@ const HomeBanner = () => {
             <path
               d="M35 20C35 20 25 27.365 25 30C25 32.635 35 40 35 40"
               stroke="white"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
             />
           </svg>
         </i>
@@ -123,9 +123,9 @@ const HomeBanner = () => {
             <path
               d="M25 20C25 20 35 27.365 35 30C35 32.635 25 40 25 40"
               stroke="white"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
             />
           </svg>
         </i>

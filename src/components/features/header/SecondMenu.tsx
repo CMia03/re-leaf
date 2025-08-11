@@ -26,6 +26,7 @@ const SecondMenuComponents = () => {
   const [categories, setCategories] = useState<Category[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [isClient, setIsClient] = useState(false);
 
   const showDetails = (id: string) => {
     router.push(`/fr/products/${id}`);
@@ -36,19 +37,68 @@ const SecondMenuComponents = () => {
       setLoading(true);
       setError(null);
       
+      console.log('Fetching categories from:', `${process.env.NEXT_PUBLIC_API_URL}/graphql`);
+      
+      // Test avec fetch d'abord
+      try {
+        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/graphql`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+          },
+          body: JSON.stringify({
+            query: `
+              query GetCategories {
+                categories {
+                  documentId
+                  name
+                  products {
+                    documentId
+                    name
+                  }
+                }
+              }
+            `
+          }),
+        });
+        
+        console.log('Fetch response status:', response.status);
+        const fetchData = await response.json();
+        console.log('Fetch data:', fetchData);
+        
+        if (fetchData.data?.categories) {
+          console.log('Setting categories from fetch:', fetchData.data.categories);
+          setCategories(fetchData.data.categories);
+          setLoading(false);
+          return;
+        }
+      } catch (fetchError) {
+        console.error('Fetch error:', fetchError);
+      }
+      
+      // Si fetch échoue, essayer Apollo
       const { data } = await client.query({
         query: GET_PRODUCTS_PER_CATEGORY,
+        errorPolicy: 'all',
       });
 
       console.log('Categories data:', data); // Debug log
       
       if (data?.categories) {
+        console.log('Setting categories:', data.categories);
         setCategories(data.categories);
       } else {
+        console.log('No categories found in data:', data);
         setError('Aucune catégorie trouvée');
       }
-    } catch (error) {
+    } catch (error: any) {
       console.error("Erreur lors du chargement des categories:", error);
+      console.error("Error details:", {
+        message: error.message,
+        networkError: error.networkError,
+        graphQLErrors: error.graphQLErrors,
+      });
       setError('Erreur lors du chargement des catégories');
     } finally {
       setLoading(false);
@@ -56,8 +106,22 @@ const SecondMenuComponents = () => {
   };
 
   useEffect(() => {
-    fetchProductsPerCategories();
+    setIsClient(true);
   }, []);
+
+  useEffect(() => {
+    if (isClient) {
+      fetchProductsPerCategories();
+    }
+  }, [isClient]);
+
+  if (!isClient) {
+    return (
+      <div className="flex gap-2 justify-center items-center h-[61px] border-b-1 border-b-[var(--border)]">
+        <Typography variant="D1">Chargement...</Typography>
+      </div>
+    );
+  }
 
   if (loading) {
     return (

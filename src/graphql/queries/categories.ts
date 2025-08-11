@@ -1,16 +1,10 @@
 import { gql } from "@apollo/client";
 
 export const GET_PRODUCTS_PER_CATEGORY = gql`
-  query getProductPerCategory {
+  query GetCategories {
     categories {
       documentId
       name
-      slug
-      type
-      image {
-        name
-        url
-      }
       products {
         documentId
         name
