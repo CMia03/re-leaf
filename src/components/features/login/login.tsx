@@ -1,3 +1,4 @@
+"use client";
 import BreadcrumbAccount from "../BreadcrumbAccount";
 import SignIn from "./signin";
 import SignUp from "./signUp";

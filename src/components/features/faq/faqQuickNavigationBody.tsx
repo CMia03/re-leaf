@@ -1,3 +1,4 @@
+"use client"
 import { Typography } from "@/components/re-leaf/Typography";
 import { useTranslations } from "next-intl";
 import { marcellus } from "../../../../public/fonts/config/config";

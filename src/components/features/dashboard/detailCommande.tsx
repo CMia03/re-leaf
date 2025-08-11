@@ -1,4 +1,4 @@
-
+"use client";
 import DetailCommandeBody from './detailCommandeBody'; // Adjust the path as needed
 
 const DetailCommandeComponent = () => {

@@ -1,3 +1,4 @@
+"use client"
 import { Typography } from "@/components/re-leaf/Typography"
 import { Card, CardContent } from "@/components/ui/card"
 import flower1 from '../../../../public/images/flower1.jpg'

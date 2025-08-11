@@ -1,6 +1,6 @@
+"use client";
 import AddresseBody from "./addresseBody";
 import BreadcrumbAccount from "../BreadcrumbAccount";
-
 
 
 const AddresseComponent = () => {

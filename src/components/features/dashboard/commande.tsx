@@ -1,3 +1,4 @@
+"use client";
 import CommandeBody from "./commandeBody";
 import BreadcrumbAccount from "../BreadcrumbAccount";
 

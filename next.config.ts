@@ -9,6 +9,8 @@ const nextConfig = {
       "excellent-boat-6d2d23a9d6.media.strapiapp.com",
     ],
   },
+  // Force dynamic rendering for all pages
+  output: 'standalone' as const,
 };
 
 const withNextIntl = createNextIntlPlugin();

@@ -1,3 +1,4 @@
+"use client"
 import BreadcrumbHeader from "../BreadcrumbHeader";
 import HomeVideo from "../home/HomeVideo";
 import ImageAboutBody from "./imageAboutBody";

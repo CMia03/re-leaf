@@ -1,3 +1,4 @@
+"use client"
 import { Typography } from "@/components/re-leaf/Typography";
 import Image from "next/image";
 import logo from "../../../../public/images/logo.svg";

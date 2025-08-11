@@ -1,3 +1,4 @@
+"use client"
 import React from 'react'
 const bgNwsletter = '/images/newsletter/BackgroundNwsLttrImage.png';
 import { Typography } from "@/components/re-leaf/Typography";

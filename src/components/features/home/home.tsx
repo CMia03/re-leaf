@@ -1,3 +1,4 @@
+"use client";
 import AboutBannerHome from "./AboutBanner";
 import BlogAndConseil from "./BlogAndConseil";
 import EssentialProduct from "./EssentialProduct";

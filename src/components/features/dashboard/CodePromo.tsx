@@ -1,3 +1,4 @@
+"use client";
 import CodePromoBody from "./codePromoBody";
 import BreadcrumbAccount from "../BreadcrumbAccount";
 

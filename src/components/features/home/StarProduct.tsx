@@ -1,3 +1,4 @@
+"use client"
 import { Typography } from "@/components/re-leaf/Typography"
 import { useTranslations } from "next-intl"
 import vanille from '../../../../public/images/spice/Vanille.jpg'

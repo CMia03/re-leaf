@@ -1,3 +1,4 @@
+"use client";
 import PersonnalInfoBody from "./personnalInfoBody";
 import BreadcrumbAccount from "../BreadcrumbAccount";
 

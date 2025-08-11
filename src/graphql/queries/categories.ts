@@ -2,7 +2,7 @@ import { gql } from "@apollo/client";
 
 export const GET_PRODUCTS_PER_CATEGORY = gql`
   query getProductPerCategory {
-    categories(filters: { type: { eq: "Products" } }) {
+    categories {
       documentId
       name
       slug
