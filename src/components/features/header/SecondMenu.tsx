@@ -21,6 +21,11 @@ interface Category {
   products: Product[];
 }
 
+interface ApolloError extends Error {
+  networkError?: Error;
+  graphQLErrors?: Array<{ message: string; locations?: Array<{ line: number; column: number }>; path?: string[] }>;
+}
+
 const SecondMenuComponents = () => {
   const router = useRouter();
   const [categories, setCategories] = useState<Category[]>([]);
@@ -92,12 +97,12 @@ const SecondMenuComponents = () => {
         console.log('No categories found in data:', data);
         setError('Aucune catégorie trouvée');
       }
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error("Erreur lors du chargement des categories:", error);
       console.error("Error details:", {
-        message: error.message,
-        networkError: error.networkError,
-        graphQLErrors: error.graphQLErrors,
+        message: error instanceof Error ? error.message : 'Unknown error',
+        networkError: (error as ApolloError)?.networkError,
+        graphQLErrors: (error as ApolloError)?.graphQLErrors,
       });
       setError('Erreur lors du chargement des catégories');
     } finally {
