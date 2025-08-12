@@ -86,23 +86,36 @@ const RightIconsMenu: FC<{
 
 const FirstMenuComponent = () => {
   const [isSidebarOpen, setSidebarOpen] = useState<boolean>(false);
+  const [clickedLink, setClickedLink] = useState<string | null>(null);
   const router = useRouter();
   const t = useTranslations("header");
   const pathname = usePathname(); // Obtient le chemin actuel
 
   const navigateTo = (path: string) => {
+    setClickedLink(path);
     router.push(path);
+    
+    // Réinitialiser l'effet de clic après 300ms
+    setTimeout(() => {
+      setClickedLink(null);
+    }, 300);
   };
 
   const navLinks = [
-    { label: t("welcome"), path: "/" },
-    { label: t("shop"), path: "/shop" },
-    { label: t("blog"), path: "/blog" },
-    { label: t("contact"), path: "/contact" },
-    { label: t("about"), path: "/about" },
+    { label: t("welcome"), path: "/fr/" },
+    { label: t("shop"), path: "/fr/shop" },
+    { label: t("blog"), path: "/fr/blog" },
+    { label: t("contact"), path: "/fr/contact" },
+    { label: t("about"), path: "/fr/about" },
   ];
   // Vérifie si le lien est actif
-  const isActive = (path: string) => pathname === path;
+  const isActive = (path: string) => {
+    // Pour la page d'accueil, vérifier si on est sur /fr/ ou /
+    if (path === "/fr/") {
+      return pathname === "/fr/" || pathname === "/";
+    }
+    return pathname === path;
+  };
 
   const { totalCart, setTotalCart } = useCart();
 
@@ -125,8 +138,12 @@ const FirstMenuComponent = () => {
           <Typography
             key={index}
             variant="p"
-            className={`cursor-pointer ${
-              isActive(link.path) ? "text-[var(--tertiary)]" : ""
+            className={`cursor-pointer transition-colors duration-300 ${
+              isActive(link.path) 
+                ? "text-[var(--tertiary)]" 
+                : clickedLink === link.path 
+                  ? "text-[var(--tertiary)] scale-105" 
+                  : "text-black hover:text-[var(--tertiary)]"
             }`}
             onClick={() => navigateTo(link.path)}
           >
@@ -170,7 +187,13 @@ const FirstMenuComponent = () => {
                   navigateTo(link.path);
                   setSidebarOpen(false);
                 }}
-                className="cursor-pointer"
+                className={`cursor-pointer transition-colors duration-300 ${
+                  isActive(link.path) 
+                    ? "text-[var(--tertiary)]" 
+                    : clickedLink === link.path 
+                      ? "text-[var(--tertiary)] scale-105" 
+                      : "text-black hover:text-[var(--tertiary)]"
+                }`}
               >
                 {link.label}
               </Typography>
