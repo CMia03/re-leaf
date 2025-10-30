@@ -68,22 +68,22 @@ function EssentialProduct() {
 
   return (
     <div>
-      <main className="w-full mx-auto my-0 pt-[50px]">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-5  justify-between">
+      <main className="w-full mx-auto my-0 pt-8 sm:pt-12 lg:pt-[50px] px-4 sm:px-6 lg:px-0">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 lg:gap-8 justify-between">
           {/* SECTION CAROUSEL */}
           <section className="w-full h-full contentCarouselReleaf">
             <Carousel className="h-full" setApi={setApi}>
-              <CarouselContent className="border h-full">
+              <CarouselContent className="border h-[20em] sm:h-[25em] lg:h-full">
                 {categories.map((item, index) => (
                   <CarouselItem
                     key={index}
                     className="h-full flex items-center justify-center"
                   >
-                    <Card className="border-none h-full  nth-[1]:bg-green-light nth-[2]:bg-[var(--tertiary)]  nth-[3]:bg-[var(--quatro)] w-full rounded-none">
-                      <CardContent className="flex flex-col justify-center items-center h-full text-center gap-7 pt-2 pb-2 relative">
+                    <Card className="border-none h-full nth-[1]:bg-green-light nth-[2]:bg-[var(--tertiary)] nth-[3]:bg-[var(--quatro)] w-full rounded-none">
+                      <CardContent className="flex flex-col justify-center items-center h-full text-center gap-4 sm:gap-6 lg:gap-7 pt-2 pb-2 relative px-4 sm:px-6">
                         <Typography
                           variant="p"
-                          className="text-white text-[30px] capitalize"
+                          className="text-white text-lg sm:text-xl lg:text-[30px] capitalize"
                         >
                           {item.name}
                         </Typography>
@@ -93,23 +93,23 @@ function EssentialProduct() {
                             alt={item.name || ""}
                             width={307}
                             height={373}
-                            className="rounded-tl-[230px] rounded-b-none rounded-tr-[230px]"
+                            className="rounded-tl-[120px] sm:rounded-tl-[180px] lg:rounded-tl-[230px] rounded-b-none rounded-tr-[120px] sm:rounded-tr-[180px] lg:rounded-tr-[230px] w-32 h-40 sm:w-48 sm:h-56 lg:w-64 lg:h-80 object-cover"
                           />
                         )}
 
                         <Button
                           variant="outline"
-                          className="p-6 w-max cursor-pointer rounded-full"
+                          className="p-3 sm:p-4 lg:p-6 w-max cursor-pointer rounded-full text-xs sm:text-sm lg:text-base"
                           onClick={() => goToCategory(item.slug)}
                         >
                           <Typography
                             variant="p"
-                            className="text-green-light font-semibold ps-6"
+                            className="text-green-light font-semibold ps-3 sm:ps-4 lg:ps-6"
                           >
                             {t("seeAllButton")}
                           </Typography>
 
-                          <ChevronRight className="scale-[1.2] me-6 text-green-light" />
+                          <ChevronRight className="scale-[1.2] me-3 sm:me-4 lg:me-6 text-green-light" />
                         </Button>
                       </CardContent>
                     </Card>
@@ -119,7 +119,7 @@ function EssentialProduct() {
 
               <i
                 onClick={() => api?.scrollPrev()}
-                className="absolute left-[20px] top-1/2 translate-y-[-50%] lg:left-[50px] cursor-pointer"
+                className="absolute left-2 sm:left-4 lg:left-[50px] top-1/2 translate-y-[-50%] cursor-pointer z-10"
               >
                 <svg
                   width="18"
@@ -127,6 +127,7 @@ function EssentialProduct() {
                   viewBox="0 0 18 32"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
+                  className="w-4 h-6 sm:w-6 sm:h-8 lg:w-8 lg:h-12"
                 >
                   <path
                     d="M16.5 1C16.5 1 1.5 12.0475 1.5 16C1.5 19.9525 16.5 31 16.5 31"
@@ -140,7 +141,7 @@ function EssentialProduct() {
 
               <i
                 onClick={() => api?.scrollNext()}
-                className=" absolute right-[20px] top-1/2 translate-y-[-50%] lg:right-[50px] cursor-pointer"
+                className="absolute right-2 sm:right-4 lg:right-[50px] top-1/2 translate-y-[-50%] cursor-pointer z-10"
               >
                 <svg
                   width="18"
@@ -148,6 +149,7 @@ function EssentialProduct() {
                   viewBox="0 0 18 32"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
+                  className="w-4 h-6 sm:w-6 sm:h-8 lg:w-8 lg:h-12"
                 >
                   <path
                     d="M1.5 1C1.5 1 16.5 12.0475 16.5 16C16.5 19.9525 1.5 31 1.5 31"
@@ -158,14 +160,14 @@ function EssentialProduct() {
                   />
                 </svg>
               </i>
-              <div className="absolute bottom-[30px] left-1/2 transform -translate-x-1/2 flex space-x-2">
+              <div className="absolute bottom-4 sm:bottom-6 lg:bottom-[30px] left-1/2 transform -translate-x-1/2 flex space-x-2">
                 {categories.map((_: unknown, index: number) => (
                   <div
                     key={index}
-                    className={`w-3 h-3 rounded-full cursor-pointer transition-all duration-300  ${
+                    className={`w-2 h-2 sm:w-3 sm:h-3 rounded-full cursor-pointer transition-all duration-300 ${
                       current === index
                         ? "bg-white hover:bg-white"
-                        : "border-1 border-white  hover:bg-white/30"
+                        : "border-1 border-white hover:bg-white/30"
                     }`}
                     onClick={() => api?.scrollTo(index)}
                   />

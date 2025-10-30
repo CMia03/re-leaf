@@ -153,18 +153,18 @@ const SecondMenuComponents = () => {
   }
 
   return (
-    <div className="flex gap-2 justify-center items-center h-[61px] border-b-1 border-b-[var(--border)]">
+    <div className="flex gap-1 sm:gap-2 justify-center items-center h-[61px] border-b-1 border-b-[var(--border)] overflow-x-auto px-2">
       {categories.map((category) => (
-        <div key={category.documentId}>
+        <div key={category.documentId} className="flex-shrink-0">
           <NavigationMenu>
             <NavigationMenuList>
               <NavigationMenuItem>
-                <NavigationMenuTrigger>
-                  <Typography variant="D1" className="cursor-pointer">
+                <NavigationMenuTrigger className="text-xs sm:text-sm lg:text-base">
+                  <Typography variant="D1" className="cursor-pointer text-xs sm:text-sm lg:text-base">
                     {capitalize(category.name)}
                   </Typography>
                 </NavigationMenuTrigger>
-                <NavigationMenuContent className="max-h-[20em] overflow-y-auto min-w-[12em]">
+                <NavigationMenuContent className="max-h-[20em] overflow-y-auto min-w-[12em] max-w-[90vw] sm:max-w-none">
                   {category.products && category.products.length > 0 ? (
                     category.products.map((product) => (
                       <NavigationMenuLink

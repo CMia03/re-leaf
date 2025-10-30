@@ -18,28 +18,28 @@ function BlogAndConseil() {
   };
 
   return (
-    <div className="relative w-full pt-[50px]">
+    <div className="relative w-full pt-8 sm:pt-12 lg:pt-[50px] px-4 sm:px-6 lg:px-0">
       <section>
-        <div className="container flex flex-row justify-between items-center mt-10 mb-10 mx-auto">
+        <div className="container flex flex-col sm:flex-row justify-between items-center gap-4 sm:gap-6 mt-6 sm:mt-8 lg:mt-10 mb-6 sm:mb-8 lg:mb-10 mx-auto">
           <Typography
             variant="h2"
-            className="justify-center border-none rounded-none text-center"
+            className="justify-center border-none rounded-none text-center text-xl sm:text-2xl lg:text-3xl xl:text-4xl"
           >
             {t("blog&advice").toUpperCase()}{" "}
           </Typography>
           <Button
             variant="outline"
-            className="border-1 border-black border-solid p-6 w-max cursor-pointer  rounded-full"
+            className="border-1 border-black border-solid p-3 sm:p-4 lg:p-6 w-max cursor-pointer rounded-full text-sm sm:text-base"
           >
             <Typography
               variant="p"
-              className="text-black ps-6"
+              className="text-black ps-3 sm:ps-4 lg:ps-6"
               onClick={toBlog}
             >
               {t("seeAllArticle")}
             </Typography>
 
-            <ChevronRight className="scale-[1.2] me-6" />
+            <ChevronRight className="scale-[1.2] me-3 sm:me-4 lg:me-6" />
           </Button>
         </div>
       </section>
@@ -51,7 +51,7 @@ function BlogAndConseil() {
       <Image
         src={flowerAbs}
         alt={"flower"}
-        className="absolute bottom-0 right-0 object-contain w-[8em] h-[16em] mb-[-5em]"
+        className="absolute bottom-0 right-0 object-contain w-16 h-32 sm:w-20 sm:h-40 lg:w-32 lg:h-64 mb-[-2em] sm:mb-[-3em] lg:mb-[-5em] hidden sm:block"
       />
     </div>
   );

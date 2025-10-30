@@ -47,17 +47,17 @@ const HomeBanner = () => {
   return (
     <div>
       <Carousel className="w-full lg:h-full relative" setApi={setApi}>
-        <CarouselContent className="border h-[18.75em] lg:h-[calc(80vh-8em)]">
+        <CarouselContent className="border h-[18.75em] sm:h-[25em] md:h-[30em] lg:h-[calc(80vh-8em)]">
           {data.map((item, index) => (
             <CarouselItem
               key={index}
               className="h-full flex items-center justify-center relative"
             >
               <div className="w-full h-full flex items-center justify-center relative">
-                <div className="text-white absolute top-0 left-0 h-full w-full flex items-center justify-center">
+                <div className="text-white absolute top-0 left-0 h-full w-full flex items-center justify-center px-4">
                   <Typography
                     variant="h2"
-                    className="text-white font-normal  h-full w-[60%] text-center mx-auto my-0 flex items-center justify-center"
+                    className="text-white font-normal h-full w-full sm:w-[80%] md:w-[70%] lg:w-[60%] text-center mx-auto my-0 flex items-center justify-center text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl"
                   >
                     {t(item.textKey)}
                   </Typography>
@@ -79,14 +79,15 @@ const HomeBanner = () => {
         {/* btn prev */}
         <i
           onClick={() => api?.scrollPrev()}
-          className="absolute cursor-pointer left-[20px] lg:left-[50px] top-1/2 translate-y-[-50%]"
+          className="absolute cursor-pointer left-2 sm:left-4 lg:left-[50px] top-1/2 translate-y-[-50%] z-10"
         >
           <svg
-            width="49"
-            height="49"
+            width="40"
+            height="40"
             viewBox="0 0 60 60"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
+            className="w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12"
           >
             <circle
               cx="30"
@@ -110,14 +111,15 @@ const HomeBanner = () => {
         {/* btn next */}
         <i
           onClick={() => api?.scrollNext()}
-          className="absolute cursor-pointer right-[20px] top-1/2 translate-y-[-50%] lg:right-[50px]"
+          className="absolute cursor-pointer right-2 sm:right-4 lg:right-[50px] top-1/2 translate-y-[-50%] z-10"
         >
           <svg
-            width="49"
-            height="49"
+            width="40"
+            height="40"
             viewBox="0 0 60 60"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
+            className="w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12"
           >
             <circle cx="30" cy="30" r="29.5" stroke="white" />
             <path
@@ -130,11 +132,11 @@ const HomeBanner = () => {
           </svg>
         </i>
 
-        <div className="absolute bottom-[30px] left-1/2 transform -translate-x-1/2 flex space-x-2">
+        <div className="absolute bottom-4 sm:bottom-6 lg:bottom-[30px] left-1/2 transform -translate-x-1/2 flex space-x-2">
           {data.map((_: unknown, index: number) => (
             <div
               key={index}
-              className={`w-4 h-4 rounded-full cursor-pointer transition-all duration-300 ${
+              className={`w-3 h-3 sm:w-4 sm:h-4 rounded-full cursor-pointer transition-all duration-300 ${
                 current === index
                   ? "bg-white hover:bg-white"
                   : "border-1 border-white  hover:bg-white/30"
@@ -148,7 +150,7 @@ const HomeBanner = () => {
           width={250}
           height={250}
           alt=""
-          className="absolute bottom-0 left-20 mb-[-3.5em]"
+          className="absolute bottom-0 left-4 sm:left-8 lg:left-20 mb-[-3.5em] hidden sm:block w-32 h-32 sm:w-48 sm:h-48 lg:w-64 lg:h-64"
           priority
         />
         <Image
@@ -156,7 +158,7 @@ const HomeBanner = () => {
           width={750}
           height={800}
           alt=""
-          className="absolute top-0 left-0 pointer-events-none"
+          className="absolute top-0 left-0 pointer-events-none hidden sm:block w-32 h-32 sm:w-48 sm:h-48 lg:w-64 lg:h-64 xl:w-80 xl:h-80"
           priority
         />
         <Image
@@ -164,7 +166,7 @@ const HomeBanner = () => {
           width={450}
           height={500}
           alt=""
-          className="absolute max-w-max max-h-max bottom-0 right-0 pointer-events-none"
+          className="absolute max-w-max max-h-max bottom-0 right-0 pointer-events-none hidden sm:block w-24 h-24 sm:w-32 sm:h-32 lg:w-40 lg:h-40 xl:w-48 xl:h-48"
           priority
         />
       </Carousel>{" "}

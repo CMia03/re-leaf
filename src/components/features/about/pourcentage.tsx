@@ -28,32 +28,28 @@ const Pourcentage = () => {
         }
     ]
     return (
-        <div className="bg-[#6B4727] h-[15em] px-[100px]">
-                <div className="flex flex-row items-center h-full justify-evenly text-white">
-                    {pourcentageList.map((item, index) => (
-
-                        <div key={index} className="flex flex-col items-center justify-center">
-                            <div className="flex  flex-col gap-2 items-center ">
-                                <Typography
-                                    variant="h2"
-                                    className="font-medium mb-2 uppercase text-center"
-                                >
-                                    {item.pourcentageNumber}
-                                </Typography>
-                                <Typography
-                                    variant="D1"
-                                    className="font-normal mb-2 text-center"
-                                >
-                                    {item.pourcentageDescription}
-                                </Typography>
-                            </div>
-
+        <div className="bg-[#6B4727] px-4 sm:px-6 lg:px-[100px] py-8 sm:py-10 lg:py-14">
+            <div className="flex flex-col sm:flex-row items-center justify-evenly gap-6 sm:gap-8 text-white text-center">
+                {pourcentageList.map((item, index) => (
+                    <div key={index} className="flex flex-col items-center justify-center">
+                        <div className="flex flex-col gap-1 sm:gap-2 items-center">
+                            <Typography
+                                variant="h2"
+                                className="font-medium mb-1 sm:mb-2 uppercase text-center text-2xl sm:text-3xl lg:text-4xl"
+                            >
+                                {item.pourcentageNumber}
+                            </Typography>
+                            <Typography
+                                variant="D1"
+                                className="font-normal mb-1 sm:mb-2 text-center text-sm sm:text-base lg:text-lg"
+                            >
+                                {item.pourcentageDescription}
+                            </Typography>
                         </div>
-                    ))}
-
-
-                </div>
+                    </div>
+                ))}
             </div>
+        </div>
     );
 };
 export default Pourcentage;

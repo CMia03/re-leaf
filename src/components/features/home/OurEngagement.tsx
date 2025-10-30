@@ -35,24 +35,24 @@ const OurEngagement = () => {
     },
   ]
   return (
-    <div className="w-full flex flex-col gap-3 pt-[50px]">
-      <Typography variant="h2" className="justify-center border-none rounded-none text-center">{t('ourEngagement').toUpperCase()}</Typography>
-      <div className="flex flex-row text-center justify-center">
+    <div className="w-full max-w-7xl mx-auto flex flex-col gap-5 sm:gap-8 pt-8 sm:pt-12 lg:pt-[50px] px-4 sm:px-6 lg:px-8">
+      <Typography variant="h2" className="justify-center border-none rounded-none text-center text-xl sm:text-2xl lg:text-3xl xl:text-4xl">{t('ourEngagement').toUpperCase()}</Typography>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6 text-center justify-center justify-items-center items-stretch auto-rows-[1fr] w-full">
         {data.map((item, index) => (
-          <div key={index}>
-           <Card className="w-[100%] mx-auto border-none shadow-none">
-            <CardContent className="flex flex-col items-center text-center gap-4 p-6">
-              <Image 
-                src={item.image} 
-                alt={item.title} 
-                width={150} 
-                height={150} 
-                className="rounded-lg"
-              />
-              <Typography variant="h4" className="text-xl font-semibold">{item.title}</Typography>
-              <Typography variant="p" className="text-gray-600">{item.description}</Typography>
-            </CardContent>
-          </Card>
+          <div key={index} className="w-full h-full">
+            <Card className="w-full h-full mx-auto border-none shadow-none">
+              <CardContent className="flex flex-1 h-full flex-col items-center text-center gap-3 sm:gap-4 p-3 sm:p-5">
+                <Image 
+                  src={item.image} 
+                  alt={item.title} 
+                  width={150} 
+                  height={150} 
+                  className="rounded-lg w-16 h-16 sm:w-24 sm:h-24 lg:w-28 lg:h-28 xl:w-32 xl:h-32 object-contain"
+                />
+                <Typography variant="h4" className="text-base sm:text-lg lg:text-xl font-semibold break-words hyphens-auto">{item.title}</Typography>
+                <Typography variant="p" className="text-gray-600 text-sm sm:text-base max-w-xs sm:max-w-sm mx-auto break-words leading-snug clampDescription">{item.description}</Typography>
+              </CardContent>
+            </Card>
           </div>
         ))}
       </div>
