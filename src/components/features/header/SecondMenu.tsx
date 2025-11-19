@@ -41,9 +41,9 @@ const SecondMenuComponents = () => {
     try {
       setLoading(true);
       setError(null);
-      
+
       console.log('Fetching categories from:', `${process.env.NEXT_PUBLIC_API_URL}/graphql`);
-      
+
       // Test avec fetch d'abord
       try {
         const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/graphql`, {
@@ -67,11 +67,11 @@ const SecondMenuComponents = () => {
             `
           }),
         });
-        
+
         console.log('Fetch response status:', response.status);
         const fetchData = await response.json();
         console.log('Fetch data:', fetchData);
-        
+
         if (fetchData.data?.categories) {
           console.log('Setting categories from fetch:', fetchData.data.categories);
           setCategories(fetchData.data.categories);
@@ -81,7 +81,7 @@ const SecondMenuComponents = () => {
       } catch (fetchError) {
         console.error('Fetch error:', fetchError);
       }
-      
+
       // Si fetch échoue, essayer Apollo
       const { data } = await client.query({
         query: GET_PRODUCTS_PER_CATEGORY,
@@ -89,7 +89,7 @@ const SecondMenuComponents = () => {
       });
 
       console.log('Categories data:', data); // Debug log
-      
+
       if (data?.categories) {
         console.log('Setting categories:', data.categories);
         setCategories(data.categories);
@@ -153,47 +153,53 @@ const SecondMenuComponents = () => {
   }
 
   return (
-    <div className="flex gap-1 sm:gap-2 justify-center items-center h-[61px] border-b-1 border-b-[var(--border)] overflow-x-auto px-2">
-      {categories.map((category) => (
-        <div key={category.documentId} className="flex-shrink-0">
-          <NavigationMenu>
-            <NavigationMenuList>
-              <NavigationMenuItem>
-                <NavigationMenuTrigger className="text-xs sm:text-sm lg:text-base">
-                  <Typography variant="D1" className="cursor-pointer text-xs sm:text-sm lg:text-base">
-                    {capitalize(category.name)}
-                  </Typography>
-                </NavigationMenuTrigger>
-                <NavigationMenuContent className="max-h-[20em] overflow-y-auto min-w-[12em] max-w-[90vw] sm:max-w-none">
-                  {category.products && category.products.length > 0 ? (
-                    category.products.map((product) => (
-                      <NavigationMenuLink
-                        key={product.documentId}
-                        className="hover:text-[#B6C335] block p-2"
-                        onClick={() => showDetails(product.documentId)}
-                      >
-                        <Typography
-                          variant="D1"
-                          className="unset text-sm rounded-2 cursor-pointer capitalize text-nowrap"
+    <>
+      {/* Container header */}
+      <div className="flex gap-1 sm:gap-2 justify-center items-center h-[61px] border-b border-b-[var(--border)] px-2 relative overflow-visible">
+        {categories.map((category) => (
+          <div key={category.documentId} className="flex-shrink-0">
+            <NavigationMenu viewport={false}>
+              <NavigationMenuList>
+                <NavigationMenuItem>
+                  <NavigationMenuTrigger className="text-xs sm:text-sm lg:text-base">
+                    <Typography variant="D1" className="cursor-pointer text-xs sm:text-sm lg:text-base">
+                      {capitalize(category.name)}
+                    </Typography>
+                  </NavigationMenuTrigger>
+
+                  {/* IMPORTANT: absolute + top-full + large z-index */}
+                  <NavigationMenuContent
+                    className="absolute top-full left-0 mt-1 min-w-[12em] max-w-[90vw] sm:max-w-none max-h-[20em] overflow-y-auto z-[99999] bg-white shadow-xl rounded-md"
+                  >
+                    {category.products && category.products.length > 0 ? (
+                      category.products.map((product) => (
+                        <NavigationMenuLink
+                          key={product.documentId}
+                          className="block p-2 hover:text-[#B6C335]"
+                          onClick={() => showDetails(product.documentId)}
                         >
-                          {capitalize(product.name)}
+                          <Typography variant="D1" className="text-sm rounded-2 cursor-pointer capitalize">
+                            {capitalize(product.name)}
+                          </Typography>
+                        </NavigationMenuLink>
+                      ))
+                    ) : (
+                      <div className="p-2">
+                        <Typography variant="D1" className="text-sm text-gray-500">
+                          Aucun produit dans cette catégorie
                         </Typography>
-                      </NavigationMenuLink>
-                    ))
-                  ) : (
-                    <div className="p-2">
-                      <Typography variant="D1" className="text-sm text-gray-500">
-                        Aucun produit dans cette catégorie
-                      </Typography>
-                    </div>
-                  )}
-                </NavigationMenuContent>
-              </NavigationMenuItem>
-            </NavigationMenuList>
-          </NavigationMenu>
-        </div>
-      ))}
-    </div>
+                      </div>
+                    )}
+                  </NavigationMenuContent>
+
+                </NavigationMenuItem>
+              </NavigationMenuList>
+            </NavigationMenu>
+          </div>
+        ))}
+      </div>
+    </>
+
   );
 };
 
