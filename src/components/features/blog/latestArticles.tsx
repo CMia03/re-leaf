@@ -54,22 +54,22 @@ const LatestArticles = () => {
         {latestArticles.map((item, index) => (
           <div key={index}>
             <Card className="w-full border-none rounded-none shadow-none p-0">
-              <CardContent className="relative flex px-0 flex-row gap-4 w-full">
+              <CardContent className="relative flex px-0 flex-row gap-3 sm:gap-4 w-full">
                 <Image
                   src={`${item.cover_image?.url}`}
                   width={item.cover_image?.width || undefined}
                   height={item.cover_image?.height || undefined}
                   alt={item.cover_image?.name || ""}
-                  className="w-[8em] h-full object-cover rounded-none"
+                  className="w-[6em] sm:w-[7em] lg:w-[8em] h-[6em] sm:h-[7em] lg:h-[8em] object-cover rounded-none flex-shrink-0"
                 />
-                <div className="flex flex-col w-full text-left gap-2">
+                <div className="flex flex-col w-full text-left gap-1 sm:gap-2 min-w-0">
                   <Typography
                     variant="D1"
-                    className="text-[#6B4727] cursor-pointer hover:underline-offset-4 hover:underline text-[1.1em] w-[100%] clampTitle font-medium"
+                    className="text-[#6B4727] cursor-pointer hover:underline-offset-4 hover:underline text-sm sm:text-base lg:text-[1.1em] w-[100%] clampTitle font-medium"
                   >
                     {item.title}
                   </Typography>
-                  <Typography variant="D1" className="font-light">
+                  <Typography variant="D1" className="font-light text-xs sm:text-sm">
                     {item.publish_at}
                   </Typography>
                 </div>

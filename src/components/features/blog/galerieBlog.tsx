@@ -34,7 +34,7 @@ const GalerieBlog = () => {
         <Typography variant="h4" className="font-semibold">
           {t("Gallery")}
         </Typography>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 w-full">
+        <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-4 w-full">
           {galerieBlog.map((item, index) => (
             <Image
               key={index}
@@ -42,7 +42,7 @@ const GalerieBlog = () => {
               width={item.cover_image?.width || undefined}
               height={item.cover_image?.height || undefined}
               alt={item.cover_image?.name || ""}
-              className="w-full h-[7em] object-cover rounded-none"
+              className="w-full h-[5em] sm:h-[6em] lg:h-[7em] object-cover rounded-none"
             />
           ))}
         </div>
